@@ -1,8 +1,0 @@
-INDEX VERSION 1.4+/Users/haoranwen/Documents/Rutgers/spring2020/database/TrainScheduleWebApp/workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
-1427154675.index
-337357805.index
-2674457044.index
-3528112652.index
-3633984822.index
-140781186.index
-3057101716.index

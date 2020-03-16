@@ -1,3 +1,0 @@
-INDEX VERSION 1.131
-/Users/haoranwen/Documents/Rutgers/spring2020/database/TrainScheduleWebApp/workspace/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/140781186.index
-/cs336Sample/src
