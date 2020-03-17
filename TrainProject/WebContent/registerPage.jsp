@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Register Page</title>
 </head>
 <body>
-
+	<h3>Register Now</h3>
 </body>
 </html>

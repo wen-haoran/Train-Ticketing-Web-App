@@ -10,9 +10,11 @@
 		<title>Trains Website</title>
 	</head>
 <body>
-<h1>Home Page</h1>
-<h3>Login To Your Account</h3>
-	<form method="get" action="loginLogic.jsp">
+	<h1>Home Page</h1>
+	<h3>Login To Your Account</h3>
+
+
+	<form method="get" action="./loginLogic.jsp">
 		<table>
 			<tr>    
 				<td>Username</td><td><input type="text" name="username"></td>
@@ -23,9 +25,14 @@
 		</table>
 		<input type="submit" value="Login">
 	</form>
-<p>Don't have an account? <button type="button" onclick="register.jsp">Register</button></p>
-				  
-
-
+	
+	
+	<br>
+	Don't have an account?
+	<form method="get" action="./registerPage.jsp">
+		<button type="submit">Register</button>
+	</form>
+	
+			  
 </body>
 </html>

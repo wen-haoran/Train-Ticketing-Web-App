@@ -33,6 +33,8 @@
 			}else{
 				//return to home mage
 				out.println("Username or password is invalid");
+				String s = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\">Try Again</button></form>";
+				out.print(s);
 			}
 			//close connection
 			conn.close();
