@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +13,33 @@
 	<h3>Log In Confirmation</h3>
 	<%
 	
-	//query database to display user info 
-	
-	//code below is just me test jsp 
-	//delete code below
-		String usr = request.getParameter("username");
-		out.print(usr+"<br>");
 		
-		String pas = request.getParameter("password");
-		out.print(pas+"<br>");
+		try{
+			//connect to db
+			ApplicationDB db = new ApplicationDB();	
+			Connection conn = db.getConnection();		
+			//get username and password
+			String usr = request.getParameter("username");
+			String pas = request.getParameter("password");
+			//query the db with input data
+			PreparedStatement pst = conn.prepareStatement("SELECT username, password from User where username=? and password=?");
+			pst.setString(1, usr);
+			pst.setString(2, pas);
+			//execute the sql query
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()){
+				out.println("You have successfully login");
+				//direct to profile/logout page
+			}else{
+				//return to home mage
+				out.println("Username or password is invalid");
+			}
+			//close connection
+			conn.close();
+		} catch(Exception e){
+			out.print(e);
+		}
+
 	%>
 	
 </body>
