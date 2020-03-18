@@ -6,7 +6,7 @@
     try{
 			ApplicationDB db = new ApplicationDB();
 			Connection conn = db.getConnection();
-      PreparedStatement ps = con.prepareStatement("SELECT * FROM user WHERE " +
+      PreparedStatement ps = conn.prepareStatement("SELECT * FROM user WHERE " +
               "username = ?");
       ps.setString(1,request.getParameter("user"));
       ResultSet rs = ps.executeQuery();
