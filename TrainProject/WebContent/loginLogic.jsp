@@ -28,8 +28,11 @@
 			//execute the sql query
 			ResultSet rs = pst.executeQuery();
 			if(rs.next()){
-				out.println("You have successfully login");
-				//direct to profile/logout page
+				String dbPassword = rs.getString("password");
+				if (pas.equals(dbPassword)) {
+					out.println("You have successfully login");	
+				}
+				
 			}else{
 				//return to home mage
 				out.println("Username or password is invalid");
