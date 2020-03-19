@@ -3,7 +3,7 @@
 <html>
 <body>
 	<h1>Register Here!</h1>
-	<form action="./validate.jsp" class="registration">
+	<form action="./registerLogic.jsp" class="registration">
 		<div class="registration">
 			Username: <input type="text" name="user" id="user" onblur="validate()" required>
 		</div>

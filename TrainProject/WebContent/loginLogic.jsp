@@ -22,7 +22,7 @@
 			String usr = request.getParameter("username");
 			String pas = request.getParameter("password");
 			//query the db with input data
-			PreparedStatement pst = conn.prepareStatement("SELECT username, password from User where username=? and password=?");
+			PreparedStatement pst = conn.prepareStatement("SELECT username, password from Customer where username=? and password=?");
 			pst.setString(1, usr);
 			pst.setString(2, pas);
 			//execute the sql query
