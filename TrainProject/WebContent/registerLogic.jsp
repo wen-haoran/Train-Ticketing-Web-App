@@ -28,8 +28,8 @@
 			ps.setString(10, request.getParameter("zipcode"));
 			int result = ps.executeUpdate();
 			out.print("Registration successful! You can now log in.");
-			String s = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\">Log In</button></form>";
-			out.print(s);
+			String s = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\">Log In</button></form>";
+			out.println(s);
       	}
 		conn.close();
     }catch (Exception e){

@@ -87,7 +87,7 @@
 		<button type="submit">Submit</button>
 	</form>
 	<br>
-	<form method="get" action="./index.jsp">
+	<form method="get" action="./loginPage.jsp">
 		Already registered?
 		<button type="submit">Log In</button>
 	</form>

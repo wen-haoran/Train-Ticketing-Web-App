@@ -22,7 +22,7 @@
 			String usr = request.getParameter("username");
 			String pas = request.getParameter("password");
 			//query the db with input data
-			PreparedStatement pst = conn.prepareStatement("SELECT username, password from Customer where username=? and password=?");
+			PreparedStatement pst = conn.prepareStatement("SELECT username, password, first_name from Customer where username=? and password=?");
 			pst.setString(1, usr);
 			pst.setString(2, pas);
 			//execute the sql query
@@ -31,12 +31,15 @@
 				String dbPassword = rs.getString("password");
 				if (pas.equals(dbPassword)) {
 					out.println("You have successfully login");	
+					session.setAttribute("user", usr);
+					session.setAttribute("first_name", rs.getString("first_name"));
+					response.sendRedirect("index.jsp");
 				}
 				
 			}else{
 				//return to home mage
 				out.println("Username or password is invalid");
-				String s = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\">Try Again</button></form>";
+				String s = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\">Try Again</button></form>";
 				out.print(s);
 			}
 			//close connection
