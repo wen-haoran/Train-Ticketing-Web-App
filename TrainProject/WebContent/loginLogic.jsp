@@ -37,7 +37,7 @@
 				}
 				
 			}else{
-				//return to home mage
+				//return to login mage
 				out.println("Username or password is invalid");
 				String s = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\">Try Again</button></form>";
 				out.print(s);
