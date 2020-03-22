@@ -10,7 +10,7 @@
 		<title>Train Website</title>
 	</head>
 <body>
-	<h1>Home Page 1</h1>
+	<h1>Home Page</h1>
 	 <% 
 	 	if (session.getAttribute("user") == null) { 
     		response.sendRedirect("loginPage.jsp");
