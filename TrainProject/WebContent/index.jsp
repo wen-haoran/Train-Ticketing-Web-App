@@ -16,7 +16,7 @@
     		response.sendRedirect("loginPage.jsp");
 		} else { 
 			String name = (String)session.getAttribute("first_name");
-			out.print("Hello "+ name +"<br>You are logged ln!");
+			out.print("Hello "+ name +"<br>You are logged ln");
 			String s = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\">Logout</button></form>";
 			out.print(s);
 		}
