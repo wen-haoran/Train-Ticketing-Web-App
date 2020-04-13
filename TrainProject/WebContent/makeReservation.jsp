@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Make Reserrvation</title>
+<title>Make Reservation</title>
 </head>
 <body>
 	<h2>Make Reservation</h2>

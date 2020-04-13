@@ -61,8 +61,9 @@
 		out.print("</table>");
 		
 		
-		String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\">Make Reservations</button></form>";
+		String makeReserveBtn = "<form method=\"get\" action=\"./search.jsp\"><button type=\"submit\">Search and >Make Reservations</button></form>";
 		out.print(makeReserveBtn);
+		
 		//close connection
 		conn.close();
 	} catch(Exception e){
