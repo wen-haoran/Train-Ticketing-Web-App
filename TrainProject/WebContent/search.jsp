@@ -17,23 +17,6 @@
 	Destionation 
 	date of Travel 
 	<%
-	//station info
-	int station_id1 = 1
-	String stationName1 = "New Brunswick Station"
-	String state1 = "NJ"
-	String city1 = "New Brunswick"
-	
-	int station_id2 = 2
-	String stationName2 = "NYC Station"
-	String state2 = "NY"
-	String city2 = "NYC"
-	
-	//Orgin
-	departTime = 
-	
-	//Destination
-			
-	
 	String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\">Make Reservations</button></form>";
 	out.print(makeReserveBtn);
 	%>

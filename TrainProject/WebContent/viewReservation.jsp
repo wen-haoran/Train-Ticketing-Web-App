@@ -14,7 +14,6 @@
 	<h2>My Reservation Page</h2>
 	
 	<%
-
 	try{
 		//connect to db
 		ApplicationDB db = new ApplicationDB();	
@@ -55,6 +54,7 @@
 			out.print(rs.getString("reservation_date"));
 			out.print("</td>");
 			out.print("</tr>");
+			
 
 		}
 		
