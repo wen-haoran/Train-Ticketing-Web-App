@@ -38,6 +38,9 @@
 		int result = pst.executeUpdate();
 		out.print("Reservation table updated.");
 			
+		String makeReserveBtn = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\">Search and >Back to Home</button></form>";
+		out.print(makeReserveBtn);
+		
 		//close connection
 		conn.close();
 	} catch(Exception e){
