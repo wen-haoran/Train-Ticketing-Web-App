@@ -118,7 +118,7 @@
 		out.print("</table>");
 		
 		//make reservation option
-		String makeReserveBtn = "<form method=\"get\" action=\"./search.jsp\"><button type=\"submit\">Search and >Make Reservations</button></form>";
+		String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\">Search and >Make Reservations</button></form>";
 		out.print(makeReserveBtn);
 		
 		//close connection

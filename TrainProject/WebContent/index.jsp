@@ -21,8 +21,6 @@
 			String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\">View My Reservations</button></form>";
 			out.print(viewReserveBtn);
 
-			String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\">Search and Make Reservation</button></form>";
-			out.print(makeReserveBtn);
 			
 			String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\">Logout</button></form>";
 			out.print(logoutBtn);
