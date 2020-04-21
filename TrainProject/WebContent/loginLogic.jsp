@@ -22,6 +22,13 @@
 			String usr = request.getParameter("username");
 			String pas = request.getParameter("password");
 			//query the db with input data
+			if(usr.equals("admin") && pas.equals("admin")){
+				out.println("Logging in as Administrator");
+				session.setAttribute("user", "admin");
+				session.setAttribute("first_name", "admin");
+				response.sendRedirect("admin.jsp");
+				conn.close();
+			}
 			PreparedStatement pst = conn.prepareStatement("SELECT username, password, first_name from Customer where username=? and password=?");
 			pst.setString(1, usr);
 			pst.setString(2, pas);
@@ -35,7 +42,6 @@
 					session.setAttribute("first_name", rs.getString("first_name"));
 					response.sendRedirect("index.jsp");
 				}
-				
 			}else{
 				//return to login mage
 				out.println("Username or password is invalid");
