@@ -27,6 +27,12 @@
 			String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\">Search and Make Reservation</button></form>";
 			out.print(makeReserveBtn);
 			
+			String sendQuestionBtn = "<form method=\"get\" action=\"./zQuestion/sendQuestion.jsp\"><button type=\"submit\">Send a Question</button></form>";
+			out.print(sendQuestionBtn);
+			
+			String viewQuestionPage = "<form method=\"get\" action=\"./zQuestion/viewQuestion.jsp\"><button type=\"submit\">View Q&A Page</button></form>";
+			out.print(viewQuestionPage);
+			
 			String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\">Logout</button></form>";
 			out.print(logoutBtn);
 		}
