@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -11,18 +17,18 @@
 	    try{
 			ApplicationDB db = new ApplicationDB();
 			Connection conn = db.getConnection();
-			PreparedStatement ops = conn.prepareStatement("SELECT origin FROM Line);
+			PreparedStatement ops = conn.prepareStatement("SELECT origin FROM Line");
 			ResultSet ors = ops.executeQuery();
 
-			PreparedStatement dps = conn.prepareStatement("SELECT destination FROM Line);
+			PreparedStatement dps = conn.prepareStatement("SELECT destination FROM Line");
 			ResultSet drs = dps.executeQuery();
 	%>
 	<form action="./browseLogic" class="browse">
 		<div class = "browse">
 		    Origin Station: <select name="origin">
-			    <%  while(ors.next()){ %>
-			        <option><%= ors.getString(1)%></option>
-			    <% } %>
+			    <%  while(ors.next()){ 
+			       out.print("<option>"+ors.getString("origin")+"</option>");
+			    } %>
 		    </select>
 			<br>
 		    Destination Station: <select name="destination">
@@ -44,8 +50,10 @@
 		<br>
 		<button type="submit">View Schedule</button>
 	</form>
+	<%
 	//add station ids for reference?
-	<%}
+	
+	    }
         catch(Exception e)
 		{
                out.println(e);

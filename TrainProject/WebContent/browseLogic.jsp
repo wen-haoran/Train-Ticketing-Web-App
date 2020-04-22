@@ -14,16 +14,7 @@
 		try{
 			ApplicationDB db = new ApplicationDB();
 			Connection conn = db.getConnection();
-			PreparedStatement ps = conn.prepareStatement("SELECT origin, destination
-					FROM Line
-					WHERE origin = ?
-					AND destination = ?
-					AND date in(SELECT date
-					FROM Train_Schedule t,
-						Line l
-					WHERE t.line = l.Line
-					AND date = ?)
-				ORDER BY sortBy = ?");
+			PreparedStatement ps = conn.prepareStatement("SELECT origin, destination FROM Line WHERE origin = ? AND destination = ? AND date in(SELECT date FROM Train_Schedule t, Line l WHERE t.line = l.Line AND date = ?) ORDER BY sortBy = ?");
 			ps.setString(1, request.getParameter("origin"));
 			ps.setString(2, request.getParameter("destination"));
 			ps.setString(3, request.getParameter("date"));
