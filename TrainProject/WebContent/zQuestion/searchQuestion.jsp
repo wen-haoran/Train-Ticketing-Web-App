@@ -11,25 +11,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Search for Question</title>
+<title>Search for Questions</title>
+<link href="../zCss/searchQuestion.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h2>Search for Question Page</h2>
 	
-	
-	<form method="get" action="./viewSearchedQuestions.jsp">  
-		<label>Please enter a keyword or phrase you would like to search for:</label>
-		<br>
-		<textarea name="searchKey" rows="2" cols="50" required></textarea>	
-		<br>	
-		<input type="submit" value="Search for Question">
-	</form>
-	
-	<%
-	//make return to all questions option
-	String viewAllQuestions = "<form method=\"get\" action=\"./viewQuestion.jsp\"><button type=\"submit\">View All Questions</button></form>";
-	out.print(viewAllQuestions);
-	%>
+	<div id = "searchSquare">
+		<div id = "searchText">
+			<h2>Search for Questions</h2>
+			<form method="get" action="./viewSearchedQuestions.jsp" id = "form">  
+				<label>Please enter a keyword or phrase you would like to search for:</label>
+				<br>
+				<br>
+				<textarea name="searchKey" rows="7" cols="60" required></textarea>	
+				<br>	
+				<div id = "buttonWrapper">
+					<input type="submit" value="Search" id = "button">
+				</div>
+			</form>
+			<%
+			//make return to all questions option
+			String viewAllQuestions = "<form method=\"get\" action=\"./viewQuestion.jsp\"><button type=\"submit\" id=\"button2\">View All Questions</button></form>";
+			out.print(viewAllQuestions);
+			%>
+		</div>
+	</div>
 	
 </body>
 </html>

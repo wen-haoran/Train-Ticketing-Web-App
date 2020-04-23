@@ -41,6 +41,9 @@
 		String backHome = "<form method=\"get\" action=\"../index.jsp\"><button type=\"submit\">Back to Homepage</button></form>";
 		out.print(backHome);
 		
+		String viewQuestions = "<form method=\"get\" action=\"./viewQuestion.jsp\"><button type=\"submit\">View All Questions</button></form>";
+		out.print(viewQuestions);
+		
 		//close connection
 		conn.close();
 	} catch(Exception e){

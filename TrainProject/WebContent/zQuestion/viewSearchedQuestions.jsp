@@ -8,80 +8,110 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Searched Questions Page</title>
+<title>Search for Questions </title>
+<link href="../zCss/viewSearchedQuestions.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h2>Searched Questions Page</h2>
-	
-	<%
-	try{
-		//connect to db
-		ApplicationDB db = new ApplicationDB();	
-		Connection conn = db.getConnection();
-		
-		//get search key
- 		String searchKey = request.getParameter("searchKey"); 
-
-		PreparedStatement pst = conn.prepareStatement("SELECT question, question_date, answer, username from Question WHERE question LIKE ? OR question LIKE ? OR question LIKE ? ");
- 		pst.setString(1, "%" + searchKey + "%");
- 		pst.setString(2, searchKey + "%"); 
- 		pst.setString(3, "%" + searchKey); 
-
-		ResultSet rs = pst.executeQuery();
-		
- 		out.print("<table>");
-		out.print("<tr>");
-		
-		out.print("<td>");
-		out.print("Question");
-		out.print("</td>");
-		
-		out.print("<td>");
-		out.print("Date");
-		out.print("</td>");
-		
-		out.print("<td>");
-		out.print("Answer");
-		out.print("</td>");
-		
-		out.print("<td>");
-		out.print("User");
-		out.print("</td>"); 
-		
-		out.print("</tr>");
-		
-		
-		while (rs.next()) {
-			out.print("<tr>");
- 			
- 			out.print("<td>");
-			out.print(rs.getString("question"));
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print(rs.getString("question_date"));
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print(rs.getString("answer"));
-			out.print("</td>");
-			
-			out.print("<td>");
-			out.print(rs.getString("username"));
-			out.print("</td>");
-			
-			out.print("</tr>");
-		}
-		
-		out.print("</table>");
-		
-		
+	<div id = "button2Wrapper">
+		<%
 		//make return to all questions option
-		String viewAllQuestions = "<form method=\"get\" action=\"./viewQuestion.jsp\"><button type=\"submit\">View All Questions</button></form>";
+		String viewAllQuestions = "<form method=\"get\" action=\"./viewQuestion.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
 		out.print(viewAllQuestions);
+		%>
+	</div>
+	<div id = "wrapper">
+		<div id = "top">
+			<div id = "heading">Searched Questions</div>
+			<div id = "buttonWrapper">
+				<div id = "firstButton">
+					<% 
+					//make new question option
+					String sendQuestion = "<form method=\"get\" action=\"./sendQuestion.jsp\"><button type=\"submit\" id=\"button\">Want to ask a question?</button></form>";
+					out.print(sendQuestion);
+					%>
+				</div>
+				
+				<% 
+				//make search question option
+				String searchQuestion = "<form method=\"get\" action=\"./searchQuestion.jsp\"><button type=\"submit\" id=\"button\">Search for Questions</button></form>";
+				out.print(searchQuestion);
+				%>
+			</div>
+		</div>
+	
+		<div id = "tableSquare">
+			<div id = "tableText">
+			<%
+			try{
+				//connect to db
+				ApplicationDB db = new ApplicationDB();	
+				Connection conn = db.getConnection();		
 		
-		//close connection
-		conn.close();
+				//get search key
+		 		String searchKey = request.getParameter("searchKey"); 
+
+				PreparedStatement pst = conn.prepareStatement("SELECT question, question_date, answer, username from Question WHERE question LIKE ? OR question LIKE ? OR question LIKE ? ");
+		 		pst.setString(1, "%" + searchKey + "%");
+		 		pst.setString(2, searchKey + "%"); 
+		 		pst.setString(3, "%" + searchKey); 
+		 		
+		 		ResultSet rs = pst.executeQuery();
+				
+		 		out.print("<table id=\"table\">");
+				out.print("<tr>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Question</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"D1\">");
+				out.print("<b>Date</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"A1\">");
+				out.print("<b>Answer</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"U1\">");
+				out.print("<b>User</b>");
+				out.print("</td>"); 
+				
+				out.print("</tr>");
+	
+				while (rs.next()) {
+					out.print("<tr>");
+		 			
+		 			out.print("<td id=\"Q\">");
+					out.print(rs.getString("question"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("question_date"));
+					out.print("</td>");
+					
+					out.print("<td id=\"A\">");
+					if(rs.getString("answer") == null)
+						out.print("<div id=\"notAnswered\">(no answer)</div>");
+					else
+						out.print(rs.getString("answer"));
+					out.print("</td>");
+					
+					out.print("<td id=\"U\">");
+					out.print(rs.getString("username"));
+					out.print("</td>");
+					
+					out.print("</tr>");
+				}
+				
+				out.print("</table>");
+				%> 
+			</div>
+		</div>
+	</div>
+	
+	<%	
+	//close connection
+	conn.close();
 	} catch(Exception e){
 		out.print(e);
 	}

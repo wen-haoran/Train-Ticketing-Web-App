@@ -8,36 +8,56 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Train Website</title>
+		<link href="./zCss/index.css" rel="stylesheet" type="text/css">
 	</head>
 <body>
-	<h1>Home Page</h1>
-	 <% 
-	 	if (session.getAttribute("user") == null) { 
-    		response.sendRedirect("loginPage.jsp");
-		} else { 
-			String name = (String)session.getAttribute("first_name");
-			out.print("Hello "+ name +"<br>You are logged ln");
+    <div id = "headings">
+        <p id = "name">TRAINS</p>
+        <div id = "navigationBar">
+          <div id = "navHyperLink">Choo Choo With Us</div>    
+        </div>
+    </div>
+    
+	<div id = "links">
+		<div id = "welcomeText">
+			<h1 id = "heading">Welcome</h1>
+			<div id = "welcome">
+				<% 
+			 	if (session.getAttribute("user") == null) { 
+		    		response.sendRedirect("loginPage.jsp");
+				} else { 
+					String name = (String)session.getAttribute("first_name");
+					out.print("Hello "+ name +". You are logged in.");
+				}
+				%>
+			</div>
+		</div>
 			
-			String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\">Browse Train Schedules</button></form>";
-			out.print(browseBtn);
-			
-			String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\">View My Reservations</button></form>";
-			out.print(viewReserveBtn);
-
-			String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\">Search and Make Reservation</button></form>";
-			out.print(makeReserveBtn);
-			
-			String sendQuestionBtn = "<form method=\"get\" action=\"./zQuestion/sendQuestion.jsp\"><button type=\"submit\">Send a Question</button></form>";
-			out.print(sendQuestionBtn);
-			
-			String viewQuestionPage = "<form method=\"get\" action=\"./zQuestion/viewQuestion.jsp\"><button type=\"submit\">View Q&A Page</button></form>";
-			out.print(viewQuestionPage);
-			
-			String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\">Logout</button></form>";
-			out.print(logoutBtn);
-		}
-	%>
+		<div id = "listOfButtons">
+		<% 
+		 	if (session.getAttribute("user") == null) { 
+	    		response.sendRedirect("loginPage.jsp");
+			} else {
+				String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\" >Browse Train Schedules</button></form>";
+				out.print(browseBtn);
+				
+				String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\" id=\"button\">My Reservations</button></form>";
+				out.print(viewReserveBtn);
 	
-			  
+				String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\" id=\"button\">Search & Make Reservation</button></form>";
+				out.print(makeReserveBtn);
+				
+				String sendQuestionBtn = "<form method=\"get\" action=\"./zQuestion/sendQuestion.jsp\"><button type=\"submit\" id=\"button\">Ask a Question</button></form>";
+				out.print(sendQuestionBtn);
+				
+				String viewQuestionPage = "<form method=\"get\" action=\"./zQuestion/viewQuestion.jsp\"><button type=\"submit\" id=\"button\">Q&A Page</button></form>";
+				out.print(viewQuestionPage);
+				
+				String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\" id=\"button\"><b>Logout</b></button></form>";
+				out.print(logoutBtn);
+			}
+		%>
+		</div>
+	</div>			  
 </body>
 </html>

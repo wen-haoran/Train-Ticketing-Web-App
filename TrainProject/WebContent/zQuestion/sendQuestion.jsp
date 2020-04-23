@@ -12,18 +12,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Send Question</title>
+<link href="../zCss/sendQuestion.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h2>Send Question</h2>
 	
-	
-	<form method="get" action="./sendQuestionLogic.jsp">  
-		<label>What would you like to ask?</label>
-		<br>
-		<textarea name="question" rows="4" cols="50" required></textarea>	
-		<br>	
-		<input type="submit" value="Send Question">
-	</form>
+	<div id= "questionSquare">
+		<div id= "questionText">
+			<h2>Send A Question</h2>
+			<label>What would you like to ask us?</label>
+			<form method="get" action="./sendQuestionLogic.jsp" id = "form">  
+				<br>
+				<textarea name="question" rows="7" cols="60" required></textarea>	
+				<br>
+				<div id = "buttonWrapper">
+					<input type="submit" value="Send Question" id = "button">
+				</div>	
+			</form>
+			<%
+			//make return to all questions option
+			String viewAllQuestions = "<form method=\"get\" action=\"./viewQuestion.jsp\"><button type=\"submit\" id=\"button2\">View All Questions</button></form>";
+			out.print(viewAllQuestions);
+			%>
+		</div>
+	</div>
 	
 </body>
 </html>
