@@ -15,8 +15,13 @@
     margin: auto;
 }
 
+#gif {
+	width: 50px;
+	padding-bottom: 5px;
+	padding-top: 2px;
+}
+
 #navigationBar {
-    padding-top: 7px;
     padding-bottom: 2px;
 }
 
@@ -41,6 +46,7 @@ h1 {
 	margin-bottom: 3px;
 	color: #336284;
 	padding-right: 55px;
+	letter-spacing: 3px;
 }
 
 #welcome {

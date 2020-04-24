@@ -8,35 +8,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Success!</title>
+<link href="./zCss/deleteReservation.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<%
-	
-	try{
-		//connect to db
-		ApplicationDB db = new ApplicationDB();	
-		Connection conn = db.getConnection();		
-		//get primary key
-		String reservationNumStr = request.getParameter("del");
-		int reservationNum = Integer.parseInt(reservationNumStr);
-		
-		PreparedStatement pst = conn.prepareStatement("DELETE FROM Reservation WHERE reservation_num=?");
-		pst.setInt(1, reservationNum);
-		int result = pst.executeUpdate();
-		
-		out.print("Delete\n");
-		//make reservation option
-		String s = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\">Go To Home</button></form>";
-		out.print(s);
-		
-		//close connection
-		conn.close();
-	} catch(Exception e){
-		out.print(e);
-	}
-	
-	%>
 
+	<div id = "alertSquare">
+		<div id = "alertText">
+			<%
+			try{
+				//connect to db
+				ApplicationDB db = new ApplicationDB();	
+				Connection conn = db.getConnection();		
+				//get primary key
+				String reservationNumStr = request.getParameter("del");
+				int reservationNum = Integer.parseInt(reservationNumStr);
+				
+				PreparedStatement pst = conn.prepareStatement("DELETE FROM Reservation WHERE reservation_num=?");
+				pst.setInt(1, reservationNum);
+				int result = pst.executeUpdate();
+				out.print("<div id=\"alert\">Reservation successfully deleted!</div>");
+				
+				%>
+				<div>
+					<img src="./ACtrain.gif" id = "gif">
+				</div>
+				<div id = "buttonWrapper">
+					<div id = "firstButton">
+						<% 
+						String viewQuestions = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\" id=\"button\">View My Reservations</button></form>";
+						out.print(viewQuestions);
+						%>
+					</div>
+					<% 	
+					String backHome = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button\">Back to Homepage</button></form>";
+					out.print(backHome);
+					%>
+				</div>
+				
+				<% 
+				
+				//close connection
+				conn.close();
+			} catch(Exception e){
+				out.print(e);
+			}
+			
+			%>
+		</div>
+	</div>
+	
 </body>
 </html>

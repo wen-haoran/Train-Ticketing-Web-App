@@ -29,9 +29,10 @@ body {
 
 #tableSquare {
 	width: 700px;
-	height: 500px;
-	background-color: white;
+/* 	height: 500px;
+ */	background-color: white;
 	margin:auto;
+	border-radius: 5px;
 }
 
 #tableText {
@@ -66,6 +67,10 @@ body {
     border-radius: 100px;
     cursor:pointer;
     text-align: center;
+}
+
+#button:hover {
+	background-color: #A8583F;
 }
 
 #button2 {

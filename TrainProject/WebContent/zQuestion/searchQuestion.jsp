@@ -23,7 +23,7 @@
 				<label>Please enter a keyword or phrase you would like to search for:</label>
 				<br>
 				<br>
-				<textarea name="searchKey" rows="7" cols="60" required></textarea>	
+				<textarea name="searchKey" rows="5" cols="50" required></textarea>	
 				<br>	
 				<div id = "buttonWrapper">
 					<input type="submit" value="Search" id = "button">

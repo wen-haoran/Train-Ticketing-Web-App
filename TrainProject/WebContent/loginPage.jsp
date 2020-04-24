@@ -12,6 +12,7 @@
 	<div id = "loginSquare">
 		<div id= "loginText">
 			<div id = "login">LOGIN</div>
+			<img src="./ACtrain.gif" id = "gif">
 	
 			<form method="get" action="./loginLogic.jsp" id="form">
 				<table>

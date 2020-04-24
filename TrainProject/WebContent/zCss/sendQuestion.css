@@ -4,7 +4,7 @@ body {
     width: 100%;
     vertical-align: middle;
     text-align: center;
-    background-color: #DDDEDE;
+    background-color: #c4ac9c;
 }
 
 #questionSquare {
@@ -69,6 +69,8 @@ body {
 textarea {
 	padding-bottom: 40px;
 	cursor:pointer;
+	font-size: 14px;
+	color: #444444;
 }
 
 textarea:focus, input:focus{

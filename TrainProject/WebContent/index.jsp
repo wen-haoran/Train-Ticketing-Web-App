@@ -14,20 +14,21 @@
     <div id = "headings">
         <p id = "name">TRAINS</p>
         <div id = "navigationBar">
+          <img src="./ACtrainPic.tiff" id = "gif">
           <div id = "navHyperLink">Choo Choo With Us</div>    
         </div>
     </div>
     
 	<div id = "links">
 		<div id = "welcomeText">
-			<h1 id = "heading">Welcome</h1>
+			<h1>Welcome</h1>
 			<div id = "welcome">
 				<% 
 			 	if (session.getAttribute("user") == null) { 
 		    		response.sendRedirect("loginPage.jsp");
 				} else { 
 					String name = (String)session.getAttribute("first_name");
-					out.print("Hello "+ name +". You are logged in.");
+					out.print("Hello <b>"+ name +"</b>. You are logged in.");
 				}
 				%>
 			</div>

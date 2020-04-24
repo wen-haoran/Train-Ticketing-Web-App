@@ -39,7 +39,7 @@
 		</div>
 	
 		<div id = "tableSquare">
-			<div id = "tableText">
+			<div id = "tableText">			
 			<%
 			try{
 				//connect to db
@@ -69,7 +69,7 @@
 				out.print("</td>"); 
 				
 				out.print("</tr>");
-	
+					
 				while (rs.next()) {
 					out.print("<tr>");
 		 			String question_num = rs.getString("question_num");

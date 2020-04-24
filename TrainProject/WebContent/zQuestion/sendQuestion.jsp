@@ -22,7 +22,7 @@
 			<label>What would you like to ask us?</label>
 			<form method="get" action="./sendQuestionLogic.jsp" id = "form">  
 				<br>
-				<textarea name="question" rows="7" cols="60" required></textarea>	
+				<textarea name="question" rows="5" cols="50" required></textarea>	
 				<br>
 				<div id = "buttonWrapper">
 					<input type="submit" value="Send Question" id = "button">
