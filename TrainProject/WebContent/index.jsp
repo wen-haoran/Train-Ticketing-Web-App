@@ -33,7 +33,6 @@
 				%>
 			</div>
 		</div>
-			
 		<div id = "listOfButtons">
 		<% 
 		 	if (session.getAttribute("user") == null) { 

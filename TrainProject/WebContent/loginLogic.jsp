@@ -11,6 +11,7 @@
 <link href="./zCss/loginLogic.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+<<<<<<< HEAD
 
 	<div id = "alertSquare">
 		<div id = "alertText">
@@ -56,6 +57,5 @@
 			%>
 		</div>
 	</div>
-
 </body>
 </html>
