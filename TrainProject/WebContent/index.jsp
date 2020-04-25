@@ -18,14 +18,14 @@
 			String name = (String)session.getAttribute("first_name");
 			out.print("Hello "+ name +"<br>You are logged ln");
 			
-			String makeReserveBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\">Browse Train Schedules</button></form>";
+/* 			String makeReserveBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\">Browse Train Schedules</button></form>";
 			out.print(browseBtn);
 			
 			String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\">View My Reservations</button></form>";
 			out.print(viewReserveBtn);
 
 			String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\">Search and Make Reservation</button></form>";
-			out.print(makeReserveBtn);
+			out.print(makeReserveBtn); */
 			
 			String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\">Logout</button></form>";
 			out.print(logoutBtn);

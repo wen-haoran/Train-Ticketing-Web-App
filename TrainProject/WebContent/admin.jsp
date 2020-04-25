@@ -28,9 +28,12 @@ function display() {
     	if(selectedValue == 'add'){
     		document.getElementById('employeeAdd').style.display = 'block';
             document.getElementById('customerAdd').style.display = 'none';
+            document.getElementById('employeeEdit').style.display = 'none';
     	}
     	else if(selectedValue == 'edit'){
-        	
+    		document.getElementById('employeeAdd').style.display = 'none';
+            document.getElementById('customerAdd').style.display = 'none';
+        	document.getElementById('employeeEdit').style.display = 'block';
         }else if(selectValue == 'delete'){
         	
         }
@@ -39,6 +42,7 @@ function display() {
     	if(selectedValue == 'add'){
     		document.getElementById('employeeAdd').style.display = 'none';
             document.getElementById('customerAdd').style.display = 'block';
+            document.getElementById('employeeEdit').style.display = 'none';
     	}
     	else if(selectedValue == 'edit'){
         	
@@ -64,6 +68,14 @@ Do you want to add, edit, or delete?<br>
       <option value="delete">delete</option>
 </select>
 </p>
+<div id="employeeEdit" style="display:none">
+<form action="./editEmployee.jsp" class="registration">
+	<div class="registration">
+		Username: <input type="text" name="editEmployeeUsername" required>
+	</div>
+	<button type='submit'> Search</button>
+</form>
+</div>
 
 <div id="employeeAdd" style="display:none">
 Fill in all the fields to add a new employee:<br>
@@ -83,9 +95,9 @@ Fill in all the fields to add a new employee:<br>
 		<small> No Dashes</small>
 	</div>
 	<div>
-		Access Level: <input type="numeric" pattern="[0-2]{1}" name="employeeAcess_level" id="employeeAccess_level">
+		Access Level: <input type="numeric" pattern="[1-3]{1}" name="employeeAccess_level" id="employeeAccess_level" required>
 		<small>Input the corresponding number based on the role<br>
-		Employee=0, Admin=1, Customer Representative=2
+		Employee=1, Admin=2, Customer Representative=3
 		</small>
 	</div>
 <br>

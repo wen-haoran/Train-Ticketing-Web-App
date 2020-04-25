@@ -22,14 +22,14 @@
 			String s = "<form method=\"get\" action=\"./admin.jsp\"><button type=\"submit\">Return</button></form>";
 			out.print(s);
       	}else{  
-			ps = conn.prepareStatement("INSERT INTO Employee(username, password, first_name, last_name, ssn, access_level) VALUES (?,?,?,?,?,?)");
-			ps.setString(1, request.getParameter("employeeUsername"));
-			ps.setString(2, request.getParameter("employeePassword"));
-			ps.setString(3, request.getParameter("employeeFirst_name"));
-			ps.setString(4, request.getParameter("employeeLast_name"));
-			ps.setString(5, request.getParameter("employeeSSN"));
-			ps.setString(6, request.getParameter("employeeAccess_level"));	
-			int result = ps.executeUpdate();
+      		PreparedStatement ps3 = conn.prepareStatement("INSERT INTO Employee(username, password, first_name, last_name, ssn, access_level) VALUES (?,?,?,?,?,?)");
+			ps3.setString(1, request.getParameter("employeeUsername"));
+			ps3.setString(2, request.getParameter("employeePassword"));
+			ps3.setString(3, request.getParameter("employeeFirst_name"));
+			ps3.setString(4, request.getParameter("employeeLast_name"));
+			ps3.setString(5, request.getParameter("employeeSSN"));
+			ps3.setString(6, request.getParameter("employeeAccess_level"));	
+			int result = ps3.executeUpdate();
 			out.print("Successful Registration of Employee");
 			String s = "<form method=\"get\" action=\"./admin.jsp\"><button type=\"submit\">Return</button></form>";
 			out.println(s);
