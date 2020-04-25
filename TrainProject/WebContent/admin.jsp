@@ -73,16 +73,20 @@
 </p>
 
 <div id="train" style="display:none">
-	Train Line: <input type="text" name="trainLine" required>
-	Train Number: <input type="text" name="trainNum" required>
-	<br>
-	<button type="submit">Submit</button>
+	<form method="get" action="./produceTrainResvList.jsp">
+		Train Line: <input type="text" name="trainLine" required>
+		Train Number: <input type="text" name="trainNum" required>
+		<br>
+		<button type="submit">Produce Reservation List</button>
+	</form>
 </div>
 
 <div id="customer" style="display:none">
-	Customer Name: <input type="text" name="customerName" required>
-	<br>
-	<button type="submit">Submit</button>
+	<form method="get" action="./produceCustomerResvList.jsp" class="registration">
+		Customer Name: <input type="text" name="customerName" required>
+		<br>
+		<button type="submit">Produce Reservation List</button>
+	</form>
 </div>
 
 
