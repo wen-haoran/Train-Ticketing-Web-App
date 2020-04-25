@@ -1,3 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -6,45 +11,42 @@
 	</form>
 
 	<h1>Plan your trip today!</h1>
-	<!--drop down select origin/destination and enter date-->
+	<!--drop down select current origins/destinations in db-->
 	<%
 	    try{
 			ApplicationDB db = new ApplicationDB();
 			Connection conn = db.getConnection();
-			PreparedStatement ops = conn.prepareStatement("SELECT origin FROM Line);
+			PreparedStatement ops = conn.prepareStatement("SELECT station_id FROM Station");
 			ResultSet ors = ops.executeQuery();
 
-			PreparedStatement dps = conn.prepareStatement("SELECT destination FROM Line);
+			PreparedStatement dps = conn.prepareStatement("SELECT station_id FROM Station");
 			ResultSet drs = dps.executeQuery();
 	%>
-	<form action="./browseLogic" class="browse">
+	<form action="./browseLogic.jsp" class="browse">
 		<div class = "browse">
-		    Origin Station: <select name="origin">
+		    Origin Station: <select name="pointA">
 			    <%  while(ors.next()){ %>
 			        <option><%= ors.getString(1)%></option>
 			    <% } %>
 		    </select>
 			<br>
-		    Destination Station: <select name="destination">
+		    Destination Station: <select name="pointB">
 			    <%  while(drs.next()){ %>
 			        <option><%= drs.getString(1)%></option>
 			    <% } %>
 		    </select>
 			<br>
-			Date of Travel: <input type="date" name="traveldate" id="traveldate" required>
+			Date of Travel: <input type="date" name="traveldate" id="traveldate" value="0000-00-00" required>
 			<br>
 			Sort By: <select name="sortBy">
-					<option value="arrivalSB">Arrival Time</option>
-					<option value="departureSB">Departure Time</option>
-					<option value="originSB">Origin</option>
-					<option value="destinationSB">Destination</option>
+					<option value="d.time">Origin Departure Time</option>
+					<option value="a.time">Destination Arrival Time</option>
 					<option value="fareSB">Fare</option>
 			</select>
 		</div>
 		<br>
 		<button type="submit">View Schedule</button>
 	</form>
-	//add station ids for reference?
 	<%}
         catch(Exception e)
 		{
