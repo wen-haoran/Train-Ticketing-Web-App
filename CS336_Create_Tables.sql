@@ -37,7 +37,7 @@ CREATE TABLE Fare
     weekly_or_monthly_fare INT,
     reservation_num INT PRIMARY KEY REFERENCES Reservation);
     
-CREATE TABLE Arrives
+CREATE TABLE Departs
     (departure_time TIME,
      station_id VARCHAR(10) REFERENCES Station,
      starting_time time REFERENCES Train_Schedule,
@@ -45,7 +45,7 @@ CREATE TABLE Arrives
      train_id VARCHAR(10) REFERENCES Trains,
      primary key (station_id, starting_time, line_name, train_id));
      
-CREATE TABLE Departs
+CREATE TABLE Arrives
     (arrival_time TIME,
      station_id VARCHAR(10) REFERENCES Station,
      starting_time TIME REFERENCES Train_Schedule,
