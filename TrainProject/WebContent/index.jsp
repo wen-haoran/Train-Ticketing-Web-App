@@ -18,6 +18,9 @@
 			String name = (String)session.getAttribute("first_name");
 			out.print("Hello "+ name +"<br>You are logged ln");
 			
+			String makeReserveBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\">Browse Train Schedules</button></form>";
+			out.print(browseBtn);
+			
 			String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\">View My Reservations</button></form>";
 			out.print(viewReserveBtn);
 
