@@ -33,6 +33,7 @@ body {
  */	background-color: white;
 	margin:auto;
 	border-radius: 5px;
+	padding-bottom: 20px;
 }
 
 #tableText {
@@ -132,7 +133,6 @@ body {
 	width: 40%;
 	font-size: 13px;
 	overflow: hidden;
-	padding-bottom: 10px;
 }
 
 #D1 {
@@ -144,7 +144,6 @@ body {
 	width: 40%;
 	overflow: hidden;
 	font-size: 13px; 
-	padding-bottom: 10px;
 }
 
 #A1{
@@ -155,7 +154,6 @@ body {
 #A {
 	width: 20%;
   	overflow: hidden;
-	padding-bottom: 10px;
 }
 
 #heading3 {

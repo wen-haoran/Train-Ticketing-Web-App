@@ -42,11 +42,11 @@
 				String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\" >Browse Train Schedules</button></form>";
 				out.print(browseBtn);
 				
-				String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\" id=\"button\">My Reservations</button></form>";
-				out.print(viewReserveBtn);
-	
 				String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\" id=\"button\">Search & Make Reservation</button></form>";
 				out.print(makeReserveBtn);
+				
+				String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\" id=\"button\">My Reservations</button></form>";
+				out.print(viewReserveBtn);
 				
 				String sendQuestionBtn = "<form method=\"get\" action=\"./zQuestion/sendQuestion.jsp\"><button type=\"submit\" id=\"button\">Ask a Question</button></form>";
 				out.print(sendQuestionBtn);

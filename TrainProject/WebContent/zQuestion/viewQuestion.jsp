@@ -90,7 +90,7 @@
 					out.print("</td>");
 					
 					out.print("<td id=\"U\">");
-					out.print(rs.getString("username"));
+					out.print(rs.getString("username").toLowerCase());
 					out.print("</td>");
 					
 					out.print("</tr>");

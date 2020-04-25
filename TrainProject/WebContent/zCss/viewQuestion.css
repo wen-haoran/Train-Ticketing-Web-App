@@ -113,7 +113,7 @@ body {
 	width: 40%;
 	font-size: 13px;
 	overflow: hidden;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 }
 
 #D1 {
@@ -125,7 +125,7 @@ body {
 	width: 15%;
 	overflow: hidden;
 	font-size: 11px; 
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 }
 
 #A1{
@@ -136,7 +136,7 @@ body {
 #A {
 	width: 35%;
   	overflow: hidden;
-	padding-bottom: 10px;
+	padding-bottom: 15px;
 }
 
 #U1 {
@@ -148,5 +148,5 @@ body {
 	width: 10%;
   	overflow: hidden;
   	font-size: 11px; 
-	padding-bottom: 10px;
+	padding-bottom: 12px;
 }

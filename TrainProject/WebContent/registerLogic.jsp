@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Success!</title>
+<title>Registration</title>
 <link href="./zCss/registerLogic.css" rel="stylesheet" type="text/css">
 </head>
 <body>
