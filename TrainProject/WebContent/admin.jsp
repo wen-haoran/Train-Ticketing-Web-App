@@ -21,38 +21,74 @@
 %>
 <script type="text/javascript">
 
-function display() {
-	var ddl = document.getElementById("target");
-	var selectedValue = ddl.options[ddl.selectedIndex].value;
-    if (document.getElementById('employeeCheck').checked) {
-    	if(selectedValue == 'add'){
-    		document.getElementById('employeeAdd').style.display = 'block';
-            document.getElementById('customerAdd').style.display = 'none';
-            document.getElementById('employeeEdit').style.display = 'none';
-    	}
-    	else if(selectedValue == 'edit'){
-    		document.getElementById('employeeAdd').style.display = 'none';
-            document.getElementById('customerAdd').style.display = 'none';
-        	document.getElementById('employeeEdit').style.display = 'block';
-        }else if(selectValue == 'delete'){
-        	
-        }
-        
-    }else if(document.getElementById('customerCheck')){
-    	if(selectedValue == 'add'){
-    		document.getElementById('employeeAdd').style.display = 'none';
-            document.getElementById('customerAdd').style.display = 'block';
-            document.getElementById('employeeEdit').style.display = 'none';
-    	}
-    	else if(selectedValue == 'edit'){
-        	
-        }else if(selectValue == 'delete'){
-        	
-        }
-    }
-}
+	function display() {
+		var ddl = document.getElementById("target");
+		var selectedValue = ddl.options[ddl.selectedIndex].value;
+	    if (document.getElementById('employeeCheck').checked) {
+	    	if(selectedValue == 'add'){
+	    		document.getElementById('employeeAdd').style.display = 'block';
+	            document.getElementById('customerAdd').style.display = 'none';
+	            document.getElementById('employeeEdit').style.display = 'none';
+	    	}
+	    	else if(selectedValue == 'edit'){
+	    		document.getElementById('employeeAdd').style.display = 'none';
+	            document.getElementById('customerAdd').style.display = 'none';
+	        	document.getElementById('employeeEdit').style.display = 'block';
+	        }else if(selectValue == 'delete'){
+	        	
+	        }
+	        
+	    }else if(document.getElementById('customerCheck')){
+	    	if(selectedValue == 'add'){
+	    		document.getElementById('employeeAdd').style.display = 'none';
+	            document.getElementById('customerAdd').style.display = 'block';
+	            document.getElementById('employeeEdit').style.display = 'none';
+	    	}
+	    	else if(selectedValue == 'edit'){
+	        	
+	        }else if(selectValue == 'delete'){
+	        	
+	        }
+	    }
+	}
+	
+	function displayRes() {
+	    if (document.getElementById('trainCheck').checked) {
+    		document.getElementById('train').style.display = 'block';
+            document.getElementById('customer').style.display = 'none';
+	    }else if(document.getElementById('customerCheck')){
+    		document.getElementById('customer').style.display = 'block';
+    		document.getElementById('train').style.display = 'none';
+	    }
+	}
+	
 </script>
 
+<!--List of Reservations-->
+<h3>List of Reservations</h3>
+<p>
+	Produce list by: <br>
+	Transit Line & Train Number <input type="radio" onclick="javascript:displayRes();" id = "trainCheck" name="filterChoice"> 
+	Customer Name<input type="radio" onclick="javascript:displayRes();" id = "customerCheck" name="filterChoice"> <br>
+</p>
+
+<div id="train" style="display:none">
+	Train Line: <input type="text" name="trainLine" required>
+	Train Number: <input type="text" name="trainNum" required>
+	<br>
+	<button type="submit">Submit</button>
+</div>
+
+<div id="customer" style="display:none">
+	Customer Name: <input type="text" name="customerName" required>
+	<br>
+	<button type="submit">Submit</button>
+</div>
+
+
+
+<!-- Add, Edit, & Delete Employees and Customers-->
+<h3>Add, Edit, & Delete Employees and Customers</h3>
 <p>
 Do you want to make changes to employees or customers?<br>
 Employee <input type="radio" onclick="javascript:display();" name="yesno" id="employeeCheck"> 

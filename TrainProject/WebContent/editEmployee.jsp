@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ReservationLogic</title>
+<title>Edit Employee</title>
 </head>
 <body>
 	<% 
@@ -22,6 +22,8 @@
       	if(rs.first()){
  			%>
       		<form action="./editEmployee2.jsp" class="registration">
+      		<div>Editing this User:  <input type="text" name="originalUser" readonly="readonly" value=<%=rs.getString("username")%>></div>
+      		<br>
       		<div class="registration">
       			Username: <input type="text" name="fieldEmployeeUsername" id="fieldEmployeeUsername" value=<%=rs.getString("username")%> required>
       		    Password: <input type="password" name="fieldEmployeePassword" id="fieldEmployeePassword" value=<%=rs.getString("password") %> required>
