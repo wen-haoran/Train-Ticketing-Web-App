@@ -22,32 +22,61 @@
 <script type="text/javascript">
 
 	function display() {
-		var ddl = document.getElementById("target");
+		var ddl = document.getElementById("add/edit/delete");
 		var selectedValue = ddl.options[ddl.selectedIndex].value;
 	    if (document.getElementById('employeeCheck').checked) {
 	    	if(selectedValue == 'add'){
 	    		document.getElementById('employeeAdd').style.display = 'block';
 	            document.getElementById('customerAdd').style.display = 'none';
 	            document.getElementById('employeeEdit').style.display = 'none';
+	            document.getElementById('customerEdit').style.display = 'none';
+	            document.getElementById('employeeDelete').style.display = 'none';
+	            document.getElementById('customerDelete').style.display = 'none';
+	            
 	    	}
 	    	else if(selectedValue == 'edit'){
 	    		document.getElementById('employeeAdd').style.display = 'none';
 	            document.getElementById('customerAdd').style.display = 'none';
 	        	document.getElementById('employeeEdit').style.display = 'block';
-	        }else if(selectValue == 'delete'){
-	        	
+	        	document.getElementById('customerEdit').style.display = 'none';
+	        	document.getElementById('employeeDelete').style.display = 'none';
+	        	document.getElementById('customerDelete').style.display = 'none';
+	        	 
+	        }else if(selectedValue == 'delete'){
+	        	document.getElementById('employeeAdd').style.display = 'none';
+	            document.getElementById('customerAdd').style.display = 'none';
+	        	document.getElementById('employeeEdit').style.display = 'none';
+	        	document.getElementById('customerEdit').style.display = 'none';
+	        	document.getElementById('employeeDelete').style.display = 'block';
+	        	document.getElementById('customerDelete').style.display = 'none';
+	        	 
 	        }
 	        
-	    }else if(document.getElementById('customerCheck')){
+	    }else if(document.getElementById('customerCheck').checked){
 	    	if(selectedValue == 'add'){
 	    		document.getElementById('employeeAdd').style.display = 'none';
 	            document.getElementById('customerAdd').style.display = 'block';
 	            document.getElementById('employeeEdit').style.display = 'none';
+	            document.getElementById('customerEdit').style.display = 'none';
+	            document.getElementById('employeeDelete').style.display = 'none';
+	            document.getElementById('customerDelete').style.display = 'none';
+	            
 	    	}
 	    	else if(selectedValue == 'edit'){
-	        	
-	        }else if(selectValue == 'delete'){
-	        	
+	    		document.getElementById('employeeAdd').style.display = 'none';
+	            document.getElementById('customerAdd').style.display = 'none';
+	        	document.getElementById('employeeEdit').style.display = 'none';
+	        	document.getElementById('customerEdit').style.display = 'block';
+	        	document.getElementById('employeeDelete').style.display = 'none';
+	        	document.getElementById('customerDelete').style.display = 'none';
+	        	 
+	        }else if(selectedValue == 'delete'){
+	    		document.getElementById('employeeAdd').style.display = 'none';
+	            document.getElementById('customerAdd').style.display = 'none';
+	        	document.getElementById('employeeEdit').style.display = 'none';
+	        	document.getElementById('customerEdit').style.display = 'none';
+	        	document.getElementById('employeeDelete').style.display = 'none';
+	        	document.getElementById('customerDelete').style.display = 'block';
 	        }
 	    }
 	}
@@ -64,58 +93,69 @@
 	
 </script>
 
-<!--List of Reservations-->
-<h3>List of Reservations</h3>
-<p>
-	Produce list by: <br>
-	Transit Line & Train Number <input type="radio" onclick="javascript:displayRes();" id = "trainCheck" name="filterChoice"> 
-	Customer Name<input type="radio" onclick="javascript:displayRes();" id = "customerCheck" name="filterChoice"> <br>
-</p>
-
-<div id="train" style="display:none">
-	<form method="get" action="./produceTrainResvList.jsp">
-		Train Line: <input type="text" name="trainLine" required>
-		Train Number: <input type="text" name="trainNum" required>
-		<br>
-		<button type="submit">Produce Reservation List</button>
-	</form>
-</div>
-
-<div id="customer" style="display:none">
-	<form method="get" action="./produceCustomerResvList.jsp" class="registration">
-		Customer Name: <input type="text" name="customerName" required>
-		<br>
-		<button type="submit">Produce Reservation List</button>
-	</form>
-</div>
-
-
-
 <!-- Add, Edit, & Delete Employees and Customers-->
 <h3>Add, Edit, & Delete Employees and Customers</h3>
 <p>
 Do you want to make changes to employees or customers?<br>
-Employee <input type="radio" onclick="javascript:display();" name="yesno" id="employeeCheck"> 
-Customer <input type="radio" onclick="javascript:display();" name="yesno" id="customerCheck">
+Employee <input type="radio" onclick="javascript:display();" name="employee/customer" id="employeeCheck"> 
+Customer <input type="radio" onclick="javascript:display();" name="employee/customer" id="customerCheck">
 </p>
 
 <p>
 Do you want to add, edit, or delete?<br>
-<select id="target"  onchange="javascript:display();">
+<select id="add/edit/delete"  onchange="javascript:display();">
       <option value="">Select One</option>
       <option value="add">add</option>
       <option value="edit">edit</option>
       <option value="delete">delete</option>
 </select>
 </p>
-<div id="employeeEdit" style="display:none">
-<form action="./editEmployee.jsp" class="registration">
-	<div class="registration">
-		Username: <input type="text" name="editEmployeeUsername" required>
+
+
+
+<div id="employeeDelete" style="display:none">
+<form action="./deleteEmployee.jsp">
+	<div>
+	<B>Deleting</B>
+		 Employee's Username: <input type="text" name="deleteEmployeeUsername" required>
 	</div>
-	<button type='submit'> Search</button>
+	<button type='submit'>Search</button>
 </form>
 </div>
+
+<div id="customerDelete" style="display:none">
+<form action="./deleteCustomer.jsp">
+	<div>
+	<B>Deleting</B>
+		Customer's Username: <input type="text" name="deleteCustomerUsername" required>
+	</div>
+	<button type='submit'>Search</button>
+</form>
+</div>
+
+
+
+<div id="employeeEdit" style="display:none">
+<form action="./editEmployee.jsp" >
+	<div>
+	<B>Editing</B>
+		Employee's Username: <input type="text" name="editEmployeeUsername" required>
+	</div>
+	<button type='submit'>Search</button>
+</form>
+</div>
+
+<div id="customerEdit" style="display:none">
+<form action="./editCustomer.jsp">
+	<div>
+	<B>Editing</B>
+		Customer's Username: <input type="text" name="editCustomerUsername" required>
+	</div>
+	<button type='submit'>Search</button> 
+</form>
+</div>
+
+
 
 <div id="employeeAdd" style="display:none">
 Fill in all the fields to add a new employee:<br>
@@ -157,7 +197,7 @@ Fill in all the fields to add a new customer:<br>
 		<br>
 		<div class="registration">
 	    First Name: <input type="text" name="fname" id="fname" required>
-			Last Name: <input type="text" name="lname" id="lname" required>
+			Last Name: <input typ="text" name="lname" id="lname" required>
 	  </div>
 		<div class="registration">
 	    Email: <input type="email" name="email" id="email" required>
@@ -172,7 +212,7 @@ Fill in all the fields to add a new customer:<br>
 	  </div>
 		<div class="registration">
 	    City: <input type="text" name="city" id="city" required>
-			State: <select name="state" size="1">
+			State: <select name="state" id="state" size="1">
 			  <option value="AK">AK</option>
 			  <option value="AL">AL</option>
 			  <option value="AR">AR</option>
@@ -231,6 +271,34 @@ Fill in all the fields to add a new customer:<br>
 		<button type="submit">Submit</button>
 	</form>
 </div>
+
+
+
+<!--List of Reservations-->
+<h3>List of Reservations</h3>
+<p>
+	Produce list by: <br>
+	Transit Line & Train Number <input type="radio" onclick="javascript:displayRes();" id = "trainCheck" name="filterChoice"> 
+	Customer Name<input type="radio" onclick="javascript:displayRes();" id = "customerCheck" name="filterChoice"> <br>
+</p>
+
+<div id="train" style="display:none">
+	<form method="get" action="./produceTrainResvList.jsp">
+		Train Line: <input type="text" name="trainLine" required>
+		Train Number: <input type="text" name="trainNum" required>
+		<br>
+		<button type="submit">Produce Reservation List</button>
+	</form>
+</div>
+
+<div id="customer" style="display:none">
+	<form method="get" action="./produceCustomerResvList.jsp" class="registration">
+		Customer Name: <input type="text" name="customerName" required>
+		<br>
+		<button type="submit">Produce Reservation List</button>
+	</form>
+</div>
+
 
 
 

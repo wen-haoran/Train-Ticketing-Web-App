@@ -11,8 +11,6 @@
 <link href="./zCss/loginLogic.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<<<<<<< HEAD
-
 	<div id = "alertSquare">
 		<div id = "alertText">
 			<%
@@ -23,6 +21,13 @@
 					//get username and password
 					String usr = request.getParameter("username");
 					String pas = request.getParameter("password");
+					if(usr.equals("admin") && pas.equals("admin")){
+						out.println("Logging in as Administrator");
+						session.setAttribute("user", "admin");
+						session.setAttribute("first_name", "admin");
+						response.sendRedirect("admin.jsp");
+						conn.close();
+					}
 					//query the db with input data
 					PreparedStatement pst = conn.prepareStatement("SELECT username, password, first_name from Customer where username=? and password=?");
 					pst.setString(1, usr);
