@@ -152,7 +152,6 @@
 	</div>
 	
 	<%
-<<<<<<< HEAD
 	try{
 		//connect to db
 		ApplicationDB db = new ApplicationDB();	
@@ -260,8 +259,6 @@
 		String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\">Search and >Make Reservations</button></form>";
 		out.print(makeReserveBtn);
 		
-=======
->>>>>>> branch 'master' of https://github.com/HwenAaron/CS336Trains.git
 		//close connection
 		conn.close();
 	} catch(Exception e){
