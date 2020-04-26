@@ -41,7 +41,7 @@ CREATE TABLE Reservation
 
 CREATE TABLE Fare
     (route_fare FLOAT,
-    line_name INT PRIMARY KEY REFERENCES Line);
+    line_name VARCHAR(25) PRIMARY KEY REFERENCES Line);
     
 CREATE TABLE Departs
     (t_time TIME,
