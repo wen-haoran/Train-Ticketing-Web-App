@@ -36,7 +36,7 @@
 		
 
 		out.print("<tr>");
-		out.print("<td>");
+		out.print("<td>");b
 		out.print("Type");
 		out.print("</td>");
 		out.print("<td>");
