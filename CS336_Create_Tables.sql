@@ -23,7 +23,7 @@ CREATE TABLE Trains
     number_of_seats int);
 
 CREATE TABLE Reservation
-    (reservation_num INT PRIMARY KEY,
+    (reservation_num INT PRIMARY KEY AUTO_INCREMENT,
     trip ENUM('one way', 'round trip', 'weekly', 'monthly'),
     class ENUM('economy', 'business', 'first'),
     discount INT,
@@ -31,13 +31,12 @@ CREATE TABLE Reservation
     station_id VARCHAR(10) REFERENCES Departs as origin_station,
     station_id VARCHAR(10) REFERENCES Arrives as destination_station,
     line_name VARCHAR(25) REFERENCES Train_Schedule,
-    train_id VARCHAR(10) REFERENCES Train_Scheudle,
+    train_id VARCHAR(10) REFERENCES Train_Schedule,
     schedule_date DATE REFERENCES Train_Schedule,
     departure_time TIME REFERENCES Departs,
     seat_number VARCHAR(10),
     reservation_date DATE,
-    customer_rep VARCHAR(50),
-    origin_id 
+    ssn VARCHAR(9) REFERENCES Employee,
     username VARCHAR(45) REFERENCES Customer);
 
 CREATE TABLE Fare
@@ -45,7 +44,7 @@ CREATE TABLE Fare
     line_name INT PRIMARY KEY REFERENCES Line);
     
 CREATE TABLE Departs
-    (departure_time TIME,
+    (time TIME,
      station_id VARCHAR(10) REFERENCES Station,
      starting_time time REFERENCES Train_Schedule,
      schedule_date DATE REFERENCES Train_Schedule,
@@ -54,7 +53,7 @@ CREATE TABLE Departs
      primary key (station_id, starting_time, line_name, train_id, schedule_date));
      
 CREATE TABLE Arrives
-    (arrival_time TIME,
+    (time TIME,
      station_id VARCHAR(10) REFERENCES Station,
      starting_time TIME REFERENCES Train_Schedule,
      schedule_date DATE REFERENCES Train_Schedule,
