@@ -24,35 +24,21 @@
 			<h1>Welcome</h1>
 			<div id = "welcome">
 				<% 
+				boolean userIsLoggedIn = false;
 			 	if (session.getAttribute("user") == null) { 
 		    		response.sendRedirect("loginPage.jsp");
 				} else { 
 					String name = (String)session.getAttribute("first_name");
 					out.print("Hello <b>"+ name +"</b>. You are logged in.");
+					userIsLoggedIn = true;
 				}
 				%>
 			</div>
 		</div>
-			
-			String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\">Browse Train Schedules</button></form>";
-			out.print(browseBtn);
-			
-			String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\">View My Reservations</button></form>";
-			out.print(viewReserveBtn);
-
-			
-			String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\">Logout</button></form>";
-			out.print(logoutBtn);
-		}
-	%>
-	
 			  
 		<div id = "listOfButtons">
 		<% 
-			boolean userIsLoggedIn = false;
-		 	if (session.getAttribute("user") == null) { 
-	    		response.sendRedirect("loginPage.jsp");
-			} else {
+		 	if (userIsLoggedIn) { 
 				String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\" >Browse Train Schedules</button></form>";
 				out.print(browseBtn);
 				
