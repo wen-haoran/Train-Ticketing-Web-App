@@ -44,7 +44,7 @@ CREATE TABLE Fare
     line_name INT PRIMARY KEY REFERENCES Line);
     
 CREATE TABLE Departs
-    (time TIME,
+    (t_time TIME,
      station_id VARCHAR(10) REFERENCES Station,
      starting_time time REFERENCES Train_Schedule,
      schedule_date DATE REFERENCES Train_Schedule,
@@ -53,7 +53,7 @@ CREATE TABLE Departs
      primary key (station_id, starting_time, line_name, train_id, schedule_date));
      
 CREATE TABLE Arrives
-    (time TIME,
+    (t_time TIME,
      station_id VARCHAR(10) REFERENCES Station,
      starting_time TIME REFERENCES Train_Schedule,
      schedule_date DATE REFERENCES Train_Schedule,
