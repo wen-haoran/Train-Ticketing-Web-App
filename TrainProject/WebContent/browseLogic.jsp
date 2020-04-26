@@ -10,10 +10,10 @@
 	</form>
 	<h3>Results for <%=request.getParameter("pointA")%> to <%=request.getParameter("pointB")%> on <%=request.getParameter("traveldate")%>:</h3>
 	Sort By: <select name="sortBy" id="sortBy" onchange="sort()">
-								<option value="deprtTime">Origin Departure Time</option>
-								<option value="arriveTime">Destination Arrival Time</option>
-								<option value="fare">Fare</option>
-			</select>
+			<option value="deprtTime">Origin Departure Time</option>
+			<option value="arriveTime">Destination Arrival Time</option>
+			<option value="fare">Fare</option>
+		</select>
 	<br>
 	
 	<%
