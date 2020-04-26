@@ -1,0 +1,59 @@
+body {
+    background-color: #c4ac9c;
+	padding-top: 200px;
+}
+
+#alert {
+	color: #444444;
+	font-family: Arial, Helvetica, sans-serif;
+	letter-spacing: 2px;
+	font-size: 15px;
+	padding-bottom: 15px;
+}
+
+#alertSquare {
+	width: 600px;
+	height: 350px;
+	border-radius: 5px;
+	text-align: center;
+	margin:auto;
+}
+
+#alertText {
+	padding-top: 20px;
+	letter-spacing: 1px;
+	color: #444444;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#buttonWrapper {
+	display: inline-flex;
+} 
+
+#button {
+	flex: 1;
+	border-width: 0px;
+    background-color: #555555;
+    color: white;
+    font-size: 11px;
+    letter-spacing: 1px;
+    width: 80px;
+    height: 30px;
+    margin-bottom: 20px;
+    border-radius: 100px;
+    cursor:pointer;
+    text-align: center;
+}
+
+#firstButton {
+	padding-right: 15px;
+}
+
+#button:hover {
+	background-color: #444444;
+}
+
+#gif {
+	padding-bottom: 15px;
+	width: 99px;
+}

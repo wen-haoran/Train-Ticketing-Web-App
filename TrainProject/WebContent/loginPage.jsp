@@ -4,30 +4,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
+<link href="./zCss/loginPage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<h3>Login To Your Account</h3>
 
-
-	<form method="get" action="./loginLogic.jsp">
-		<table>
-			<tr>    
-				<td>Username</td><td><input type="text" name="username" required></td>
-			</tr>
-			<tr>
-				<td>Password</td><td><input type="password" name="password" required></td>
-			</tr>
-		</table>
-		<input type="submit" value="Login">
-	</form>
+	<div id = "loginSquare">
+		<div id= "loginText">
+			<div id = "login">LOGIN</div>
+			<img src="./ACtrain.gif" id = "gif">
 	
+			<form method="get" action="./loginLogic.jsp" id="form">
+				<table>
+					<tr>    
+						<td>Username</td><td><input type="text" name="username" id = "input" required></td>
+					</tr>
+					<tr>
+						<td>Password</td><td><input type="password" name="password" id = "input" required></td>
+					</tr>
+				</table>
+				<br>
+				<input type="submit" value="Login" id = "button">
+			</form>
 	
-	<br>
-	Don't have an account?
-	<form method="get" action="./registerPage.jsp">
-		<button type="submit">Register</button>
-	</form>
+			<br>
+			<form method="get" action="./registerPage.jsp" id = "form2">
+				Don't have an account?
+				<br>
+				<br>
+				<button type="submit" id = "button2">Register</button>
+			</form>
+		</div>
+	</div>
 
 </body>
 </html>

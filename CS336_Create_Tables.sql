@@ -23,35 +23,43 @@ CREATE TABLE Trains
     number_of_seats int);
 
 CREATE TABLE Reservation
-    (reservation_num INT PRIMARY KEY,
-    one_way_or_round_trip ENUM('one way', 'round way'), 
+    (reservation_num INT PRIMARY KEY AUTO_INCREMENT,
+    trip ENUM('one way', 'round trip', 'weekly', 'monthly'),
+    class ENUM('economy', 'business', 'first'),
+    discount INT,
+    fee FLOAT,
+    station_id VARCHAR(10) REFERENCES Departs as origin_station,
+    station_id VARCHAR(10) REFERENCES Arrives as destination_station,
+    line_name VARCHAR(25) REFERENCES Train_Schedule,
+    train_id VARCHAR(10) REFERENCES Train_Schedule,
+    schedule_date DATE REFERENCES Train_Schedule,
+    departure_time TIME REFERENCES Departs,
+    seat_number VARCHAR(10),
     reservation_date DATE,
-	customer_rep VARCHAR(50),
+    ssn VARCHAR(9) REFERENCES Employee,
     username VARCHAR(45) REFERENCES Customer);
 
 CREATE TABLE Fare
-    (discount INT,
-    class VARCHAR(50),
-    booking_fee INT,
-    route_fare INT,
-    weekly_or_monthly_fare INT,
-    reservation_num INT PRIMARY KEY REFERENCES Reservation);
+    (route_fare FLOAT,
+    line_name INT PRIMARY KEY REFERENCES Line);
     
-CREATE TABLE Origin
-    (departure_time TIME,
+CREATE TABLE Departs
+    (time TIME,
      station_id VARCHAR(10) REFERENCES Station,
      starting_time time REFERENCES Train_Schedule,
+     schedule_date DATE REFERENCES Train_Schedule,
      line_name VARCHAR(25) REFERENCES Line,
      train_id VARCHAR(10) REFERENCES Trains,
-     primary key (station_id, starting_time, line_name, train_id));
+     primary key (station_id, starting_time, line_name, train_id, schedule_date));
      
-CREATE TABLE Destination
-    (arrival_time TIME,
+CREATE TABLE Arrives
+    (time TIME,
      station_id VARCHAR(10) REFERENCES Station,
      starting_time TIME REFERENCES Train_Schedule,
+     schedule_date DATE REFERENCES Train_Schedule,
      line_name VARCHAR(25) REFERENCES Line,
      train_id VARCHAR(10) REFERENCES Trains,
-     primary key (station_id, starting_time, line_name, train_id));
+     primary key (station_id, starting_time, line_name, train_id, schedule_date));
      
 CREATE TABLE Train_Schedule
     (schedule_date DATE,
@@ -59,7 +67,7 @@ CREATE TABLE Train_Schedule
      starting_time TIME,
      line_name VARCHAR(25) REFERENCES Line,
      train_id VARCHAR(10) REFERENCES Trains,
-     primary key (starting_time, line_name, train_id));
+     primary key (schedule_date, starting_time, line_name, train_id));
      
 CREATE TABLE Is_Based_On
     (schedule_date DATE REFERENCES Train_Schedule,
@@ -70,6 +78,16 @@ CREATE TABLE Is_Based_On
      primary key (schedule_date, reservation_num, starting_time, line_name, train_id));
      
 CREATE TABLE Stops_At
+     (line_name VARCHAR(25) REFERENCES Line,
+      station_id int REFERENCES Station,
+      primary key (station_id, line_name));
+		   
+CREATE TABLE Origin
+     (line_name VARCHAR(25) REFERENCES Line,
+      station_id int REFERENCES Station,
+      primary key (station_id, line_name));
+		   
+CREATE TABLE Destination
      (line_name VARCHAR(25) REFERENCES Line,
       station_id int REFERENCES Station,
       primary key (station_id, line_name));

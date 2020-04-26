@@ -1,0 +1,164 @@
+body {
+	background-color: #ACCAA4;
+	height: 100%;
+	padding-top: 5px;
+}
+
+#wrapper {
+	padding-top: 12px;
+	width: 800px;
+	height: 400px;
+	margin:auto;
+}
+
+#top {
+	display:inline-flex;
+	width: 1000px;
+	margin: auto;
+}
+
+#heading {
+	flex: 59%;
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: lighter;
+	letter-spacing: 2px;
+	padding-left: 50px;
+	font-size: 30px;
+}
+
+#tableSquare {
+	width: 700px;
+/* 	height: 500px;
+ */	background-color: white;
+	margin:auto;
+	border-radius: 5px;
+	padding-bottom: 20px;
+}
+
+#tableText {
+	padding-top: 20px;
+	letter-spacing: 1px;
+	color: #444444;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#table {
+	width:600px; 
+    margin-right:15%;
+    margin-left: 13%;
+    table-layout: fixed;  
+}
+
+#notAnswered {
+	color: #DDDEDE;
+	font-size: 10px;
+}
+
+#button {
+	flex: 1;
+	border-width: 0px;
+    background-color: #c56453;
+    color: white;
+    font-size: 9px;
+    letter-spacing: 1px;
+    width: 100px;
+    height: 30px;
+    margin-bottom: 20px;
+    border-radius: 100px;
+    cursor:pointer;
+    text-align: center;
+}
+
+#button:hover {
+	background-color: #A8583F;
+}
+
+#button2 {
+	border-width: 0px;
+    background-color: #ACCAA4;
+    color: #444444;
+    font-size: 10px;
+    letter-spacing: 1px;
+    width: 40px;
+    height: 20px;
+    margin-bottom: 20px;
+    border-radius: 100px;
+    cursor:pointer;
+    text-align: center;
+}
+
+#button2Wrapper {
+	padding-left: 10px;
+}
+
+#button2:hover {
+	background-color: #96BE8C;
+}
+
+#buttonWrapper {
+	flex: 41%;
+	padding-left: 50px;
+}
+
+#firstButton {
+	padding-right: 20px;
+}
+
+#button3 {
+	flex: 1;
+	border-width: 0px;
+    background-color: #E89688;
+    color: white;
+    font-size: 9px;
+    letter-spacing: 1px;
+    width: 50px;
+    height: 25px;
+    margin-bottom: 20px;
+    border-radius: 100px;
+    cursor:pointer;
+    text-align: center;
+}
+
+#button3:hover {
+	background-color: #c56453;
+}
+
+#Q1{
+	width: 40%;
+	padding-bottom: 7px;
+}
+
+#Q {
+	width: 40%;
+	font-size: 13px;
+	overflow: hidden;
+}
+
+#D1 {
+	width: 40%;
+	padding-bottom: 7px;
+}
+
+#D {
+	width: 40%;
+	overflow: hidden;
+	font-size: 13px; 
+}
+
+#A1{
+	width: 20%;
+	padding-bottom: 7px;
+}
+
+#A {
+	width: 20%;
+  	overflow: hidden;
+}
+
+#heading3 {
+	padding-left: 72px;
+}
+
+
+
