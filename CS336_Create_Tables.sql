@@ -30,12 +30,8 @@ CREATE TABLE Reservation
     username VARCHAR(45) REFERENCES Customer);
 
 CREATE TABLE Fare
-    (discount INT,
-    class VARCHAR(50),
-    booking_fee INT,
-    route_fare INT,
-    weekly_or_monthly_fare INT,
-    reservation_num INT PRIMARY KEY REFERENCES Reservation);
+    (route_fare FLOAT,
+    line_name INT PRIMARY KEY REFERENCES Line);
     
 CREATE TABLE Departs
     (departure_time TIME,
