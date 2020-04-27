@@ -11,9 +11,9 @@
 	<p id="demo"></p>
 	<h3>Results for <%=request.getParameter("pointA")%> to <%=request.getParameter("pointB")%> on <%=request.getParameter("traveldate")%>:</h3>
 	Sort By: <select name="sortBy" id="sortBy" >
-								<option onclick="sort(0)" value="0" id ="or">Origin Departure Time</option>
-								<option onclick="sort(1)" value="1">Destination Arrival Time</option>
-								<option onclick="sort(4)" value="4">Fare</option>
+				<option onclick="sort(0)" value="0" id ="or">Origin Departure Time</option>
+				<option onclick="sort(1)" value="1">Destination Arrival Time</option>
+				<option onclick="sort(4)" value="4">Fare</option>
 			</select>
 	<br>
 	
