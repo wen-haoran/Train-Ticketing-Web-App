@@ -318,6 +318,13 @@ Fill in all the fields to add a new customer:<br>
 		<button type="submit">Calculate Monthly Sales Report</button>
 </form>
 
+	<br>
+	<form method="get" action="./activeLInes.jsp">
+		<button type="submit">Get top 5 most active line</button>
+	</form>
+
+</body>
+</html>
 
 <h3>Produce a Listing of Revenue</h3>
 <form method="get" action="./adminRevenueReport.jsp">
