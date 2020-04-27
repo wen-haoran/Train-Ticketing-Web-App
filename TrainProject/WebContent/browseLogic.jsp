@@ -8,12 +8,13 @@
 	<form method="get" action="./index.jsp">
 		<button type="submit">Home</button>
 	</form>
+	<p id="demo"></p>
 	<h3>Results for <%=request.getParameter("pointA")%> to <%=request.getParameter("pointB")%> on <%=request.getParameter("traveldate")%>:</h3>
-	Sort By: <select name="sortBy" id="sortBy" onchange="sort()">
-			<option value="deprtTime">Origin Departure Time</option>
-			<option value="arriveTime">Destination Arrival Time</option>
-			<option value="fare">Fare</option>
-		</select>
+	Sort By: <select name="sortBy" id="sortBy" >
+								<option onclick="sort(0)" value="0" id ="or">Origin Departure Time</option>
+								<option onclick="sort(1)" value="1">Destination Arrival Time</option>
+								<option onclick="sort(4)" value="4">Fare</option>
+			</select>
 	<br>
 	
 	<%
@@ -96,7 +97,34 @@
 						</tr>
 					<%}%>
 				</table>
-
+				<script>
+				    function sort(j) { 
+				        var table, i, x, y; 
+				        table = document.getElementById("table"); 
+				        var switching = true; 
+				
+				        while (switching) { 
+				            switching = false; 
+				            var rows = table.rows; 
+				            
+				            for (i = 1; i < (rows.length - 1); i++) { 
+				                var makeSwitch = false; 
+				                x = rows[i].getElementsByTagName("TD")[j]; 
+				                y = rows[i + 1].getElementsByTagName("TD")[j]; 
+				
+				                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){ 
+				                    makeSwitch = true; 
+				                    break; 
+				                } 
+				            } 
+				            if (makeSwitch) { 
+				                // Function to switch rows and mark switch as completed 
+				                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); 
+				                switching = true; 
+				            } 
+				        } 
+				    } 
+				</script>
 			<%conn.close();
 		}catch(Exception e){
 			System.out.println(e);
@@ -106,6 +134,7 @@
 	<form method="get" action="./browse.jsp">
 		<button type="submit">Search another trip</button>
 	</form>
+	
 
 </body>
 </html>
