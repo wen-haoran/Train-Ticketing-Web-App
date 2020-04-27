@@ -130,7 +130,7 @@
 			System.out.println(e);
 		}%>
 	
-	<p><small>50% off for seniors/children/disabled persons</small></p>
+	<p><small>50% off for seniors/children/persons with disabilities</small></p>
 	<p><small>Save now by purchasing a weekly or monthly pass!</small></p>
 	<br>
 	
