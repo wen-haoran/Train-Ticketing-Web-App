@@ -130,7 +130,10 @@
 			System.out.println(e);
 		}%>
 	
+	<p><small>50% off for seniors/children/disabled</small></p>
+	<p><small>Save now by purchasing a weekly or monthly pass!</small></p>
 	<br>
+	
 	<form method="get" action="./browse.jsp">
 		<button type="submit">Search another trip</button>
 	</form>
