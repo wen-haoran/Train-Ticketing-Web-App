@@ -34,12 +34,6 @@
 			String returnButton = "<form action=\"./admin.jsp\"><button type=\"submit\">Go back</button></form>";
 			out.println(returnButton);
  		} 
-/* 		else{
-			out.print("No reservations were in this month");
-			String returnButton = "<form action=\"./admin.jsp\"><button type=\"submit\">Try again</button></form>";
-			out.println(returnButton);
-		}  */
-	
 		//close connection
 		conn.close();
 	} catch(Exception e){

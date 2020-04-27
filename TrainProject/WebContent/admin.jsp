@@ -92,9 +92,10 @@
 	}
 	
 </script>
-
+<%String logoutBtn = "<form action=\"./loginPage.jsp\"><button type=\"submit\">Logout</button></form>";
+out.print(logoutBtn); %>
 <!-- Add, Edit, & Delete Employees and Customers-->
-<h3>Add, Edit, & Delete Employees and Customers</h3>
+<h3>Add, Edit, & Delete an Employee or a Customer</h3>
 <p>
 Do you want to make changes to employees or customers?<br>
 Employee <input type="radio" onclick="javascript:display();" name="employee/customer" id="employeeCheck"> 
@@ -273,7 +274,6 @@ Fill in all the fields to add a new customer:<br>
 </div>
 
 
-
 <!--List of Reservations-->
 <h3>List of Reservations</h3>
 <p>
@@ -293,44 +293,46 @@ Fill in all the fields to add a new customer:<br>
 
 <div id="customer" style="display:none">
 	<form method="get" action="./produceCustomerResvList.jsp" class="registration">
-		Customer Name: <input type="text" name="customerName" required>
+		Customer Name: <input type="text" name="customerName" id="customerName" required>
 		<br>
 		<button type="submit">Produce Reservation List</button>
 	</form>
 </div>
 
 <h3>Obtain a Sales Report for a Month</h3>
-<form method="get" action="./adminSalesReport.jsp">
+<form method="get" action="./adminMonthlyReport.jsp">
 		<select name="month" id="month">
-		<option name="month" value=1>January</option>
-		<option name="month" value=2>February</option>
-		<option name="month" value=3>March</option>
-		<option name="month" value=4>April</option>
-		<option name="month" value=5>May</option>
-		<option name="month" value=6>June</option>
-		<option name="month" value=7>July</option>
-		<option name="month" value=8>August</option>
-		<option name="month" value=9>September</option>
-		<option name="month" value=10>October</option>
-		<option name="month" value=11>November</option>
-		<option name="month" value=12>December</option>
+		<option value=1>January</option>
+		<option value=2>February</option>
+		<option value=3>March</option>
+		<option value=4>April</option>
+		<option value=5>May</option>
+		<option value=6>June</option>
+		<option value=7>July</option>
+		<option value=8>August</option>
+		<option value=9>September</option>
+		<option value=10>October</option>
+		<option value=11>November</option>
+		<option value=12>December</option>
 		</select> 
 		<button type="submit">Calculate Monthly Sales Report</button>
-		<!-- <select name="month" id="month">
-		<option value="01">January</option>
-		<option value="02">February</option>
-		<option value="03">March</option>
-		<option value="04">April</option>
-		<option value="05">May</option>
-		<option value="06">June</option>
-		<option value="07">July</option>
-		<option value="08">August</option>
-		<option value="09">September</option>
-		<option value="10">October</option>
-		<option value="11">November</option>
-		<option value="12">December</option> -->
 </form>
 
+
+<h3>Produce a Listing of Revenue</h3>
+<form method="get" action="./adminRevenueReport.jsp">
+		<select name="line/destination/customer" id="line/destination/customer">
+		<option value=1>Transit Line</option>
+		<option value=2>Destination City</option>
+		<option value=3>Customer Name</option>
+		</select> 
+		<button type="submit">Produce Revenue List</button>
+</form>
+
+<h3>Best Customer</h3>
+<form method="get" action="./adminBestCustomer.jsp">
+	<button type="submit">Find Best Customer</button>
+</form>
 
 
 
