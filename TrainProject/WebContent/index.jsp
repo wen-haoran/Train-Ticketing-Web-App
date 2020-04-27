@@ -15,7 +15,7 @@
         <p id = "name">TRAINS</p>
         <div id = "navigationBar">
           <img src="./ACtrainPic.tiff" id = "gif">
-          <div id = "navHyperLink">Choo Choo With Us</div>    
+          <div id = "navHyperLink">Choo Choo With Us!</div>    
         </div>
     </div>
     
