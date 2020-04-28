@@ -12,15 +12,14 @@
 <body>
 	<div id = "links">
 		<div id = "welcomeText">
-			<h1>Welcome</h1>
+			<h3>Welcome Customer Representative!</h3>
 			<div id = "welcome">
 				<% 
 				boolean userIsLoggedIn = false;
 			 	if (session.getAttribute("user") == null) { 
 		    		response.sendRedirect("loginPage.jsp");
-				} else { 
-					String name = (String)session.getAttribute("first_name");
-					out.print("Hello <b>"+ name +"</b>. You are logged in.");
+				} else {
+					out.print("You are logged in.");
 					userIsLoggedIn = true;
 				}
 				%>
