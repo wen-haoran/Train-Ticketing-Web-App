@@ -35,7 +35,6 @@
 				%>
 			</div>
 		</div>
-			  
 		<div id = "listOfButtons">
 		<% 
 		 	if (userIsLoggedIn) { 
