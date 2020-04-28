@@ -57,11 +57,6 @@
 							out.print(todayDate);
 						%>
 						<br>
-						Sort By: <select name="sortBy">
-								<option value="d.time">Origin Departure Time</option>
-								<option value="a.time">Destination Arrival Time</option>
-								<option value="fareSB">Fare</option>
-						</select>
 					</div>
 					<br>
 					<button type="submit" id = "button" >View Schedule</button>
@@ -72,9 +67,6 @@
 			               out.println(e);
 			          }
 			  	%>
-				<form method="get" action="./makeReservation.jsp">
-					<button type="submit" id = "button3">Create Reservation</button>
-				</form>
 			</div>
 		</div>
 	</div>
