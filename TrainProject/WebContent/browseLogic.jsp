@@ -63,8 +63,10 @@
 								String temp;
 								while(rs2.next()){
 									temp = rs2.getString("s.station_id");
-									stops.add(temp);
-									out.println(temp + " ");
+									if(!stops.contains(temp)){
+										stops.add(temp);
+										out.println(temp + " ");
+									}
 								}
 								%>
 								</small>
