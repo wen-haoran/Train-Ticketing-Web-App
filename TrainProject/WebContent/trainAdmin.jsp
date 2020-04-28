@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Browse Train Schedules</title>
-<link href="./zCss/browse.css" rel="stylesheet" type="text/css">
+<link href="./zCss/trainAdmin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<%
@@ -24,30 +24,22 @@
 		%>
 	</div>	
 	<div id = "wrapper">
-		<div id = "browseSquare">
-			<div id = "browseText">
-				<h1>Plan your trip today!</h1>
+		<div id = "trainASquare">
+			<div id = "trainAText">
+				<h1>pick trip</h1>
 				<!--drop down select current origins/destinations in db-->
 				<%
 				    try{
 						ApplicationDB db = new ApplicationDB();
 						Connection conn = db.getConnection();
-						PreparedStatement ops = conn.prepareStatement("SELECT station_id FROM Station");
-						ResultSet ors = ops.executeQuery();
-			
-						PreparedStatement dps = conn.prepareStatement("SELECT station_id FROM Station");
-						ResultSet drs = dps.executeQuery();
+						PreparedStatement line = conn.prepareStatement("SELECT line_name FROM Line");
+						ResultSet lines = line.executeQuery();
 				%>
-				<form action="./browseLogic.jsp" class="browse">
-					<div class = "browse">
-					    Origin Station: <select name="pointA">
-						    <%  while(ors.next()){ %>
-						        <option><%= ors.getString(1)%></option>
-						    <% } %>
-					    </select>
-					    Destination Station: <select name="pointB">
-						    <%  while(drs.next()){ %>
-						        <option><%= drs.getString(1)%></option>
+				<form action="./trainAdminShow.jsp" class="trainA">
+					<div class = "trainA">
+					    Line: <select name="lineName">
+						    <%  while(lines.next()){ %>
+						        <option><%= lines.getString(1)%></option>
 						    <% } %>
 					    </select>
 						<br>
