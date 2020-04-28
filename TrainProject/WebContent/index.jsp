@@ -15,7 +15,7 @@
         <p id = "name">TRAINS</p>
         <div id = "navigationBar">
           <img src="./ACtrainPic.tiff" id = "gif">
-          <div id = "navHyperLink">Choo Choo With Us</div>    
+          <div id = "navHyperLink">Choo Choo With Us!</div>    
         </div>
     </div>
     
@@ -24,20 +24,20 @@
 			<h1>Welcome</h1>
 			<div id = "welcome">
 				<% 
+				boolean userIsLoggedIn = false;
 			 	if (session.getAttribute("user") == null) { 
 		    		response.sendRedirect("loginPage.jsp");
 				} else { 
 					String name = (String)session.getAttribute("first_name");
 					out.print("Hello <b>"+ name +"</b>. You are logged in.");
+					userIsLoggedIn = true;
 				}
 				%>
 			</div>
 		</div>
 		<div id = "listOfButtons">
 		<% 
-		 	if (session.getAttribute("user") == null) { 
-	    		response.sendRedirect("loginPage.jsp");
-			} else {
+		 	if (userIsLoggedIn) { 
 				String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\" >Browse Train Schedules</button></form>";
 				out.print(browseBtn);
 				

@@ -38,7 +38,7 @@
 						PreparedStatement dps = conn.prepareStatement("SELECT station_id FROM Station");
 						ResultSet drs = dps.executeQuery();
 				%>
-				<form action="./browseLogic.jsp" class="browse">
+				<form action="./trainAdminODShow.jsp" class="browse">
 					<div class = "browse">
 					    Origin Station: <select name="pointA">
 						    <%  while(ors.next()){ %>

@@ -20,11 +20,26 @@
 	<form method="get" action="./reservationLogic.jsp">
 		<table>
 			<tr>
+			<td>What time date  would you want to travel:</td>
+			<td><input type="date" name="date" placeholder="yyyy-mm-dd" required></td>
+			</tr>
+			<tr>
 				<td>type</td><td><select name="type">
 			  <option value="one way">One Way</option>
 			  <option value="round way">Round Trip</option>
 			</select></td>
 			</tr>
+			
+			<tr>
+				<td>
+					child/elderly<input type="radio" name="age_discount"
+				</td>
+				<td>
+					disabled<input type="radio" name="disabled_discount"
+				</td>
+			</tr>
+			
+			
 
 		</table>
 		<input type="submit" value="Reserve">

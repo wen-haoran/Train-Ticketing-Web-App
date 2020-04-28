@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*,java.text.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
 
@@ -25,7 +25,8 @@
 		String type = request.getParameter("type");
 		
 		//get date
-		java.util.Date utilDate = new java.util.Date();
+		String dateStr = request.getParameter("date");
+		java.util.Date utilDate = new SimpleDateFormat("yyyy-mm-dd").parse(dateStr); 
 		// Convert it to java.sql.Date
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 

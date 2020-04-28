@@ -8,18 +8,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Search</title>
 </head>
 <body>
-	This is a testing page for making a reservation
-	part 2
-	Origin 
-	Destionation 
-	date of Travel 
-	<%
-	String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\">Make Reservations</button></form>";
-	out.print(makeReserveBtn);
-	%>
+	<h2>Select Your Route</h2>
+
+	<form method="get" action="./makeReservation.jsp">
+		<table>
+			<tr>
+			<td>Select your origin station</td><td><select name="origin_station">
+			  <option value="NYC Station">NYC Station</option>
+			  <option value="New Brunswick Station">New Brunswick Station</option>
+			  <option value="DC Station">DC Station</option>
+			</select></td>
+			</tr>
+			
+			<tr>
+			<td>Select your destination Station</td><td><select name="destination_station">
+			  <option value="NYC Station">NYC Station</option>
+			  <option value="New Brunswick Station">New Brunswick Station</option>
+			  <option value="DC Station">DC Station</option>
+			</select></td>
+			</tr>
+			
+		</table>
+		<input type="submit" value="Search">
+	</form>
+	
+
 
 </body>
 </html>

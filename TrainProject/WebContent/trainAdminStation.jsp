@@ -32,22 +32,14 @@
 				    try{
 						ApplicationDB db = new ApplicationDB();
 						Connection conn = db.getConnection();
-						PreparedStatement ops = conn.prepareStatement("SELECT station_id FROM Station");
-						ResultSet ors = ops.executeQuery();
-			
-						PreparedStatement dps = conn.prepareStatement("SELECT station_id FROM Station");
-						ResultSet drs = dps.executeQuery();
+						PreparedStatement stat = conn.prepareStatement("SELECT station_id FROM Station");
+						ResultSet s = stat.executeQuery();
 				%>
-				<form action="./browseLogic.jsp" class="browse">
+				<form action="./trainAdminStationShow.jsp" class="browse">
 					<div class = "browse">
-					    Origin Station: <select name="pointA">
-						    <%  while(ors.next()){ %>
-						        <option><%= ors.getString(1)%></option>
-						    <% } %>
-					    </select>
-					    Destination Station: <select name="pointB">
-						    <%  while(drs.next()){ %>
-						        <option><%= drs.getString(1)%></option>
+					    Station: <select name="point">
+						    <%  while(s.next()){ %>
+						        <option><%= s.getString(1)%></option>
 						    <% } %>
 					    </select>
 						<br>
@@ -59,7 +51,7 @@
 						<br>
 					</div>
 					<br>
-					<button type="submit" id = "button" >View Schedule</button>
+					<button type="submit" id = "button" >View Schedules</button>
 				</form>
 				<%}
 			        catch(Exception e)
