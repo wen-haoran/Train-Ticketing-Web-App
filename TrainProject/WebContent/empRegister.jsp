@@ -23,9 +23,9 @@
 			</div>
 			<br>
 			Employee Level: <select name="empLevel" id="empLevel">
-								<option value="0">Employee</option>
-						  		<option value="1">Admin</option>
-					 			<option value="2">Customer Rep</option>
+								<option value="employee">Employee</option>
+						  		<option value="admin">Admin</option>
+					 			<option value="customer rep">Customer Rep</option>
 					  		</select>
 			<br>
 			<button id = "button" type="submit">Submit</button>
