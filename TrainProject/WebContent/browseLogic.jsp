@@ -8,13 +8,23 @@
 	<form method="get" action="./index.jsp">
 		<button type="submit">Home</button>
 	</form>
+	<p id="demo"></p>
 	<h3>Results for <%=request.getParameter("pointA")%> to <%=request.getParameter("pointB")%> on <%=request.getParameter("traveldate")%>:</h3>
-	Sort By: <select name="sortBy" id="sortBy" onchange="sort()">
-			<option value="deprtTime">Origin Departure Time</option>
-			<option value="arriveTime">Destination Arrival Time</option>
-			<option value="fare">Fare</option>
-		</select>
+	Sort By: <select name="sortBy" id="sortBy" >
+				<option onclick="sort(0)" value="0" id ="or">Origin Departure Time</option>
+				<option onclick="sort(1)" value="1">Destination Arrival Time</option>
+				<option onclick="sort(4)" value="4">Fare</option>
+			</select>
 	<br>
+	
+	<% 
+	String ptA = request.getParameter("pointA");
+	String ptB = request.getParameter("pointB");
+	session.setAttribute("trip_stationIdA",ptA); 
+	session.setAttribute("trip_stationIdB",request.getParameter("pointB")); 
+	session.setAttribute("trip_travelDate",request.getParameter("traveldate")); 
+	String[] tripDataArray = new String[5];
+	%>
 	
 	<%
 		try{
@@ -41,10 +51,16 @@
 					<%while (rs.next()) {%>
 						<tr>
 							<td>
-								<%=rs.getString("d.t_time")%>
+								<%
+								String dTime = rs.getString("d.t_time");
+								out.println(dTime);
+								%>
 							</td>
 							<td>
-								<%=rs.getString("a.t_time")%>
+								<%
+								String aTime = rs.getString("a.t_time");
+								out.println(aTime);
+								%>
 							</td>
 							<td id="ln"> 
 								<%
@@ -69,7 +85,11 @@
 								</small>
 							</td>
 							<td>
-								<%=rs.getString("t.train_id")%>
+								<%
+								String trainID = rs.getString("t.train_id");
+								out.println(trainID);
+								
+								%>
 							</td>
 							<td>
 								<!-- Finding fare of line and calculating base pay -->
@@ -88,24 +108,65 @@
 								out.println(fare);
 								%>
 							</td>
+							<% 
+							tripDataArray[0] = dTime;
+							tripDataArray[1] = aTime;
+							tripDataArray[2] = ln;
+							tripDataArray[3] = trainID;
+							tripDataArray[4] = Float.toString(fare);
+							String str1 = Arrays.toString(tripDataArray);
+							
+							%>
+							
 							<td>
 								<form method="get" action="./makeReservation.jsp">
-									<button type="submit">Reserve</button>
+									<button type="submit" value="<%=str1%>" name="data">Reserve</button>
 								</form>
 							</td>
 						</tr>
 					<%}%>
 				</table>
-
+				<script>
+				    function sort(j) { 
+				        var table, i, x, y; 
+				        table = document.getElementById("table"); 
+				        var switching = true; 
+				
+				        while (switching) { 
+				            switching = false; 
+				            var rows = table.rows; 
+				            
+				            for (i = 1; i < (rows.length - 1); i++) { 
+				                var makeSwitch = false; 
+				                x = rows[i].getElementsByTagName("TD")[j]; 
+				                y = rows[i + 1].getElementsByTagName("TD")[j]; 
+				
+				                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){ 
+				                    makeSwitch = true; 
+				                    break; 
+				                } 
+				            } 
+				            if (makeSwitch) { 
+				                // Function to switch rows and mark switch as completed 
+				                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); 
+				                switching = true; 
+				            } 
+				        } 
+				    } 
+				</script>
 			<%conn.close();
 		}catch(Exception e){
 			System.out.println(e);
 		}%>
 	
+	<p><small>50% off for seniors/children/persons with disabilities</small></p>
+	<p><small>Save now by purchasing a weekly or monthly pass!</small></p>
 	<br>
+	
 	<form method="get" action="./browse.jsp">
 		<button type="submit">Search another trip</button>
 	</form>
+	
 
 </body>
 </html>
