@@ -14,8 +14,9 @@
 <body>
 
 	<% 
+	
 	//Reterving information from browse and make reservation jsps
-		String a = (String)session.getAttribute("infos"); 
+	String a = (String)session.getAttribute("infos"); 
 	//out.print(a);
 	String str = a.substring(1, a.length()-1);
 	String[] tripDataArr = new String[5];
@@ -38,6 +39,7 @@
 	String discountGroup = request.getParameter("discounts");
 	//parsing discount
 	double netFare = baseFare;
+
 	
 	if(travelClass.equals("first")){
 		netFare += 20;
@@ -50,7 +52,7 @@
 	if (tripType.equals("one way")){
 		netFare *= 1;
 	}else if(tripType.equals("round trip")){
-		netFare *= 2;
+		netFare *= 1;
 	}else if(tripType.equals("weekly")){
 		netFare *= .95;
 	}else if(tripType.equals("monthly")){
@@ -62,6 +64,7 @@
 	}else{
 		netFare *= 0.5;
 	}
+
 	
 	
 	//final fare out.print(netFare);
@@ -111,10 +114,14 @@
 		
 		//execute the sql query
 		int result = pst.executeUpdate();
-		out.print("Reservation table updated.");
+			
+		
+		String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\">Book another trip</button></form>";
+		out.print(browseBtn);
 			
 		String homeBtn = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\">Back to Home</button></form>";
 		out.print(homeBtn);
+		
 		
 		//close connection
 		conn.close();
