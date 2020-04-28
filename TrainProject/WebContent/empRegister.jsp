@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Register Here</title>
+<title>Employee Registration</title>
 </head>
 <body>
 		<h1>Register Here</h1>
