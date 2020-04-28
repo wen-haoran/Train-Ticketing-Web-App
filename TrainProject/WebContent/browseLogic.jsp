@@ -4,6 +4,7 @@
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
 <html>
+	<head><title>Schedules</title></head>
 <body>
 	<form method="get" action="./index.jsp">
 		<button type="submit">Home</button>
