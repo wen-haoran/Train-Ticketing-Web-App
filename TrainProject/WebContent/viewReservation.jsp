@@ -14,8 +14,8 @@
 <body>
 	<div id = "button2Wrapper">
 		<%
-		String viewAllQuestions = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
-		out.print(viewAllQuestions);
+		String homeBtn = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
+		out.print(homeBtn);
 		%>
 	</div>	
 	<div id = "wrapper">
@@ -24,7 +24,7 @@
 			<div id = "buttonWrapper">
 				<% 
 				//make search question option
-				String searchQuestion = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\" id=\"button\">Create Reservation</button></form>";
+				String searchQuestion = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\">Browse and Make Reservations</button></form>";
 				out.print(searchQuestion);
 				%>
 			</div>

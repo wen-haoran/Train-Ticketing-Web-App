@@ -39,11 +39,9 @@
 		<div id = "listOfButtons">
 		<% 
 		 	if (userIsLoggedIn) { 
-				String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\" >Browse Train Schedules</button></form>";
+				String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\" >Browse Train Schedules and make Reservations</button></form>";
 				out.print(browseBtn);
-				
-				String makeReserveBtn = "<form method=\"get\" action=\"./makeReservation.jsp\"><button type=\"submit\" id=\"button\">Search & Make Reservation</button></form>";
-				out.print(makeReserveBtn);
+		
 				
 				String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\" id=\"button\">My Reservations</button></form>";
 				out.print(viewReserveBtn);

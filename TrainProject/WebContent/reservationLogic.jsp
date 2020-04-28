@@ -34,6 +34,7 @@
 	String userPK = (String)session.getAttribute("user");
 	String tripType = request.getParameter("trip_type");
 	String travelClass = request.getParameter("travel_class");
+	
 	String discountGroup = request.getParameter("discounts");
 	//parsing discount
 	double netFare = baseFare;
@@ -72,11 +73,14 @@
 		Connection conn = db.getConnection();		
 		//get username and password
 		
-		//travel date
-		java.util.Date utilTravelDate = new SimpleDateFormat("yyyy-mm-dd").parse(travelDate); 
-		// Convert it to java.sql.Date
-		java.sql.Date sqlTravelDate = new java.sql.Date(utilTravelDate.getTime());
-
+		
+		//scheduled date
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date parsed = format.parse(travelDate);
+		java.sql.Date sql = new java.sql.Date(parsed.getTime());
+			
+		//****
+		
 		//current date
 		java.util.Date utilCurrDate = new java.util.Date();
 		// Convert it to java.sql.Date
@@ -98,7 +102,7 @@
 		pst.setString(6, stationID_B);
 		pst.setString(7, lineName);
 		pst.setString(8, trainID);
-		pst.setDate(9, sqlTravelDate);
+		pst.setDate(9, sql);
 		pst.setTime(10, sqlTime);
 		//seat number
 		pst.setString(11, "11");
@@ -109,8 +113,8 @@
 		int result = pst.executeUpdate();
 		out.print("Reservation table updated.");
 			
-		String makeReserveBtn = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\">Search and >Back to Home</button></form>";
-		out.print(makeReserveBtn);
+		String homeBtn = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\">Back to Home</button></form>";
+		out.print(homeBtn);
 		
 		//close connection
 		conn.close();

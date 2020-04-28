@@ -47,11 +47,11 @@
 			</select></td>
 			</tr>
 		</table>
-		<input type="submit" value="Reserve">
+		<input type="submit" value="Continue">
 	</form>
 	<%
 	String dataStr = request.getParameter("data");
-	out.print(dataStr);
+	//out.print(dataStr);
 	session.setAttribute("infos",dataStr);
 	%>
 	

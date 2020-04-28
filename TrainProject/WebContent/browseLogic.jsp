@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*,java.text.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
 <html>
@@ -33,7 +33,15 @@
 			PreparedStatement ps = conn.prepareStatement(
 				"SELECT d.t_time, a.t_time, t.line_name, t.train_id FROM Train_Schedule t, Departs d, Arrives a WHERE t.schedule_date = ? AND t.schedule_date = a.schedule_date AND t.starting_time = a.starting_time AND t.line_name = a.line_name AND t.train_id = a.train_id AND a.station_id = ? AND t.schedule_date = d.schedule_date AND t.starting_time = d.starting_time AND t.line_name = d.line_name AND t.train_id = d.train_id AND d.station_id = ? AND d.t_time < a.t_time"
 			);
-			ps.setString(1, request.getParameter("traveldate"));
+			String dateStr = request.getParameter("traveldate");
+			
+			
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			java.util.Date parsed = format.parse(dateStr);
+			java.sql.Date sql = new java.sql.Date(parsed.getTime());
+			
+			
+			ps.setDate(1, sql);
 			String B = request.getParameter("pointB");
 			ps.setString(2, B);
 			String A = request.getParameter("pointA");
