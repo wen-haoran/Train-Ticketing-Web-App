@@ -50,7 +50,10 @@
 								response.sendRedirect("admin.jsp");
 								conn.close();
 							}else if(accessLVL.equals("customer rep")){
-								//Links to Customer rep page
+								out.println("Logging in as Customer Rep");
+								session.setAttribute("user", "customer rep");
+								session.setAttribute("first_name", "customer rep");
+								response.sendRedirect("repIndex.jsp");
 							}
 							out.println("You have successfully login");	
 						}
