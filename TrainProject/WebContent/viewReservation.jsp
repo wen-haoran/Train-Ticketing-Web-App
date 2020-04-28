@@ -44,7 +44,7 @@
 				// Convert it to java.sql.Date
 				java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 		
-				PreparedStatement pst = conn.prepareStatement("SELECT reservation_num, one_way_or_round_trip, reservation_date from Reservation where username=? AND reservation_date>=?");
+				PreparedStatement pst = conn.prepareStatement("SELECT reservation_num, trip, class, fee, origin_station_id,destination_station_id,line_name,train_id,schedule_date,departure_time,seat_number,reservation_date from Reservation where username=? AND schedule_date>=?");
 				pst.setString(1, userPK);
 				pst.setDate(2, sqlDate);
 				ResultSet rs = pst.executeQuery();
@@ -59,8 +59,40 @@
 				out.print("<b>Type</b>");
 				out.print("</td>");
 				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Class</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Price</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>From Station</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>To Station</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Line</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Train</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Seat</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Departure Time</b>");
+				out.print("</td>");
+				
 				out.print("<td id=\"D1\">");
-				out.print("<b>Reservation Date</b>");
+				out.print("<b>Travel Date</b>");
 				out.print("</td>");
 				
 				out.print("<td id=\"A1\">");
@@ -75,12 +107,45 @@
 					String reservationNum = rs.getString("reservation_num");
 					
 					out.print("<td id=\"Q\">");
-					out.print(rs.getString("one_way_or_round_trip"));
+					out.print(rs.getString("trip"));
 					out.print("</td>");
 					
 					out.print("<td id=\"D\">");
-					out.print(rs.getString("reservation_date"));
+					out.print(rs.getString("class"));
 					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("fee"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("origin_station_id"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("destination_station_id"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("line_name"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("train_id"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("seat_number"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("departure_time"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("schedule_date"));
+					out.print("</td>");
+					
 					
 					String deleteBtn = "<form method=\"get\" action=\"./deleteReservation.jsp\"><button type=\"submit\" value=\""+reservationNum+"\" name=\"del\" id=\"button3\">Delete</button></form>";
 					
@@ -97,7 +162,7 @@
 				
 				
 				//PAST RESERVATIONS
-				pst = conn.prepareStatement("SELECT reservation_num, one_way_or_round_trip, reservation_date from Reservation where username=? AND reservation_date<?");
+				pst = conn.prepareStatement("SELECT reservation_num, trip, class, fee, origin_station_id,destination_station_id,line_name,train_id,schedule_date,departure_time,seat_number,reservation_date from Reservation where username=? AND schedule_date<?"); 
 				pst.setString(1, userPK);
 				pst.setDate(2, sqlDate);
 				rs = pst.executeQuery();
@@ -112,8 +177,40 @@
 				out.print("<b>Type</b>");
 				out.print("</td>");
 				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Class</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Price</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>From Station</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>To Station</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Line</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Train</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Seat</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Departure Time</b>");
+				out.print("</td>");
+				
 				out.print("<td id=\"D1\">");
-				out.print("<b>Reservation Date</b>");
+				out.print("<b>Travel Date</b>");
 				out.print("</td>");
 				
 				out.print("<td id=\"A1\">");
@@ -128,11 +225,43 @@
 					String reservationNum = rs.getString("reservation_num");
 					
 					out.print("<td id=\"Q\">");
-					out.print(rs.getString("one_way_or_round_trip"));
+					out.print(rs.getString("trip"));
 					out.print("</td>");
 					
 					out.print("<td id=\"D\">");
-					out.print(rs.getString("reservation_date"));
+					out.print(rs.getString("class"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("fee"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("origin_station_id"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("destination_station_id"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("line_name"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("train_id"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("seat_number"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("departure_time"));
+					out.print("</td>");
+					
+					out.print("<td id=\"D\">");
+					out.print(rs.getString("schedule_date"));
 					out.print("</td>");
 					
 					String deleteBtn = "<form method=\"get\" action=\"./deleteReservation.jsp\"><button type=\"submit\" value=\""+reservationNum+"\" name=\"del\" id=\"button3\">Delete</button></form>";
