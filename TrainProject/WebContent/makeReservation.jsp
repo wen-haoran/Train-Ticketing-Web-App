@@ -20,6 +20,24 @@
 	<div id = "wrapper">
 		<div id = "browseSquare">
 			<div id = "browseText">
+			
+			<%
+			String travelClass = request.getParameter("travel_class");
+			//scheduled date
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			java.util.Date parsed = format.parse(travelDate);
+			
+			//current date
+			java.util.Date utilCurrDate = new java.util.Date();
+			// Convert it to java.sql.Date
+			
+			if(parsed.compare(utilCurrDate) < 0){
+				out.print("<p>Error: Your selected trip date is in the past</p>");
+				String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button id=\"button\" type=\"submit\" id=\"button\">Fina a different trip</button></form>";
+				out.print(browseBtn);
+				
+			}
+			%>
 				<h2>Make Reservation</h2>
 				
 				<form method="get" action="./reservationLogic.jsp">
