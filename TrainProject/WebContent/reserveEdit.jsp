@@ -7,19 +7,13 @@
 <link href="./zCss/registerPage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<%
-		//get date
-		java.util.Date utilDate = new java.util.Date();
-		// Convert it to java.sql.Date
-		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-	%>
-	<form method="get" action="./repIndex.jsp">
-		<button type="submit">Home</button>
-	</form>
 	<div id = "registerSquare">
 		<div id = "registerText">
-			<h3>Add a new reservation:</h3>
-			<form action="./reserveAddLogic.jsp" class="add">
+			<h3>Edit reservation:</h3>
+			<form action="./reserveAdminEdit.jsp" class="add">
+				<div class="add">
+					Reservation: <input type="text" name="reservationId" readonly="readonly" value = <%=request.getParameter("edit")%>>
+				</div>
 				<div class="add">
 					Line: <input id = "input" type="text" name="line" id="line" onblur="validate()" required>
 				</div>
@@ -62,6 +56,7 @@
 				<div class="add">
 					Customer Username: <input id = "input" type="text" name="username" id="username" onblur="validate()" required>
 				</div>
+				
 				<button id = "button" type="submit">Submit</button>
 			</form>
 		</div>

@@ -23,32 +23,18 @@
 	<div id = "wrapper">
 		<div id = "reserveASquare">
 			<div id = "reserveAText">
-				<h3>Search reservations by reservation number:</h3>
-				<!--drop down select current origins/destinations in db-->
-				<%
-				    try{
-						ApplicationDB db = new ApplicationDB();
-						Connection conn = db.getConnection();
-						PreparedStatement line = conn.prepareStatement("SELECT reservation_num FROM Reservation");
-						ResultSet lines = line.executeQuery();
-				%>
-				<form action="./reserveAdminShow.jsp" class="reserveA">
-					<div class = "reserveA">
-					    Line: <select name="reserveID">
-						    <%  while(lines.next()){ %>
-						        <option><%= lines.getString(1)%></option>
-						    <% } %>
-					    </select>
+				<h3>Search customer by reservations on train and line:</h3>
+				<form action="./repReserveCustomerList.jsp" class="reserveA">
+					
+					<div class="reserveA">
+						Line: <input id = "input" type="text" name="line" id="line" onblur="validate()" required>
+					</div>
+					<div class="reserveA">
+						Train ID: <input id = "input" type="number" name="train" id="train" onblur="validate()" required>
 					</div>
 					<br>
-					<button type="submit" id = "button" >View Reservation</button>
+					<button type="submit" id = "button" >View Customers</button>
 				</form>
-				<%}
-			        catch(Exception e)
-					{
-			               out.println(e);
-			          }
-			  	%>
 			</div>
 		</div>
 	</div>

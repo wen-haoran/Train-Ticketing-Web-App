@@ -18,7 +18,7 @@
 				boolean userIsLoggedIn = false;
 			 	if (session.getAttribute("user") == null) { 
 		    		response.sendRedirect("loginPage.jsp");
-				} else {
+				} else { 
 					out.print("You are logged in.");
 					userIsLoggedIn = true;
 				}
@@ -37,8 +37,12 @@
 				out.print(repAddSched);
 				String trainA = "<form method=\"get\" action=\"./trainAdmin.jsp\"><button type=\"submit\" id=\"button\">ta</button></form>";
 				out.print(trainA);
-				String reserveA = "<form method=\"get\" action=\"./reserveAdmin.jsp\"><button type=\"submit\" id=\"button\">ra</button></form>";
+				String reserveA = "<form method=\"get\" action=\"./reserveAdmin.jsp\"><button type=\"submit\" id=\"button\">View Reservations</button></form>";
 				out.print(reserveA);
+				String reserveB = "<form method=\"get\" action=\"./reserveAdd.jsp\"><button type=\"submit\" id=\"button\">Add a reservation</button></form>";
+				out.print(reserveB);
+				String reserveC = "<form method=\"get\" action=\"./repReserveCustomer.jsp\"><button type=\"submit\" id=\"button\">View Customers by Train/Line reservation</button></form>";
+				out.print(reserveC);
 				
 				String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\" id=\"button\"><b>Logout</b></button></form>";
 				out.print(logoutBtn);

@@ -7,8 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Browse Reservations</title>
-<link href="./zCss/reserveAdmin.css" rel="stylesheet" type="text/css">
+<title>View Schedules by Station</title>
 </head>
 <body>
 	<%
@@ -21,27 +20,34 @@
 		<button type="submit">Home</button>
 	</form>
 	<div id = "wrapper">
-		<div id = "reserveASquare">
-			<div id = "reserveAText">
-				<h3>Search reservations by reservation number:</h3>
+		<div id = "browseSquare">
+			<div id = "browseText">
+				<h3>Search schedules by station:</h3>
 				<!--drop down select current origins/destinations in db-->
 				<%
 				    try{
 						ApplicationDB db = new ApplicationDB();
 						Connection conn = db.getConnection();
-						PreparedStatement line = conn.prepareStatement("SELECT reservation_num FROM Reservation");
-						ResultSet lines = line.executeQuery();
+						PreparedStatement stat = conn.prepareStatement("SELECT station_id FROM Station");
+						ResultSet s = stat.executeQuery();
 				%>
-				<form action="./reserveAdminShow.jsp" class="reserveA">
-					<div class = "reserveA">
-					    Line: <select name="reserveID">
-						    <%  while(lines.next()){ %>
-						        <option><%= lines.getString(1)%></option>
+				<form action="./repSchedByStationLogic.jsp" class="browse">
+					<div class = "browse">
+					    Station: <select name="point">
+						    <%  while(s.next()){ %>
+						        <option><%= s.getString(1)%></option>
 						    <% } %>
 					    </select>
+						<br>
+						Date of Travel:
+						<%
+							String todayDate = "<input type=\"date\" value=\""+sqlDate+"\" name=\"traveldate\" required>";
+							out.print(todayDate);
+						%>
+						<br>
 					</div>
 					<br>
-					<button type="submit" id = "button" >View Reservation</button>
+					<button type="submit" id = "button" >View Schedules</button>
 				</form>
 				<%}
 			        catch(Exception e)
