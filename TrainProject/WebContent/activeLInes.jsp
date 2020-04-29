@@ -8,10 +8,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Monthly Sales Report</title>
+<title>Top 5 Most Active Lines</title>
 </head>
 <body>
-	<h2>Monthly Sales Report</h2>
+	<h2>Top 5 Most Active Lines</h2>
 	
 	<%
 	try{

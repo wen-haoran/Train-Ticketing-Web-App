@@ -43,7 +43,7 @@
 						String accessLVL = rs.getString("access_level");
 						out.print(accessLVL);
 						if (pas.equals(dbPassword)) {
-							if(accessLVL.equals("admin")){
+		 					if(accessLVL.equals("admin")){
 								out.println("Logging in as Administrator");
 								session.setAttribute("user", "admin");
 								session.setAttribute("first_name", "admin");
