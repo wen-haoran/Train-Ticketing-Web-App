@@ -11,6 +11,12 @@
 <meta charset="UTF-8">
 <title>Success!</title>
 <link href="./zCss/reservationLogic.css" rel="stylesheet" type="text/css">
+	<script type = "text/javascript">
+            function funcWarn() {
+               alert ("Train is full. Please select another route!");
+               document.write ("Train is full. Please select another route!");
+            }
+      </script>
 </head>
 <body>
 
@@ -27,10 +33,10 @@
 	String delimiter = ",";
 	/* given string will be split by the argument delimiter provided. */
 	tripDataArr = str.split(delimiter);
-	String dTime = tripDataArr[0];
-	String aTime= tripDataArr[1];
-	String trainID= tripDataArr[3];
-	String lineName= tripDataArr[2];
+	String dTime = tripDataArr[0].trim();
+	String aTime= tripDataArr[1].trim();
+	String trainID= tripDataArr[3].trim();
+	String lineName= tripDataArr[2].trim();
 	float baseFare= Float.parseFloat(tripDataArr[4]);
 	String stationID_A = (String)session.getAttribute("trip_stationIdA");
 	String stationID_B = (String)session.getAttribute("trip_stationIdB"); 
@@ -77,7 +83,34 @@
 		//connect to db
 		ApplicationDB db = new ApplicationDB();	
 		Connection conn = db.getConnection();		
-		//get username and password
+		
+		//getSeat number 
+		PreparedStatement pstTrain = conn.prepareStatement("SELECT number_of_seats from Trains where train_id = ?");
+		pstTrain.setString(1, trainID);
+		ResultSet rsT = pstTrain.executeQuery();
+		int seatNum = 0;
+		String seatNumStr = "";
+		if(rsT.first()){
+			seatNum = rsT.getInt("number_of_seats");
+			seatNumStr = String.valueOf(seatNum);
+			//response.sendRedirect("./index.jsp");
+		}
+		if(seatNum == 0){
+			%>
+			<script>
+				funcWarn();
+				window.location = "./browse.jsp";
+        	</script>
+			<%
+			conn.close();
+		}
+		
+		
+		//update seats in train
+		PreparedStatement psU = conn.prepareStatement("UPDATE Trains SET number_of_seats = ? WHERE train_id = ?");
+		psU.setInt(1,seatNum-1);
+		psU.setString(2, trainID);
+		int result1 = psU.executeUpdate();
 		
 		
 		//scheduled date
@@ -111,13 +144,14 @@
 		pst.setDate(9, sql);
 		pst.setTime(10, sqlTime);
 		//seat number
-		pst.setString(11, "11");
+		pst.setString(11, seatNumStr);
 		pst.setDate(12, sqlCurrDate);
 		pst.setString(13, userPK);		
 		
 		//execute the sql query
 		int result = pst.executeUpdate();
 		out.print("<div id=\"alert\">Reservation successfully created!</div>");
+		
 		
 		%>
 		<div>

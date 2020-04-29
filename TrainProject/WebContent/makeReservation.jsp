@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="java.io.*,java.util.*,java.sql.*, java.text.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 
 
@@ -22,7 +22,7 @@
 			<div id = "browseText">
 			
 			<%
-			String travelClass = request.getParameter("travel_class");
+			String travelDate = (String)session.getAttribute("trip_travelDate");
 			//scheduled date
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			java.util.Date parsed = format.parse(travelDate);
@@ -31,11 +31,13 @@
 			java.util.Date utilCurrDate = new java.util.Date();
 			// Convert it to java.sql.Date
 			
-			if(parsed.compare(utilCurrDate) < 0){
-				out.print("<p>Error: Your selected trip date is in the past</p>");
-				String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button id=\"button\" type=\"submit\" id=\"button\">Fina a different trip</button></form>";
-				out.print(browseBtn);
-				
+			if(parsed.compareTo(utilCurrDate) < 0){
+				%>
+				<script>
+		        	alert("Can not reserve a trip from the past. Please reserve another trip.");
+		         	window.location = "./browse.jsp";
+		     	</script>
+		     <%
 			}
 			%>
 				<h2>Make Reservation</h2>
