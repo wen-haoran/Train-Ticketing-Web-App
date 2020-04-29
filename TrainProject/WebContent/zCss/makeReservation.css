@@ -1,7 +1,7 @@
 
 body {
     width: 100%;
-    background-color: #EDE2A9;
+    background-color: #c4ac9c;
 }
 
 h1 {
@@ -81,7 +81,7 @@ h1 {
 
 #button2 {
 	border-width: 0px;
-    background-color: #EDE2A9;
+    background-color: #c4ac9c;
     color: #444444;
     font-size: 10px;
     letter-spacing: 1px;
@@ -99,7 +99,7 @@ h1 {
 }
 
 #button2:hover {
-	background-color: #D4C782;
+	background-color: #A98D7A;
 }
 
 #button3 {

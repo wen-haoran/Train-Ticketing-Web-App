@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
@@ -12,7 +13,7 @@
 	</head>
 <body>
     <div id = "headings">
-        <p id = "name">TRAINS</p>
+        <p id = "name">CHUBBA CHUGGA TRAINS</p>
         <div id = "navigationBar">
           <img src="./ACtrainPic.tiff" id = "gif">
           <div id = "navHyperLink">Choo Choo With Us!</div>    
