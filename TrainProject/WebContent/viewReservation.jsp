@@ -24,7 +24,7 @@
 			<div id = "buttonWrapper">
 				<% 
 				//make search question option
-				String searchQuestion = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\">Browse and Make Reservations</button></form>";
+				String searchQuestion = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\">Browse Train Schedules</button></form>";
 				out.print(searchQuestion);
 				%>
 			</div>
@@ -63,35 +63,35 @@
 				out.print("<b>Class</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
+				out.print("<td id=\"P1\">");
 				out.print("<b>Price</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
-				out.print("<b>From Station</b>");
+				out.print("<td id=\"P1\">");
+				out.print("<b>From</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
-				out.print("<b>To Station</b>");
+				out.print("<td id=\"P1\">");
+				out.print("<b>To</b>");
 				out.print("</td>");
 				
 				out.print("<td id=\"Q1\">");
 				out.print("<b>Line</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
+				out.print("<td id=\"P1\">");
 				out.print("<b>Train</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
+				out.print("<td id=\"P1\">");
 				out.print("<b>Seat</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
+				out.print("<td id=\"F1\">");
 				out.print("<b>Departure Time</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"D1\">");
+				out.print("<td id=\"F1\">");
 				out.print("<b>Travel Date</b>");
 				out.print("</td>");
 				
@@ -110,39 +110,39 @@
 					out.print(rs.getString("trip"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"Q\">");
 					out.print(rs.getString("class"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"P\">");
 					out.print(rs.getString("fee"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"P\">");
 					out.print(rs.getString("origin_station_id"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"P\">");
 					out.print(rs.getString("destination_station_id"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"Q\">");
 					out.print(rs.getString("line_name"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"P\">");
 					out.print(rs.getString("train_id"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"P\">");
 					out.print(rs.getString("seat_number"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"F\">");
 					out.print(rs.getString("departure_time"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"F\">");
 					out.print(rs.getString("schedule_date"));
 					out.print("</td>");
 					
@@ -181,35 +181,35 @@
 				out.print("<b>Class</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
+				out.print("<td id=\"P1\">");
 				out.print("<b>Price</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
-				out.print("<b>From Station</b>");
+				out.print("<td id=\"P1\">");
+				out.print("<b>From</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
-				out.print("<b>To Station</b>");
+				out.print("<td id=\"P1\">");
+				out.print("<b>To</b>");
 				out.print("</td>");
 				
 				out.print("<td id=\"Q1\">");
 				out.print("<b>Line</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
+				out.print("<td id=\"P1\">");
 				out.print("<b>Train</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
+				out.print("<td id=\"P1\">");
 				out.print("<b>Seat</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"Q1\">");
+				out.print("<td id=\"F1\">");
 				out.print("<b>Departure Time</b>");
 				out.print("</td>");
 				
-				out.print("<td id=\"D1\">");
+				out.print("<td id=\"F1\">");
 				out.print("<b>Travel Date</b>");
 				out.print("</td>");
 				
@@ -228,19 +228,19 @@
 					out.print(rs.getString("trip"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"Q\">");
 					out.print(rs.getString("class"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"P\">");
 					out.print(rs.getString("fee"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"P\">");
 					out.print(rs.getString("origin_station_id"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"P\">");
 					out.print(rs.getString("destination_station_id"));
 					out.print("</td>");
 					
@@ -248,19 +248,19 @@
 					out.print(rs.getString("line_name"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"P\">");
 					out.print(rs.getString("train_id"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"P\">");
 					out.print(rs.getString("seat_number"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"F\">");
 					out.print(rs.getString("departure_time"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"F\">");
 					out.print(rs.getString("schedule_date"));
 					out.print("</td>");
 					

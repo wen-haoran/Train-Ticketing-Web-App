@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
@@ -16,7 +15,7 @@
         <p id = "name">TRAINS</p>
         <div id = "navigationBar">
           <img src="./ACtrainPic.tiff" id = "gif">
-          <div id = "navHyperLink">Choo Choo With Us!!</div>    
+          <div id = "navHyperLink">Choo Choo With Us!</div>    
         </div>
     </div>
     
@@ -40,10 +39,9 @@
 		<div id = "listOfButtons">
 		<% 
 		 	if (userIsLoggedIn) { 
-				String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\" >Browse Train Schedules and make Reservations</button></form>";
+				String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\" >Browse Train Schedules</button></form>";
 				out.print(browseBtn);
 		
-				
 				String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\" id=\"button\">My Reservations</button></form>";
 				out.print(viewReserveBtn);
 				

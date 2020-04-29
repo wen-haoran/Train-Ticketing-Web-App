@@ -9,10 +9,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ReservationLogic</title>
+<title>Success!</title>
+<link href="./zCss/reservationLogic.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
+	<div id = "alertSquare">
+		<div id = "alertText">
 	<% 
 	
 	//Reterving information from browse and make reservation jsps
@@ -114,20 +117,33 @@
 		
 		//execute the sql query
 		int result = pst.executeUpdate();
-			
+		out.print("<div id=\"alert\">Reservation successfully created!</div>");
 		
-		String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\">Book another trip</button></form>";
-		out.print(browseBtn);
-			
-		String homeBtn = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\">Back to Home</button></form>";
-		out.print(homeBtn);
+		%>
+		<div>
+			<img src="./ACtrain.gif" id = "gif">
+		</div>
+		<div id = "buttonWrapper">
+			<div id = "firstButton">
+				<% 
+				String viewQuestions = "<form method=\"get\" action=\"./browse.jsp\"><button id=\"button\" type=\"submit\" id=\"button\">Browse Schedules</button></form>";
+				out.print(viewQuestions);
+				%>
+			</div>
+			<% 	
+			String backHome = "<form method=\"get\" action=\"./index.jsp\"><button id=\"button\" type=\"submit\" id=\"button\">Back to Homepage</button></form>";
+			out.print(backHome);
+			%>
+		</div>
 		
-		
-		//close connection
-		conn.close();
-	} catch(Exception e){
-		out.print(e);
-	}
-	%>
+		<% 
+			//close connection
+			conn.close();
+		} catch(Exception e){
+			out.print(e);
+		}
+		%>
+			</div>
+	</div>
 </body>
 </html>

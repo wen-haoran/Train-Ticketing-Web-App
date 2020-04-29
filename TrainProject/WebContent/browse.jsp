@@ -40,26 +40,37 @@
 				%>
 				<form action="./browseLogic.jsp" class="browse">
 					<div class = "browse">
+					    <br>
+						
+						<div id = "origin">
 					    Origin Station: <select name="pointA">
 						    <%  while(ors.next()){ %>
 						        <option><%= ors.getString(1)%></option>
 						    <% } %>
 					    </select>
-					    Destination Station: <select name="pointB">
+					    </div>
+					    <br>
+					    Destination Station: <select id = "select" name="pointB">
 						    <%  while(drs.next()){ %>
 						        <option><%= drs.getString(1)%></option>
 						    <% } %>
 					    </select>
 						<br>
+					    <br>
+						
+						<div id = "date">
 						Date of Travel:
 						<%
-							String todayDate = "<input type=\"date\" value=\""+sqlDate+"\" name=\"traveldate\" required>";
+							String todayDate = "<input type=\"date\" id=\"input\" value=\""+sqlDate+"\" name=\"traveldate\" required>";
 							out.print(todayDate);
 						%>
-						<br>
+						</div>
+						
+					    <br>
+				
 					</div>
 					<br>
-					<button type="submit" id = "button" >View Schedule</button>
+					<button type="submit" id = "button" >View Schedules</button>
 				</form>
 				<%}
 			        catch(Exception e)

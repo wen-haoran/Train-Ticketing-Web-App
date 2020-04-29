@@ -1,3 +1,4 @@
+
 /* Heading */
 
 #headings {
@@ -75,7 +76,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 80px;
+    padding-top: 130px;
     padding-right: 10px;
 }
 
@@ -83,10 +84,10 @@ h1 {
     border-width: 0px;
     background-color: #c4ac9c;
     color: white;
-    font-size: 13px;
+    font-size: 16px;
     letter-spacing: 1px;
-    width: 160px;
-    height: 55px;
+    width: 175px;
+    height: 62px;
     margin-bottom: 20px;
     border-radius: 15px;
     cursor:pointer;
@@ -140,8 +141,12 @@ h1 {
 	}
 	
 	#button {
-	    font-size: 11px;
-	    width: 130px;
-	    height: 45px;
+	    font-size: 13px;
+	    width: 150px;
+	    height: 53px;
 	}	
+	
+	#listOfButtons {
+	    padding-top: 120px;
+	}
 }

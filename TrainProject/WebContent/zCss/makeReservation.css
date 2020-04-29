@@ -31,9 +31,16 @@ h1 {
 }
 
 #form {
-	margin: 0 auto;
-	width: 80%;
-	
+	padding-left: 150px;
+}
+
+#c {
+	padding-top: 15px;
+}
+
+#c1 {
+	padding-top: 15px;
+	padding-bottom: 37px;
 }
 
 #input {
