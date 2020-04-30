@@ -15,7 +15,7 @@
 	<div id = "headings">
 	    <p id = "name">CHUBBA CHUGGA TRAINS</p>
 	    <div id = "navigationBar">
-	      <img src="./ACtrainPic.tiff" id = "gif">
+	      <img src="./ACtrainPic.img" id = "gif">
 	      <div id = "navHyperLink">Choo Choo With Us!</div>    
 	    </div>
 	</div>
