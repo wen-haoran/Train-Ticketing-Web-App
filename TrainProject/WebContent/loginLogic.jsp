@@ -22,17 +22,7 @@
 					String usr = request.getParameter("username");
 					String pas = request.getParameter("password");
 					
-					/*//query the db with input data
-			
-					
-					<-----CODE FOR THE EMPLOYEE LOGIN PAGE DO NOT DELETE------>
-			
-					
-					ApplicationDB db = new ApplicationDB();	
-					Connection conn = db.getConnection();		
-					//get username and password
-					String usr = request.getParameter("username");//check parameter name
-					String pas = request.getParameter("password");//check parameter name
+					//query the db with input data
 					PreparedStatement ps = conn.prepareStatement("SELECT username, password, access_level from Employee where username=? and password=?");
 					ps.setString(1, usr);
 					ps.setString(2, pas);
@@ -43,59 +33,47 @@
 						String accessLVL = rs.getString("access_level");
 						out.print(accessLVL);
 						if (pas.equals(dbPassword)) {
-		 					if(accessLVL.equals("admin")){
+							if(accessLVL.equals("admin")){
 								out.println("Logging in as Administrator");
 								session.setAttribute("user", "admin");
 								session.setAttribute("first_name", "admin");
 								response.sendRedirect("admin.jsp");
-								conn.close();
 							}else if(accessLVL.equals("customer rep")){
 								out.println("Logging in as Customer Rep");
 								session.setAttribute("user", "customer rep");
 								session.setAttribute("first_name", "customer rep");
 								response.sendRedirect("repIndex.jsp");
 							}
-							out.println("You have successfully login");	
+							out.println("You have successfully login");
+							conn.close();
 						}
-						
 					}else{
-						//return to login mage
-						out.println("<div id=\"alert\">Username or password is invalid.</div>");
-						String s = "<form method=\"get\" action=\"./employeeLoginPage.jsp\"><button type=\"submit\"  id=\"button\">Try Again</button></form>";
-						out.print(s);
-					} */
+						PreparedStatement pst = conn.prepareStatement("SELECT username, password, first_name from Customer where username=? and password=?");
+						pst.setString(1, usr);
+						pst.setString(2, pas);
+						//execute the sql query
+						rs = pst.executeQuery();
+						if(rs.next()){
+							String dbPassword = rs.getString("password");
+							if (pas.equals(dbPassword)) {
+								out.println("You have successfully login");	
+								session.setAttribute("user", usr);
+								session.setAttribute("first_name", rs.getString("first_name"));
+								response.sendRedirect("index.jsp");
+							}
+							
+						}else{
+							//return to login mage
+							out.println("<div id=\"alert\">Username or password is invalid.</div>");
+							String s = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\"  id=\"button\">Try Again</button></form>";
+							out.print(s);
+						} 
+					}
 					
-					
- 					if(usr.equals("admin") && pas.equals("admin")){
-						out.println("Logging in as Administrator");
-						session.setAttribute("user", "admin");
-						session.setAttribute("first_name", "admin");
-						response.sendRedirect("admin.jsp");
-						conn.close();
- 					}
 					
 					
 					//query the db with input data
-					PreparedStatement pst = conn.prepareStatement("SELECT username, password, first_name from Customer where username=? and password=?");
-					pst.setString(1, usr);
-					pst.setString(2, pas);
-					//execute the sql query
-					ResultSet rs = pst.executeQuery();
-					if(rs.next()){
-						String dbPassword = rs.getString("password");
-						if (pas.equals(dbPassword)) {
-							out.println("You have successfully login");	
-							session.setAttribute("user", usr);
-							session.setAttribute("first_name", rs.getString("first_name"));
-							response.sendRedirect("index.jsp");
-						}
-						
-					}else{
-						//return to login mage
-						out.println("<div id=\"alert\">Username or password is invalid.</div>");
-						String s = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\"  id=\"button\">Try Again</button></form>";
-						out.print(s);
-					} 
+					
 				%>
 				<div>
 					<img src="./ACtrain.gif" id = "gif">
