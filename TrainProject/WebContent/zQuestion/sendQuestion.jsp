@@ -43,7 +43,7 @@
 				String userPK = (String)session.getAttribute("user");
 				
 				//fetch all reservations from this user that is delayed
-		      	PreparedStatement ps = conn.prepareStatement("SELECT origin_station_id, destination_station_id FROM Reservation WHERE username = ? AND isDelay = true");
+		      	PreparedStatement ps = conn.prepareStatement("SELECT reservation_num FROM Reservation WHERE username = ? AND isDelay = true");
 				ps.setString(1, userPK);
 		      	ResultSet rs = ps.executeQuery();
 		      	
@@ -51,7 +51,7 @@
 		      	while(rs.next()){
 		      	%>
 					<script>
-						alert("Your reservation from Station " + <%=rs.getString("origin_station_id")%> + " to Station " + <%=rs.getString("destination_station_id")%> + " has been delayed.");
+						alert("Reservation #" + <%=rs.getString("reservation_num")%> + " has been delayed.");
 					</script>
 				<%
 		      	}
