@@ -86,7 +86,6 @@
 		while(rs.next()){
 			seatNum = rs.getInt("number_of_seats");
 			seatNumStr = String.valueOf(seatNum);
-			out.print("rs works so far");
 		}
 		
 		if(trainID.equals(s1)){
