@@ -27,7 +27,7 @@
 			}
 		}
 		//query the db with input data
-		PreparedStatement ps = conn.prepareStatement("UPDATE Customer SET username = ?, password = ?, first_name LIKE ?, last_name = ?, email = ?, telephone = ?, address = ?, city = ?, state = ?, zip_code = ? WHERE username = ?");
+		PreparedStatement ps = conn.prepareStatement("UPDATE Customer SET username = ?, password = ?, first_name = ?, last_name = ?, email = ?, telephone = ?, address = ?, city = ?, state = ?, zip_code = ? WHERE username = ?");
 		ps.setString(1, request.getParameter("fieldCustomerUsername"));
 		ps.setString(2, request.getParameter("fieldCustomerPassword"));
 		ps.setString(3, request.getParameter("fieldCustomerFirst_name"));
