@@ -31,7 +31,7 @@
 			java.util.Date utilCurrDate = new java.util.Date();
 			// Convert it to java.sql.Date
 			
-			if(parsed.compareTo(utilCurrDate) < 0){
+			if(parsed.compareTo(utilCurrDate) > 0){
 				%>
 				<script>
 		        	alert("Can not reserve a trip from the past. Please reserve another trip.");
