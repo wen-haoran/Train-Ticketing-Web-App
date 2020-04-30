@@ -56,12 +56,13 @@
 						if(rs.next()){
 							String dbPassword = rs.getString("password");
 							if (pas.equals(dbPassword)) {
-								out.println("You have successfully login");	
+								out.println("You have successfully login!");	
 								session.setAttribute("user", usr);
 								session.setAttribute("first_name", rs.getString("first_name"));
 								int roundTripFlag = 0;
 								session.setAttribute("rtFlag", roundTripFlag);
 								response.sendRedirect("index.jsp");
+			
 							}
 							
 						}else{
