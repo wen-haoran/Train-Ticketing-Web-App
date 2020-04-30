@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
@@ -50,10 +51,13 @@
 				//get search key
 		 		String searchKey = request.getParameter("searchKey"); 
 
-				PreparedStatement pst = conn.prepareStatement("SELECT question, question_date, answer, username from Question WHERE question LIKE ? OR question LIKE ? OR question LIKE ? ");
+				PreparedStatement pst = conn.prepareStatement("SELECT question, question_date, answer, username from Question WHERE question LIKE ? OR question LIKE ? OR question LIKE ? OR answer LIKE ? OR answer LIKE ? OR answer LIKE ?");
 		 		pst.setString(1, "%" + searchKey + "%");
 		 		pst.setString(2, searchKey + "%"); 
-		 		pst.setString(3, "%" + searchKey); 
+		 		pst.setString(3, "%" + searchKey);
+		 		pst.setString(4, "%" + searchKey + "%");
+		 		pst.setString(5, searchKey + "%"); 
+		 		pst.setString(6, "%" + searchKey); 
 		 		
 		 		ResultSet rs = pst.executeQuery();
 				

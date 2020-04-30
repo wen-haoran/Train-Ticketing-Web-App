@@ -1,15 +1,24 @@
+
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
 body {
-	padding-top: 100px;
+    display: table-cell;
+    vertical-align: middle;
     display: inline-flex;
     width: 100%;
-    vertical-align: middle;
     text-align: center;
     background-color: #c4ac9c;
 }
 
 #questionSquare {
 	width: 600px;
-	height: 350px;
 	background-color: white;
 	border-radius: 5px;
 	text-align: center;

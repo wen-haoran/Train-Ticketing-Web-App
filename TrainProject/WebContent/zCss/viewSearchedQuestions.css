@@ -1,3 +1,4 @@
+
 body {
 	background-color: #abcbd4;
 	height: 100%;
@@ -137,6 +138,7 @@ body {
 	width: 35%;
   	overflow: hidden;
 	padding-bottom: 10px;
+	font-size: 13px;
 }
 
 #U1 {

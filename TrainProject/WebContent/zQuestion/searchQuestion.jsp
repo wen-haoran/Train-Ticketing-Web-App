@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 
@@ -11,14 +12,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Search for Questions</title>
+<title>Search for Questions & Answers</title>
 <link href="../zCss/searchQuestion.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	
 	<div id = "searchSquare">
 		<div id = "searchText">
-			<h2>Search for Questions</h2>
+			<h2>Search for Questions & Answers</h2>
 			<form method="get" action="./viewSearchedQuestions.jsp" id = "form">  
 				<label>Please enter a keyword or phrase you would like to search for:</label>
 				<br>

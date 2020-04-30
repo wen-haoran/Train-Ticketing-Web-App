@@ -1,6 +1,17 @@
+
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
 body {
+	display: table-cell;
+    vertical-align: middle;
     background-color: #c4ac9c;
-	padding-top: 200px;
 }
 
 #alert {
@@ -13,7 +24,6 @@ body {
 
 #alertSquare {
 	width: 600px;
-	height: 350px;
 	border-radius: 5px;
 	text-align: center;
 	margin:auto;
@@ -54,6 +64,5 @@ body {
 }
 
 #gif {
-	padding-bottom: 15px;
 	width: 99px;
 }

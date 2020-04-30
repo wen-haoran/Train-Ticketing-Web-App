@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
@@ -14,10 +15,10 @@
 <body>
 	<div id = "button2Wrapper">
 		<%
-		String homeBtn = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
-		out.print(homeBtn);
+		String viewAllQuestions = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
+		out.print(viewAllQuestions);
 		%>
-	</div>	
+	</div>
 	<div id = "wrapper">
 		<div id = "top">
 			<div id = "heading">My Reservations</div>

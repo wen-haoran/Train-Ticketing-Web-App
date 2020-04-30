@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
@@ -11,15 +10,14 @@
 		<title>Train Website</title>
 		<link href="./zCss/index.css" rel="stylesheet" type="text/css">
 	</head>
-<body>
-    <div id = "headings">
-        <p id = "name">CHUBBA CHUGGA TRAINS</p>
-        <div id = "navigationBar">
-          <img src="./ACtrainPic.tiff" id = "gif">
-          <div id = "navHyperLink">Choo Choo With Us!</div>    
-        </div>
+<div id = "headings">
+    <p id = "name">CHUBBA CHUGGA TRAINS</p>
+    <div id = "navigationBar">
+      <img src="./ACtrainPic.tiff" id = "gif">
+      <div id = "navHyperLink">Choo Choo With Us!</div>    
     </div>
-    
+</div>
+<body>
 	<div id = "links">
 		<div id = "welcomeText">
 			<h1>Welcome</h1>
@@ -52,7 +50,7 @@
 				String viewQuestionPage = "<form method=\"get\" action=\"./zQuestion/viewQuestion.jsp\"><button type=\"submit\" id=\"button\">Q&A Page</button></form>";
 				out.print(viewQuestionPage);
 				
-				String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\" id=\"button\"><b>Logout</b></button></form>";
+				String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\" id=\"buttonLast\"><b>Logout</b></button></form>";
 				out.print(logoutBtn);
 			}
 		%>

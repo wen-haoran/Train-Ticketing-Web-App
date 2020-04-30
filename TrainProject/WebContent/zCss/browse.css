@@ -1,6 +1,18 @@
+
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
 body {
     width: 100%;
     background-color: #c4ac9c;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 h1 {
@@ -10,7 +22,6 @@ h1 {
 #wrapper {
 	vertical-align: middle;
     text-align: center;
-    padding-top: 100px;
 }
 
 #browseSquare {
