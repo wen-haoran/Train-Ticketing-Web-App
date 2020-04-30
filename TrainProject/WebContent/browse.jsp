@@ -75,6 +75,37 @@
 			</div>
 		</div>
 	</div>
-
+		<%
+			try {
+				//connect to database
+				ApplicationDB db = new ApplicationDB();
+				Connection conn = db.getConnection();
+				String userPK = (String)session.getAttribute("user");
+				
+				//fetch all reservations from this user that is delayed
+		      	PreparedStatement ps = conn.prepareStatement("SELECT origin_station_id, destination_station_id FROM Reservation WHERE username = ? AND isDelay = true");
+				ps.setString(1, userPK);
+		      	ResultSet rs = ps.executeQuery();
+		      	
+		      	//send alert
+		      	while(rs.next()){
+		      	%>
+					<script>
+						alert("Your reservation from Station " + <%=rs.getString("origin_station_id")%> + " to Station " + <%=rs.getString("destination_station_id")%> + " has been delayed.");
+					</script>
+				<%
+		      	}
+		      	
+		      	//change it back to not delayed
+		      	PreparedStatement ps1 = conn.prepareStatement("UPDATE Reservation SET isDelay = 0 WHERE username = ?");
+				ps1.setString(1, userPK);
+		      	int rs1 = ps1.executeUpdate(); 
+		      	
+				//close connection
+				conn.close();
+			} catch(Exception e){
+				out.print(e);
+			}
+		%>
 </body>
 </html>
