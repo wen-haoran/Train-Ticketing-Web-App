@@ -23,13 +23,13 @@
 			// Convert it to java.sql.Date
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 				
-		PreparedStatement pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username from Reservation WHERE line_name = ? AND train_id = ? and reservation_date>=?");
+		PreparedStatement pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username, fee, origin_station_id, destination_station_id, line_name, train_id, schedule_date, departure_time, seat_number from Reservation WHERE line_name = ? AND train_id = ? and schedule_date>=?");
 		pst.setString(1, request.getParameter("trainLine"));
 		pst.setString(2, request.getParameter("trainNum"));
 		pst.setDate(3, sqlDate);
 		ResultSet rs = pst.executeQuery();
 
-		out.print("<h3>CURRENT AND UPCOMING RESERVATIONS</h3>");
+		out.print("<h3>CURRENT AND UPCOMING RESERVATIONS/h3>");
 		out.print("<table>");
 		
 		out.print("<tr>");
@@ -46,6 +46,38 @@
 		out.print("Username");
 		out.print("</td>");
 		
+		out.print("<td>");
+		out.print("Fee");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Orign Station ID");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Destination Station ID");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Line Name");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Train ID");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Schedule Date");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Departime Time");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Seat Number");
+		out.print("</td>");
+		
 		out.print("</tr>");
 		
 		
@@ -53,15 +85,47 @@
 			out.print("<tr>");
 			
 			out.print("<td>");
-			out.print(rs.getString("reservation_num"));
+			out.print(rs.getString("reservation_num") + " ");
 			out.print("</td>");
 			
 			out.print("<td>");
-			out.print(rs.getString("reservation_date"));
+			out.print(rs.getString("reservation_date") + " ");
 			out.print("</td>");
 			
 			out.print("<td>");
-			out.print(rs.getString("username"));
+			out.print(rs.getString("username") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getFloat("fee") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getString("origin_station_id") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getString("destination_station_id") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getString("line_name") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getString("train_id") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getDate("schedule_date") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getTime("departure_time") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getInt("seat_number"));
 			out.print("</td>");
 			
 			out.print("</tr>");
@@ -69,14 +133,14 @@
 		out.print("</table>");
 		
 		
-		pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username from Reservation WHERE line_name = ? AND train_id = ? and reservation_date<?");
+		pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username, fee, origin_station_id, destination_station_id, line_name, train_id, schedule_date, seat_number from Reservation WHERE line_name = ? AND train_id = ? and schedule_date<?");
 		pst.setString(1, request.getParameter("trainLine"));
 		pst.setString(2, request.getParameter("trainNum"));
 		pst.setDate(3, sqlDate);
 		rs = pst.executeQuery();
 		
-		out.print("<h3>Past RESERVATIONS</h3>");
-		out.print("<table>");
+		out.print("<h3>PAST RESERVATIONS</h3>");
+out.print("<table>");
 		
 		out.print("<tr>");
 		
@@ -92,6 +156,38 @@
 		out.print("Username");
 		out.print("</td>");
 		
+		out.print("<td>");
+		out.print("Fee");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Orign Station ID");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Destination Station ID");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Line Name");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Train ID");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Schedule Date");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Departime Time");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Seat Number");
+		out.print("</td>");
+		
 		out.print("</tr>");
 		
 		
@@ -99,15 +195,47 @@
 			out.print("<tr>");
 			
 			out.print("<td>");
-			out.print(rs.getString("reservation_num"));
+			out.print(rs.getString("reservation_num") + " ");
 			out.print("</td>");
 			
 			out.print("<td>");
-			out.print(rs.getString("reservation_date"));
+			out.print(rs.getString("reservation_date") + " ");
 			out.print("</td>");
 			
 			out.print("<td>");
-			out.print(rs.getString("username"));
+			out.print(rs.getString("username") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getFloat("fee") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getString("origin_station_id") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getString("destination_station_id") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getString("line_name") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getString("train_id") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getDate("schedule_date") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getTime("departure_time") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getInt("seat_number"));
 			out.print("</td>");
 			
 			out.print("</tr>");
