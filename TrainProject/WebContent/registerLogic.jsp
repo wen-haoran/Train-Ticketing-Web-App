@@ -21,7 +21,12 @@
 		      	PreparedStatement ps = conn.prepareStatement("SELECT * FROM Customer WHERE username = ?");
 		      	ps.setString(1,request.getParameter("user"));
 		      	ResultSet rs = ps.executeQuery();
-		      	if(rs.first()){
+		      	
+		      	PreparedStatement ps2 = conn.prepareStatement("SELECT * FROM Employee WHERE username = ?");
+		      	ps2.setString(1,request.getParameter("user"));
+		      	ResultSet rs2 = ps2.executeQuery();
+		      	
+		      	if(rs.first() || rs2.first()){
 					out.println("<div id=\"alert\">This username already exists.</div>");
 					String s = "<form method=\"get\" action=\"./registerPage.jsp\"><button type=\"submit\" id=\"button\">Try Again</button></form>";
 					out.print(s);
