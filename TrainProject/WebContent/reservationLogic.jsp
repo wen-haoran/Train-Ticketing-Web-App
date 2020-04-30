@@ -48,7 +48,7 @@
 	String userPK = (String)session.getAttribute("user");
 	String tripType = request.getParameter("trip_type");
 	String travelClass = request.getParameter("travel_class");
-	
+	String passType = request.getParameter("pass_type");
 	int rtFlag = (Integer)session.getAttribute("rtFlag");
 	
 	String discountGroup = request.getParameter("discounts");
@@ -66,13 +66,9 @@
 		netFare += 10;
 	}
 	
-	if (tripType.equals("one way")){
-		netFare *= 1;
-	}else if(tripType.equals("round trip")){
-		netFare *= 1;
-	}else if(tripType.equals("weekly")){
+	if(passType.equals("weekly")){
 		netFare *= .95;
-	}else if(tripType.equals("monthly")){
+	}else if(passType.equals("monthly")){
 		netFare *= .9;
 	}
 
@@ -138,12 +134,16 @@
 		
 		
 		//convert time
-		java.util.Date utilTime = new SimpleDateFormat("hh:mm:ss").parse(aTime); 
+		java.util.Date autilTime = new SimpleDateFormat("hh:mm:ss").parse(aTime); 
 		// Convert it to java.sql.Date
-		java.sql.Time sqlTime = new java.sql.Time(utilTime.getTime());
+		java.sql.Time asqlTime = new java.sql.Time(autilTime.getTime());
 
+		//convert time
+		java.util.Date dutilTime = new SimpleDateFormat("hh:mm:ss").parse(dTime); 
+		// Convert it to java.sql.Date
+		java.sql.Time dsqlTime = new java.sql.Time(dutilTime.getTime());
 		
-		PreparedStatement pst = conn.prepareStatement("INSERT INTO Reservation(trip,class,discount,fee,origin_station_id,destination_station_id,line_name,train_id,schedule_date,departure_time,seat_number,reservation_date,username) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		PreparedStatement pst = conn.prepareStatement("INSERT INTO Reservation(trip,class,discount,fee,origin_station_id,destination_station_id,line_name,train_id,schedule_date,departure_time,seat_number,reservation_date,username,arrival_time, pass) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		pst.setString(1, tripType);
 		pst.setString(2, travelClass);
 		pst.setString(3, discountGroup);
@@ -153,11 +153,13 @@
 		pst.setString(7, lineName);
 		pst.setString(8, trainID);
 		pst.setDate(9, sql);
-		pst.setTime(10, sqlTime);
+		pst.setTime(10, dsqlTime);
 		//seat number
 		pst.setString(11, seatNumStr);
 		pst.setDate(12, sqlCurrDate);
-		pst.setString(13, userPK);		
+		pst.setString(13, userPK);	
+		pst.setTime(14, asqlTime);
+		pst.setString(15, passType);
 		
 		//round trip
 		rtFlag++;

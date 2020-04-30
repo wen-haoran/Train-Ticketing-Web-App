@@ -53,6 +53,13 @@
 						</select></td>
 						</tr>
 						<tr>
+						<td id = "c">Pass</td><td id = "c"><select name="pass_type">
+						  <option value="na">N/A</option>
+						  <option value="weekly">Weekly</option>
+						  <option value="monthly">Monthly</option>
+						</select></td>
+						</tr>
+						<tr>
 						<td id = "c">Class</td><td id = "c"><select name="travel_class">
 						  <option value="economy">Economy</option>
 						  <option value="business">Business Class</option>

@@ -45,7 +45,7 @@
 				// Convert it to java.sql.Date
 				java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 		
-				PreparedStatement pst = conn.prepareStatement("SELECT reservation_num, trip, class, fee, origin_station_id,destination_station_id,line_name,train_id,schedule_date,departure_time,seat_number,reservation_date from Reservation where username=? AND schedule_date>=?");
+				PreparedStatement pst = conn.prepareStatement("SELECT reservation_num, trip, class, fee, origin_station_id,destination_station_id,line_name,train_id,schedule_date,departure_time,seat_number,reservation_date,arrival_time from Reservation where username=? AND schedule_date>=?");
 				pst.setString(1, userPK);
 				pst.setDate(2, sqlDate);
 				ResultSet rs = pst.executeQuery();
@@ -55,6 +55,10 @@
 				
 		
 				out.print("<tr>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Res. #</b>");
+				out.print("</td>");
 				
 				out.print("<td id=\"Q1\">");
 				out.print("<b>Type</b>");
@@ -93,6 +97,10 @@
 				out.print("</td>");
 				
 				out.print("<td id=\"F1\">");
+				out.print("<b>Arrival Time</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"F1\">");
 				out.print("<b>Travel Date</b>");
 				out.print("</td>");
 				
@@ -106,6 +114,10 @@
 				while (rs.next()) {
 					out.print("<tr>");
 					String reservationNum = rs.getString("reservation_num");
+					
+					out.print("<td id=\"Q\">");
+					out.print(reservationNum);
+					out.print("</td>");
 					
 					out.print("<td id=\"Q\">");
 					out.print(rs.getString("trip"));
@@ -144,6 +156,10 @@
 					out.print("</td>");
 					
 					out.print("<td id=\"F\">");
+					out.print(rs.getString("arrival_time"));
+					out.print("</td>");
+					
+					out.print("<td id=\"F\">");
 					out.print(rs.getString("schedule_date"));
 					out.print("</td>");
 					
@@ -163,7 +179,7 @@
 				
 				
 				//PAST RESERVATIONS
-				pst = conn.prepareStatement("SELECT reservation_num, trip, class, fee, origin_station_id,destination_station_id,line_name,train_id,schedule_date,departure_time,seat_number,reservation_date from Reservation where username=? AND schedule_date<?"); 
+				pst = conn.prepareStatement("SELECT reservation_num, trip, class, fee, origin_station_id,destination_station_id,line_name,train_id,schedule_date,departure_time,seat_number,reservation_date, arrival_time from Reservation where username=? AND schedule_date<?"); 
 				pst.setString(1, userPK);
 				pst.setDate(2, sqlDate);
 				rs = pst.executeQuery();
@@ -173,6 +189,10 @@
 				
 		
 				out.print("<tr>");
+				
+				out.print("<td id=\"Q1\">");
+				out.print("<b>Res. #</b>");
+				out.print("</td>");
 				
 				out.print("<td id=\"Q1\">");
 				out.print("<b>Type</b>");
@@ -211,6 +231,10 @@
 				out.print("</td>");
 				
 				out.print("<td id=\"F1\">");
+				out.print("<b>Arrival Time</b>");
+				out.print("</td>");
+				
+				out.print("<td id=\"F1\">");
 				out.print("<b>Travel Date</b>");
 				out.print("</td>");
 				
@@ -224,6 +248,10 @@
 				while (rs.next()) {
 					out.print("<tr>");
 					String reservationNum = rs.getString("reservation_num");
+
+					out.print("<td id=\"Q\">");
+					out.print(reservationNum);
+					out.print("</td>");
 					
 					out.print("<td id=\"Q\">");
 					out.print(rs.getString("trip"));
@@ -260,6 +288,11 @@
 					out.print("<td id=\"F\">");
 					out.print(rs.getString("departure_time"));
 					out.print("</td>");
+					
+					out.print("<td id=\"F\">");
+					out.print(rs.getString("arrival_time"));
+					out.print("</td>");
+					
 					
 					out.print("<td id=\"F\">");
 					out.print(rs.getString("schedule_date"));
