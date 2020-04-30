@@ -16,6 +16,10 @@
                alert ("Train is full. Please select another route!");
                document.write ("Train is full. Please select another route!");
             }
+            function funcRT(){
+          		alert ("Please select your return trip!");
+            	document.write ("Please select your return trip!");
+            }
       </script>
 </head>
 <body>
@@ -45,9 +49,13 @@
 	String tripType = request.getParameter("trip_type");
 	String travelClass = request.getParameter("travel_class");
 	
+	int rtFlag = (Integer)session.getAttribute("rtFlag");
+	
 	String discountGroup = request.getParameter("discounts");
 	//parsing discount
 	double netFare = baseFare;
+	
+
 
 	
 	if(travelClass.equals("first")){
@@ -77,6 +85,9 @@
 	
 	
 	//final fare out.print(netFare);
+	if(rtFlag == 1){
+		tripType="round trip";	
+	}
 	   
 
 	try{
@@ -148,6 +159,21 @@
 		pst.setDate(12, sqlCurrDate);
 		pst.setString(13, userPK);		
 		
+		//round trip
+		rtFlag++;
+		if(tripType.equals("round trip") && rtFlag == 1){
+			%>
+			<script>
+			funcRT();
+			window.location = "./browse.jsp";
+			</script>
+			<%
+			session.setAttribute("rtFlag", rtFlag++);
+		}else if(rtFlag > 1){
+			session.setAttribute("rtFlag", 0);
+		}
+		
+		
 		//execute the sql query
 		int result = pst.executeUpdate();
 		out.print("<div id=\"alert\">Reservation successfully created!</div>");
@@ -171,6 +197,7 @@
 		</div>
 		
 		<% 
+		
 			//close connection
 			conn.close();
 		} catch(Exception e){
