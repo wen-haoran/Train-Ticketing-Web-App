@@ -176,9 +176,9 @@ Fill in all the fields to add a new employee:<br>
 		<small> No Dashes</small>
 	</div>
 	<div>
-		Access Level: <input type="numeric" pattern="[1-3]{1}" name="employeeAccess_level" id="employeeAccess_level" required>
+		Access Level: <input type="text" name="employeeAccess_level" id="employeeAccess_level" required>
 		<small>Input the corresponding number based on the role<br>
-		Employee=1, Admin=2, Customer Representative=3
+		USE: "employee", "admin", "customer_rep"
 		</small>
 	</div>
 <br>

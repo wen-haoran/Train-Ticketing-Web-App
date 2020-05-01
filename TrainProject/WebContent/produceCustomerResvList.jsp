@@ -23,7 +23,7 @@
 		// Convert it to java.sql.Date
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 		
-		PreparedStatement pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username, fee, origin_station_id, destination_station_id, line_name, train_id, schedule_date, departure_time, seat_number from Reservation WHERE username = ? and schedule_date>=?");
+		PreparedStatement pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username, fee, origin_station_id, destination_station_id, line_name, train_id, schedule_date, departure_time, arrival_time, seat_number from Reservation WHERE username = ? and schedule_date>=?");
 		pst.setString(1, request.getParameter("customerName"));
 		pst.setDate(2, sqlDate);
 		ResultSet rs = pst.executeQuery();
@@ -74,6 +74,11 @@
 		out.print("</td>");
 		
 		out.print("<td>");
+		out.print("Arrival Time");
+		out.print("</td>");
+		
+		
+		out.print("<td>");
 		out.print("Seat Number");
 		out.print("</td>");
 		
@@ -124,6 +129,10 @@
 			out.print("</td>");
 			
 			out.print("<td>");
+			out.print(rs.getTime("arrival_time") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
 			out.print(rs.getInt("seat_number"));
 			out.print("</td>");
 			
@@ -133,7 +142,7 @@
 		
 		
 		//PAST RESERVATIONS
-		pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username, fee, origin_station_id, destination_station_id, line_name, train_id, schedule_date, departure_time, seat_number from Reservation WHERE username = ? and schedule_date<?");
+		pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username, fee, origin_station_id, destination_station_id, line_name, train_id, schedule_date, departure_time, arrival_time, seat_number from Reservation WHERE username = ? and schedule_date<?");
 		pst.setString(1, request.getParameter("customerName"));
 		pst.setDate(2, sqlDate);
 		rs = pst.executeQuery();
@@ -184,6 +193,10 @@
 		out.print("</td>");
 		
 		out.print("<td>");
+		out.print("Arrival Time");
+		out.print("</td>");
+		
+		out.print("<td>");
 		out.print("Seat Number");
 		out.print("</td>");
 		
@@ -231,6 +244,10 @@
 			
 			out.print("<td>");
 			out.print(rs.getTime("departure_time") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getTime("arrival_time") + " ");
 			out.print("</td>");
 			
 			out.print("<td>");

@@ -23,13 +23,13 @@
 			// Convert it to java.sql.Date
 			java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 				
-		PreparedStatement pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username, fee, origin_station_id, destination_station_id, line_name, train_id, schedule_date, departure_time, seat_number from Reservation WHERE line_name = ? AND train_id = ? and schedule_date>=?");
+		PreparedStatement pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username, fee, origin_station_id, destination_station_id, line_name, train_id, schedule_date, departure_time, seat_number, arrival_time from Reservation WHERE line_name = ? AND train_id = ? and schedule_date>=?");
 		pst.setString(1, request.getParameter("trainLine"));
 		pst.setString(2, request.getParameter("trainNum"));
 		pst.setDate(3, sqlDate);
 		ResultSet rs = pst.executeQuery();
 
-		out.print("<h3>CURRENT AND UPCOMING RESERVATIONS/h3>");
+		out.print("<h3>CURRENT AND UPCOMING RESERVATIONS</h3>");
 		out.print("<table>");
 		
 		out.print("<tr>");
@@ -71,7 +71,11 @@
 		out.print("</td>");
 		
 		out.print("<td>");
-		out.print("Departime Time");
+		out.print("Departure Time");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Arrival Time");
 		out.print("</td>");
 		
 		out.print("<td>");
@@ -125,6 +129,10 @@
 			out.print("</td>");
 			
 			out.print("<td>");
+			out.print(rs.getTime("arrival_time") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
 			out.print(rs.getInt("seat_number"));
 			out.print("</td>");
 			
@@ -133,7 +141,7 @@
 		out.print("</table>");
 		
 		
-		pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username, fee, origin_station_id, destination_station_id, line_name, train_id, schedule_date, seat_number from Reservation WHERE line_name = ? AND train_id = ? and schedule_date<?");
+		pst = conn.prepareStatement("SELECT reservation_num, reservation_date, username, fee, origin_station_id, destination_station_id, line_name, train_id, schedule_date, seat_number,departure_time, arrival_time from Reservation WHERE line_name = ? AND train_id = ? and schedule_date<?");
 		pst.setString(1, request.getParameter("trainLine"));
 		pst.setString(2, request.getParameter("trainNum"));
 		pst.setDate(3, sqlDate);
@@ -181,7 +189,11 @@ out.print("<table>");
 		out.print("</td>");
 		
 		out.print("<td>");
-		out.print("Departime Time");
+		out.print("Departure Time");
+		out.print("</td>");
+		
+		out.print("<td>");
+		out.print("Arrival Time");
 		out.print("</td>");
 		
 		out.print("<td>");
@@ -232,6 +244,10 @@ out.print("<table>");
 			
 			out.print("<td>");
 			out.print(rs.getTime("departure_time") + " ");
+			out.print("</td>");
+			
+			out.print("<td>");
+			out.print(rs.getTime("arrival_time") + " ");
 			out.print("</td>");
 			
 			out.print("<td>");
