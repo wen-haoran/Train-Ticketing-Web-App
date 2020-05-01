@@ -1,12 +1,24 @@
-
-body, #links {
-    height: 100%;
-	width: 100%;
+body {
+  display: table;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: auto;
 }
 
-body {
-    display: table;
-    margin: auto;
+#innerBody {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+#links {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: inline-flex;
+  padding-top: 90px;
 }
 
 
@@ -17,6 +29,8 @@ body {
     padding-top: 15px;
     padding-bottom: 14px;
     background-color: #13262F;
+    position: absolute; 
+    width: 100%;
 }
 
 #name {
@@ -45,12 +59,6 @@ body {
 }
 
 /* Body */
-
-#links {
-    display: inline-flex;
-    width: 100%;
-    padding-top: 130px;
-}
 
 h1 {
 	text-shadow: 2px 3px #a7bcd0;
