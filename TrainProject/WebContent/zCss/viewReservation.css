@@ -39,13 +39,14 @@ body {
 	padding-top: 20px;
 	letter-spacing: 1px;
 	color: #444444;
+	text-align: center;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
 #table {
-	width:700px; 
+	width:750px; 
     margin-right:15%;
-    margin-left: 8%;
+    margin-left: 3.1%;
     table-layout: fixed;  
 }
 
@@ -136,13 +137,13 @@ body {
 }
 
 #P1 {
-	width: 7%;
+	width: 6.5%;
 	padding-bottom: 7px;
 	font-size: 14px;
 }
 
 #P {
-	width: 7%;
+	width: 6.5%;
 	overflow: hidden;
 	font-size: 13px; 
     padding-bottom: 20px;
@@ -164,16 +165,22 @@ body {
 #A1{
 	width: 9%;
 	padding-bottom: 7px;
+	font-size: 13px;
 }
 
 #A {
 	width: 9%;
   	overflow: hidden;
     padding-bottom: 20px;
+	font-size: 13px;
 }
 
 #heading3 {
-	padding-left: 60px;
+	padding-right: 470px;
+}
+
+#heading4 {
+	padding-right: 525px;
 }
 
 

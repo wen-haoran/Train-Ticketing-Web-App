@@ -42,7 +42,7 @@
 							ApplicationDB db = new ApplicationDB();
 							Connection conn = db.getConnection();
 							PreparedStatement ps = conn.prepareStatement(
-								"SELECT d.t_time, a.t_time, t.line_name, t.train_id FROM Train_Schedule t, Departs d, Arrives a WHERE t.schedule_date = ? AND t.schedule_date = a.schedule_date AND t.starting_time = a.starting_time AND t.line_name = a.line_name AND t.train_id = a.train_id AND a.station_id = ? AND t.schedule_date = d.schedule_date AND t.starting_time = d.starting_time AND t.line_name = d.line_name AND t.train_id = d.train_id AND d.station_id = ? AND d.t_time < a.t_time"
+								"SELECT d.t_time, a.t_time, t.line_name, t.train_id FROM Train_Schedule t, Schedule_Stop d, Schedule_Stop a WHERE t.schedule_date = ? AND t.schedule_date = a.schedule_date AND t.starting_time = a.starting_time AND t.line_name = a.line_name AND t.train_id = a.train_id AND a.station_id = ? AND t.schedule_date = d.schedule_date AND t.starting_time = d.starting_time AND t.line_name = d.line_name AND t.train_id = d.train_id AND d.station_id = ? AND d.t_time < a.t_time"
 							);
 							String dateStr = request.getParameter("traveldate");
 							
@@ -90,7 +90,7 @@
 												<small>
 												<!-- Finding all stops in the line (in order) -->
 												<%
-												PreparedStatement ps2 = conn.prepareStatement("SELECT s.station_id FROM Departs d, Train_Schedule t, Station s WHERE t.line_name=? AND t.line_name=d.line_name AND t.starting_time=d.starting_time AND t.schedule_date=d.schedule_date AND t.train_id=d.train_id AND d.station_id=s.station_id ORDER BY d.t_time ASC");
+												PreparedStatement ps2 = conn.prepareStatement("SELECT s.station_id FROM Schedule_Stop d, Train_Schedule t, Station s WHERE t.line_name=? AND t.line_name=d.line_name AND t.starting_time=d.starting_time AND t.schedule_date=d.schedule_date AND t.train_id=d.train_id AND d.station_id=s.station_id ORDER BY d.t_time ASC");
 												ps2.setString(1, ln);
 												ResultSet rs2 = ps2.executeQuery();
 												ArrayList<String> stops = new ArrayList<String>();
