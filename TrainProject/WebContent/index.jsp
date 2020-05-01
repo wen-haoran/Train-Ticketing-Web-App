@@ -24,7 +24,7 @@
 			<div id = "links">
 				<div id = "welcomeText">
 					<h1>Welcome</h1>
-					<div id = "welcome">mh
+					<div id = "welcome">
 						<% 
 						boolean userIsLoggedIn = false;
 					 	if (session.getAttribute("user") == null) { 
