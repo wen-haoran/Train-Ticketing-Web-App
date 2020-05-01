@@ -19,29 +19,35 @@
       	PreparedStatement ps = conn.prepareStatement("SELECT * FROM Employee WHERE username = ?");
       	ps.setString(1,request.getParameter("editEmployeeUsername"));
       	ResultSet rs = ps.executeQuery();
-      	if(rs.first()){
+      	String oldUsername = request.getParameter("editEmployeeUsername");
+      	if((oldUsername.toLowerCase()).equals("admin")){
+			String s = "<form method=\"get\" action=\"./admin.jsp\">Cannot Edit the Admin Account<button type=\"submit\">Try again</button></form>";
+      		out.print(s);
+      		conn.close();
+      		return;
+		}else if(rs.first()){
  			%>
       		<form action="./editEmployee2.jsp" class="registration">
-      		<div>Editing this Employee:  <input type="text" name="originalUser" readonly="readonly" value=<%=rs.getString("username")%>></div>
+      		<div>Editing this Employee:  <input type="text" name="originalUser" readonly="readonly" value="<%=rs.getString("username")%>"></div>
       		<br>
       		<div class="registration">
-      			Username: <input type="text" name="fieldEmployeeUsername" id="fieldEmployeeUsername" value=<%=rs.getString("username")%> required>
-      		    Password: <input type="password" name="fieldEmployeePassword" id="fieldEmployeePassword" value=<%=rs.getString("password") %> required>
+      			Username: <input type="text" name="fieldEmployeeUsername" id="fieldEmployeeUsername" value="<%=rs.getString("username")%>" required>
+      		    Password: <input type="password" name="fieldEmployeePassword" id="fieldEmployeePassword" value="<%=rs.getString("password")%>" required>
       		</div>
       		<br>
       		<div class="registration">
-      		    First Name: <input type="text" name="fieldEmployeeFirst_name" id="fieldEmployeeFirst_name" value=<%= rs.getString("first_name") %> required>
-      			Last Name: <input type="text" name="fieldEmployeeLast_name" id="fieldEmployeeLast_name" value=<%= rs.getString("last_name") %> required>
+      		    First Name: <input type="text" name="fieldEmployeeFirst_name" id="fieldEmployeeFirst_name" value="<%= rs.getString("first_name")%>" required>
+      			Last Name: <input type="text" name="fieldEmployeeLast_name" id="fieldEmployeeLast_name" value="<%= rs.getString("last_name")%>" required>
       	  	</div>
       	  	<br>
       		<div>
-      			SSN: <input type="tel" pattern="[0-9]{9}" name="fieldEmployeeSSN" id="fieldEmployeeSSN" value=<%=rs.getString("ssn") %> required>
+      			SSN: <input type="tel" pattern="[0-9]{9}" name="fieldEmployeeSSN" id="fieldEmployeeSSN" value="<%=rs.getString("ssn")%>" required>
       			<small> No Dashes</small>
       		</div>
       		<div>
-      			Access Level: <input type="numeric" pattern="[1-3]{1}" name="fieldEmployeeAccess_level" id="fieldEmployeeAccess_level" value=<%=rs.getString("access_level")%> required>
+      			Access Level: <input type="text" name="fieldEmployeeAccess_level" id="fieldEmployeeAccess_level" value="<%=rs.getString("access_level")%>" required>
       			<small>Input the corresponding number based on the role<br>
-      			Employee=1, Admin=2, Customer Representative=3
+      			USE: "employee", "admin", or "customer_rep""
       			</small>
       		</div>
       	<br>

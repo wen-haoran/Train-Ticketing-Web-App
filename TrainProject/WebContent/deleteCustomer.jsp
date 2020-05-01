@@ -18,7 +18,8 @@
 		PreparedStatement ps = conn.prepareStatement("SELECT * FROM Customer WHERE username = ?");
       	ps.setString(1,request.getParameter("deleteCustomerUsername"));
       	ResultSet rs = ps.executeQuery();
-		if(rs.first()){
+      	
+      	if(rs.first()){
       	//query the db with input data
     		ps = conn.prepareStatement("DELETE FROM Customer WHERE username = ?");
     		ps.setString(1, request.getParameter("deleteCustomerUsername"));

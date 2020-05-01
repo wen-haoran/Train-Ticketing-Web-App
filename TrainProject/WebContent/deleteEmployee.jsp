@@ -18,8 +18,11 @@
 		PreparedStatement ps = conn.prepareStatement("SELECT * FROM Employee WHERE username = ?");
       	ps.setString(1,request.getParameter("deleteEmployeeUsername"));
       	ResultSet rs = ps.executeQuery();
-		if(rs.first()){
-
+      	if(request.getParameter("deleteEmployeeUsername").toLowerCase().equals("admin")){
+      		String s = "<form method=\"get\" action=\"./admin.jsp\">Cannot Delete the Original Admin Account<button type=\"submit\">Go back</button></form>";
+         	out.print(s);
+         	
+      	}else if(rs.first()){
       	//query the db with input data
     		ps = conn.prepareStatement("DELETE FROM Employee WHERE username = ?");
     		ps.setString(1, request.getParameter("deleteEmployeeUsername"));
