@@ -15,8 +15,8 @@
 <body>
 	<div id = "button2Wrapper">
 		<%
-		String viewAllQuestions = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
-		out.print(viewAllQuestions);
+		String homeBtn = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
+		out.print(homeBtn);
 		%>
 	</div>
 	<div id = "wrapper">

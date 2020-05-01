@@ -48,8 +48,6 @@
 						<td id = "c">Trip Type</td><td id = "c"><select name="trip_type">
 						  <option value="one way">One Way</option>
 						  <option value="round trip">Round Trip</option>
-						  <option value="weekly">Weekly</option>
-						  <option value="monthly">Monthly</option>
 						</select></td>
 						</tr>
 						<tr>
