@@ -38,13 +38,6 @@
 						        <option><%= s.getString(1)%></option>
 						    <% } %>
 					    </select>
-						<br>
-						Date of Travel:
-						<%
-							String todayDate = "<input type=\"date\" value=\""+sqlDate+"\" name=\"traveldate\" required>";
-							out.print(todayDate);
-						%>
-						<br>
 					</div>
 					<br>
 					<button type="submit" id = "button" >View Schedules</button>

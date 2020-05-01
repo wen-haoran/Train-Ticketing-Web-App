@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
@@ -9,7 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Success!</title>
-<link href="./zCss/deleteReservation.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -35,7 +34,7 @@
 				</div>
 				<div id = "buttonWrapper">
 					<% 	
-					String backHome = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button\">Back to Homepage</button></form>";
+					String backHome = "<form method=\"get\" action=\"./repIndex.jsp\"><button type=\"submit\" id=\"button\">Back to Homepage</button></form>";
 					out.print(backHome);
 					%>
 				</div>

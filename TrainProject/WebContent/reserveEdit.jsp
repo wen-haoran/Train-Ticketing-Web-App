@@ -3,8 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Add Train Schedule</title>
-<link href="./zCss/registerPage.css" rel="stylesheet" type="text/css">
+<title>Edit Reservation</title>
 </head>
 <body>
 	<div id = "registerSquare">

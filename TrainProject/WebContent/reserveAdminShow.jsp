@@ -50,41 +50,13 @@
 						</tr>
 					<%}%>
 				</table>
-				<script>
-				    function sort(j) { 
-				        var table, i, x, y; 
-				        table = document.getElementById("table"); 
-				        var switching = true; 
-				
-				        while (switching) { 
-				            switching = false; 
-				            var rows = table.rows; 
-				            
-				            for (i = 1; i < (rows.length - 1); i++) { 
-				                var makeSwitch = false; 
-				                x = rows[i].getElementsByTagName("TD")[j]; 
-				                y = rows[i + 1].getElementsByTagName("TD")[j]; 
-				
-				                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()){ 
-				                    makeSwitch = true; 
-				                    break; 
-				                } 
-				            } 
-				            if (makeSwitch) { 
-				                // Function to switch rows and mark switch as completed 
-				                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); 
-				                switching = true; 
-				            } 
-				        } 
-				    } 
-				</script>
 			<%conn.close();
 		}catch(Exception e){
 			System.out.println(e);
 		}%>
 	
 	<form method="get" action="./reserveAdmin.jsp">
-		<button type="submit">Search another trip</button>
+		<button type="submit">Search another reservation</button>
 	</form>
 	
 

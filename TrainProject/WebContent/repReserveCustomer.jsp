@@ -7,16 +7,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Browse Reservations</title>
+<title>View Customers by reservation</title>
 <link href="./zCss/reserveAdmin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<%
-		//get date
-		java.util.Date utilDate = new java.util.Date();
-		// Convert it to java.sql.Date
-		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-	%>
 	<form method="get" action="./repIndex.jsp">
 		<button type="submit">Home</button>
 	</form>

@@ -34,7 +34,7 @@
 				%>
 				<form action="./reserveAdminShow.jsp" class="reserveA">
 					<div class = "reserveA">
-					    Line: <select name="reserveID">
+					    Res#: <select name="reserveID">
 						    <%  while(lines.next()){ %>
 						        <option><%= lines.getString(1)%></option>
 						    <% } %>
