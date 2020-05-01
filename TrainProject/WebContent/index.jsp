@@ -20,44 +20,47 @@
 	    </div>
 	</div>
 	<body>
-		<div id = "links">
-			<div id = "welcomeText">
-				<h1>Welcome</h1>
-				<div id = "welcome">
-					<% 
-					boolean userIsLoggedIn = false;
-				 	if (session.getAttribute("user") == null) { 
-			    		response.sendRedirect("loginPage.jsp");
-					} else { 
-						String name = (String)session.getAttribute("first_name");
-						out.print("Hello <b>"+ name +"</b>. You are logged in.");
-						userIsLoggedIn = true;
+		<div id = "innerBody">
+			<div id = "links">
+				<div id = "welcomeText">
+					<h1>Welcome</h1>
+					<div id = "welcome">
+						<% 
+						boolean userIsLoggedIn = false;
+					 	if (session.getAttribute("user") == null) { 
+				    		response.sendRedirect("loginPage.jsp");
+						} else { 
+							String name = (String)session.getAttribute("first_name");
+							out.print("Hello <b>"+ name +"</b>. You are logged in.");
+							userIsLoggedIn = true;
+						}
+						%>
+					</div>
+				</div>
+					  
+				<div id = "listOfButtons">
+				<% 
+				 	if (userIsLoggedIn) { 
+						String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\" >Browse Train Schedules</button></form>";
+						out.print(browseBtn);
+				
+						String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\" id=\"button\">My Reservations</button></form>";
+						out.print(viewReserveBtn);
+						
+						String sendQuestionBtn = "<form method=\"get\" action=\"./zQuestion/sendQuestion.jsp\"><button type=\"submit\" id=\"button\">Ask a Question</button></form>";
+						out.print(sendQuestionBtn);
+						
+						String viewQuestionPage = "<form method=\"get\" action=\"./zQuestion/viewQuestion.jsp\"><button type=\"submit\" id=\"button\">Q&A Page</button></form>";
+						out.print(viewQuestionPage);
+						
+						String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\" id=\"buttonLast\"><b>Logout</b></button></form>";
+						out.print(logoutBtn);
 					}
-					%>
+				%>
 				</div>
 			</div>
-				  
-			<div id = "listOfButtons">
-			<% 
-			 	if (userIsLoggedIn) { 
-					String browseBtn = "<form method=\"get\" action=\"./browse.jsp\"><button type=\"submit\" id=\"button\" >Browse Train Schedules</button></form>";
-					out.print(browseBtn);
-			
-					String viewReserveBtn = "<form method=\"get\" action=\"./viewReservation.jsp\"><button type=\"submit\" id=\"button\">My Reservations</button></form>";
-					out.print(viewReserveBtn);
-					
-					String sendQuestionBtn = "<form method=\"get\" action=\"./zQuestion/sendQuestion.jsp\"><button type=\"submit\" id=\"button\">Ask a Question</button></form>";
-					out.print(sendQuestionBtn);
-					
-					String viewQuestionPage = "<form method=\"get\" action=\"./zQuestion/viewQuestion.jsp\"><button type=\"submit\" id=\"button\">Q&A Page</button></form>";
-					out.print(viewQuestionPage);
-					
-					String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\" id=\"buttonLast\"><b>Logout</b></button></form>";
-					out.print(logoutBtn);
-				}
-			%>
-			</div>
-		</div>	
+		</div>
+	
 		<%
 			try {
 				//connect to database
