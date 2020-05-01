@@ -12,6 +12,8 @@
 		<title>Train Website</title>
 		<link href="./zCss/index.css" rel="stylesheet" type="text/css">
 	</head>
+
+	<body>
 	<div id = "headings">
 	    <p id = "name">CHUBBA CHUGGA TRAINS</p>
 	    <div id = "navigationBar">
@@ -19,7 +21,6 @@
 	      <div id = "navHyperLink">Choo Choo With Us!</div>    
 	    </div>
 	</div>
-	<body>
 		<div id = "innerBody">
 			<div id = "links">
 				<div id = "welcomeText">
