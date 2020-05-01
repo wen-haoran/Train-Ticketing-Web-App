@@ -15,8 +15,8 @@
 <body>
 	<div id = "button2Wrapper">
 		<%
-		String viewAllQuestions = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
-		out.print(viewAllQuestions);
+		String homeBtn = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
+		out.print(homeBtn);
 		%>
 	</div>
 	<div id = "wrapper">
@@ -56,7 +56,7 @@
 		
 				out.print("<tr>");
 				
-				out.print("<td id=\"Q1\">");
+				out.print("<td id=\"A1\">");
 				out.print("<b>Res. #</b>");
 				out.print("</td>");
 				
@@ -93,11 +93,11 @@
 				out.print("</td>");
 				
 				out.print("<td id=\"F1\">");
-				out.print("<b>Departure Time</b>");
+				out.print("<b>Dep. Time</b>");
 				out.print("</td>");
 				
 				out.print("<td id=\"F1\">");
-				out.print("<b>Arrival Time</b>");
+				out.print("<b>Arr. Time</b>");
 				out.print("</td>");
 				
 				out.print("<td id=\"F1\">");
@@ -115,7 +115,7 @@
 					out.print("<tr>");
 					String reservationNum = rs.getString("reservation_num");
 					
-					out.print("<td id=\"Q\">");
+					out.print("<td id=\"A\">");
 					out.print(reservationNum);
 					out.print("</td>");
 					
@@ -184,13 +184,13 @@
 				pst.setDate(2, sqlDate);
 				rs = pst.executeQuery();
 				
-				out.print("<h3 id=\"heading3\">PAST RESERVATIONS</h3>");
+				out.print("<h3 id=\"heading4\">PAST RESERVATIONS</h3>");
 				out.print("<table id=\"table\">");
 				
 		
 				out.print("<tr>");
 				
-				out.print("<td id=\"Q1\">");
+				out.print("<td id=\"A1\">");
 				out.print("<b>Res. #</b>");
 				out.print("</td>");
 				
@@ -227,11 +227,11 @@
 				out.print("</td>");
 				
 				out.print("<td id=\"F1\">");
-				out.print("<b>Departure Time</b>");
+				out.print("<b>Dep. Time</b>");
 				out.print("</td>");
 				
 				out.print("<td id=\"F1\">");
-				out.print("<b>Arrival Time</b>");
+				out.print("<b>Arr. Time</b>");
 				out.print("</td>");
 				
 				out.print("<td id=\"F1\">");
@@ -249,7 +249,7 @@
 					out.print("<tr>");
 					String reservationNum = rs.getString("reservation_num");
 
-					out.print("<td id=\"Q\">");
+					out.print("<td id=\"A\">");
 					out.print(reservationNum);
 					out.print("</td>");
 					

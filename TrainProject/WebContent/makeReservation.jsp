@@ -31,7 +31,7 @@
 			java.util.Date utilCurrDate = new java.util.Date();
 			// Convert it to java.sql.Date
 			
-			if(parsed.compareTo(utilCurrDate) < 0){
+			if(parsed.compareTo(utilCurrDate) > 0){
 				%>
 				<script>
 		        	alert("Can not reserve a trip from the past. Please reserve another trip.");
@@ -48,8 +48,6 @@
 						<td id = "c">Trip Type</td><td id = "c"><select name="trip_type">
 						  <option value="one way">One Way</option>
 						  <option value="round trip">Round Trip</option>
-						  <option value="weekly">Weekly</option>
-						  <option value="monthly">Monthly</option>
 						</select></td>
 						</tr>
 						<tr>

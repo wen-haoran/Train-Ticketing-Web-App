@@ -12,6 +12,10 @@
 </head>
 <body>
 	<%
+	
+		String homeBtn = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
+		out.print(homeBtn);
+	
 		//get date
 		java.util.Date utilDate = new java.util.Date();
 		// Convert it to java.sql.Date
