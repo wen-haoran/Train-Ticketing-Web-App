@@ -11,32 +11,53 @@
 </head>
 <body>
 	<% 
+	//connect to db
+	ApplicationDB db = new ApplicationDB();	
+	Connection conn = db.getConnection();
 	try{
-		//connect to db
-		ApplicationDB db = new ApplicationDB();	
-		Connection conn = db.getConnection();		
-		if(request.getParameter("fieldEmployeeUsername").equals(request.getParameter("editEmployeeUsername"))){
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM Employee WHERE username = ?");
-	      	ps.setString(1,request.getParameter("fieldEmployeeUsername"));
-	      	ResultSet rs = ps.executeQuery();
-			if(rs.first()){
-				String s = "<form method=\"get\" action=\"./editEmployee.jsp\">Username already used<button type=\"submit\">Try again</button></form>";
+		String oldUsername = request.getParameter("originalUser");
+		String newUsername = request.getParameter("fieldEmployeeUsername");
+		PreparedStatement ps0 = conn.prepareStatement("SELECT ssn FROM Employee WHERE username = ?");
+		ps0.setString(1, oldUsername);
+		ResultSet rs0 = ps0.executeQuery();
+		if(rs0.first()){
+			String oldSSN = rs0.getString("ssn");
+			String newSSN = request.getParameter("fieldEmployeeSSN");
+			if(!(oldSSN.equals(newSSN))){
+				PreparedStatement ps3 = conn.prepareStatement("SELECT * FROM Employee WHERE ssn = ?");
+				ps3.setString(1, newSSN);
+				ResultSet rs3 = ps3.executeQuery();
+				if(rs3.first()){
+					String s = "<form method=\"get\" action=\"./admin.jsp\">Username already exits<button type=\"submit\">Try again</button></form>";
+		      		out.print(s);
+		      		conn.close();
+		      		return;
+				}
+			}
+		}
+		if(!((oldUsername.toLowerCase()).equals(newUsername.toLowerCase()))){
+			PreparedStatement ps2 = conn.prepareStatement("SELECT * FROM Employee WHERE username = ?");
+			ps2.setString(1, newUsername);
+			ResultSet rs2 = ps2.executeQuery();
+			if(rs2.first()){
+				String s = "<form method=\"get\" action=\"./admin.jsp\">Username already exits<button type=\"submit\">Try again</button></form>";
 	      		out.print(s);
 	      		conn.close();
 	      		return;
 			}
-		}else if(request.getParameter("fieldEmployeeSSN").equals(request.getParameter("editEmployeeSSN"))){
-			PreparedStatement ps= conn.prepareStatement("SELECT * FROM Employee WHERE ssn LIKE ?");
-	      	ps.setString(1,request.getParameter("fieldEmployeeSSN"));
-	      	ResultSet rs = ps.executeQuery();
-	      	if(rs.first()){
-	      		String s = "<form method=\"get\" action=\"./editEmployee.jsp\">Employee already exits<button type=\"submit\">Try again</button></form>";
-	      		out.print(s);
-	      		conn.close();
-	      		return;
-	      	}
-		}
-		//query the db with input data
+		}  
+		
+		
+		PreparedStatement ps1 = conn.prepareStatement("SELECT * FROM Customer WHERE username = ?");		
+      	ps1.setString(1, newUsername);
+      	ResultSet rs1 = ps1.executeQuery();
+      	if(rs1.first()){
+      		String s = "<form method=\"get\" action=\"./admin.jsp\">Username already exits<button type=\"submit\">Try again</button></form>";
+      		out.print(s);
+      		conn.close();
+      		return;
+      	}
+      	
 		PreparedStatement ps = conn.prepareStatement("UPDATE Employee SET username = ?, password = ?, first_name = ?, last_name = ?, ssn= ?, access_level = ? WHERE username = ?");
 		ps.setString(1, request.getParameter("fieldEmployeeUsername"));
 		ps.setString(2, request.getParameter("fieldEmployeePassword"));
@@ -44,17 +65,19 @@
 		ps.setString(4, request.getParameter("fieldEmployeeLast_name"));
 		ps.setString(5, request.getParameter("fieldEmployeeSSN"));
 		ps.setString(6, request.getParameter("fieldEmployeeAccess_level"));
- 		ps.setString(7, request.getParameter("originalUser"));
-
-		//execute the sql query
-		int result = ps.executeUpdate();
+		ps.setString(7, oldUsername);
+		ps.executeUpdate();
 		
 		String s = "<form method=\"get\" action=\"./admin.jsp\">Successfully Updated Employee<button type=\"submit\">Go back</button></form>";
      	out.print(s);
-		
+      	
 		//close connection
 		conn.close();
 	} catch(Exception e){
+		/* String s = "<form method=\"get\" action=\"./admin.jsp\">Employee already exits<button type=\"submit\">Try again</button></form>";
+  		out.print(s);
+  		conn.close();
+  		return; */
 		out.print(e);
 	}
 	%>

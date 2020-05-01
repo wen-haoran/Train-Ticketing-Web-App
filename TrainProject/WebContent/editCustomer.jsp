@@ -22,32 +22,32 @@
       	if(rs.first()){
  			%>
       		<form action="./editCustomer2.jsp">
-      		<div>Editing this Customer:  <input type="text" name="originalCustomer" readonly="readonly" value=<%=rs.getString("username")%>></div>
+      		<div>Editing this Customer:  <input type="text" name="originalCustomer" readonly="readonly" value="<%=rs.getString("username")%>"></div>
       		<br>
       		<div>
-      			Username: <input type="text" name="fieldCustomerUsername" id="fieldCustomerUsername" value=<%=rs.getString("username")%> required>
-      		    Password: <input type="password" name="fieldCustomerPassword" id="fieldCustomerPassword" value=<%=rs.getString("password") %> required>
+      			Username: <input type="text" name="fieldCustomerUsername" id="fieldCustomerUsername" value="<%=rs.getString("username")%>" required>
+      		    Password: <input type="password" name="fieldCustomerPassword" id="fieldCustomerPassword" value="<%=rs.getString("password") %>" required>
       		</div>
       		<br>
       		<div >
-      		    First Name: <input type="text" name="fieldCustomerFirst_name" id="fieldCustomerFirst_name" value=<%= rs.getString("first_name") %> required>
-      			Last Name: <input type="text" name="fieldCustomerLast_name" id="fieldCustomerLast_name" value=<%= rs.getString("last_name") %> required>
+      		    First Name: <input type="text" name="fieldCustomerFirst_name" id="fieldCustomerFirst_name" value="<%= rs.getString("first_name")%>" required>
+      			Last Name: <input type="text" name="fieldCustomerLast_name" id="fieldCustomerLast_name" value="<%= rs.getString("last_name")%>" required>
       	  	</div>
       	  	<br>
       		<div>
-	    Email: <input type="email" name="fieldCustomerEmail" id="fieldCustomerEmail" value=<%= rs.getString("email") %> required>
+	    Email: <input type="email" name="fieldCustomerEmail" id="fieldCustomerEmail" value="<%= rs.getString("email")%>" required>
 	  </div>
       		<div>
-			    Phone Number: <input type="tel" name="fieldCustomerTelephone" id="fieldCustomerTelephone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value=<%= rs.getString("telephone") %> required>
+			    Phone Number: <input type="tel" name="fieldCustomerTelephone" id="fieldCustomerTelephone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="<%=rs.getString("telephone")%>" required>
 				<small>(XXX-XXX-XXXX)</small>
       		</div>
       	<div class="registration">
-	    Address: <input type="text" name="fieldCustomerAddress" id="fieldCustomerAddress" value=<%= rs.getString("address") %> required>
+	    Address: <input type="text" name="fieldCustomerAddress" id="fieldCustomerAddress" value="<%=rs.getString("address")%>" required>
 	  </div>
       	<div>
-	    City: <input type="text" name="fieldCustomerCity" id="fieldCustomerCity" value=<%= rs.getString("city") %> required>
+	    City: <input type="text" name="fieldCustomerCity" id="fieldCustomerCity" value="<%= rs.getString("city")%>" required>
 			State: <select name="fieldCustomerState" id="fieldCustomerState" size="1">
-			  <option selected="selected" value = <%= rs.getString("state")%>> <%= rs.getString("state")%></option>
+			  <option selected="selected" value = "<%= rs.getString("state")%>"> <%= rs.getString("state")%></option>
 			  <option value="AK">AK</option>
 			  <option value="AL">AL</option>
 			  <option value="AR">AR</option>
@@ -100,7 +100,7 @@
 			  <option value="WV">WV</option>
 			  <option value="WY">WY</option>
 			</select>
-			Zipcode: <input type="text" name="fieldCustomerZipcode" id="fieldCustomerZipcode" pattern=[0-9]{5} value=<%= rs.getString("zip_code") %> required>
+			Zipcode: <input type="text" name="fieldCustomerZipcode" id="fieldCustomerZipcode" pattern=[0-9]{5} value="<%= rs.getString("zip_code") %>" required>
 	  </div>
 		<br>
 		<button type="submit">Submit</button>

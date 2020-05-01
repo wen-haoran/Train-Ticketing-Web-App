@@ -11,23 +11,37 @@
 </head>
 <body>
 	<% 
+	//connect to db
+	ApplicationDB db = new ApplicationDB();	
+	Connection conn = db.getConnection();		
 	try{
-		//connect to db
-		ApplicationDB db = new ApplicationDB();	
-		Connection conn = db.getConnection();		
-		if(request.getParameter("fieldCustomerUsername").equals(request.getParameter("editCustomerUsername"))){
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM Customer WHERE username = ?");
-	      	ps.setString(1,request.getParameter("fieldCustomerUsername"));
-	      	ResultSet rs = ps.executeQuery();
-			if(rs.first()){
-				String s = "<form method=\"get\" action=\"./editCustomer.jsp\">Username already used<button type=\"submit\">Try again</button></form>";
+		String oldUsername = request.getParameter("originalCustomer");
+		String newUsername = request.getParameter("fieldCustomerUsername");
+		
+		PreparedStatement ps = conn.prepareStatement("SELECT * FROM Employee WHERE username = ?");
+      	ps.setString(1, newUsername);
+      	ResultSet rs = ps.executeQuery();
+		if(rs.first()){
+			String s = "<form method=\"get\" action=\"./admin.jsp\">Username already exists<button type=\"submit\">Try again</button></form>";
+      		out.print(s);
+      		conn.close();
+      		return;
+		}
+		
+		if(!(oldUsername.toLowerCase().equals(newUsername.toLowerCase()))){
+			PreparedStatement ps1 = conn.prepareStatement("SELECT * FROM Customer WHERE username = ?");
+	      	ps1.setString(1, newUsername);
+	      	ResultSet rs1 = ps1.executeQuery();
+			if(rs1.first()){
+				String s = "<form method=\"get\" action=\"./admin.jsp\">Username already exists<button type=\"submit\">Try again</button></form>";
 	      		out.print(s);
 	      		conn.close();
 	      		return;
 			}
 		}
+		
 		//query the db with input data
-		PreparedStatement ps = conn.prepareStatement("UPDATE Customer SET username = ?, password = ?, first_name = ?, last_name = ?, email = ?, telephone = ?, address = ?, city = ?, state = ?, zip_code = ? WHERE username = ?");
+		ps = conn.prepareStatement("UPDATE Customer SET username = ?, password = ?, first_name = ?, last_name = ?, email = ?, telephone = ?, address = ?, city = ?, state = ?, zip_code = ? WHERE username = ?");
 		ps.setString(1, request.getParameter("fieldCustomerUsername"));
 		ps.setString(2, request.getParameter("fieldCustomerPassword"));
 		ps.setString(3, request.getParameter("fieldCustomerFirst_name"));
@@ -38,7 +52,7 @@
  		ps.setString(8, request.getParameter("fieldCustomerCity"));
  		ps.setString(9, request.getParameter("fieldCustomerState"));
  		ps.setString(10, request.getParameter("fieldCustomerZipcode"));
- 		ps.setString(11, request.getParameter("originalCustomer"));
+ 		ps.setString(11, oldUsername);
  		
 		//execute the sql query
 		int result = ps.executeUpdate();
