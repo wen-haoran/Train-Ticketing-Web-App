@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Browse Train Schedules</title>
-<link href="./zCss/browse.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<%
