@@ -17,7 +17,7 @@
 			ApplicationDB db = new ApplicationDB();
 			Connection conn = db.getConnection();
 			PreparedStatement ps = conn.prepareStatement(
-				"SELECT c.username FROM Customer c, Reservation r, Train_Schedule t WHERE t.line_name = ? AND t.train_id = ? AND t.line_name = r.line_name AND t.train_id = r.train_id AND r.username = c.username"
+				"SELECT c.username FROM Customer c, Reservation r WHERE r.line_name = ? AND r.train_id = ? AND c.username = r.username"
 			);
 			String L = request.getParameter("line");
 			ps.setString(1, L);
