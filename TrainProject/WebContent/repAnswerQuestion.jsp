@@ -13,7 +13,7 @@
 <body>
 	<div id = "button2Wrapper">
 		<%
-		String viewAllQuestions = "<form method=\"get\" action=\"../repIndex.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
+		String viewAllQuestions = "<form method=\"get\" action=\"./repIndex.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
 		out.print(viewAllQuestions);
 		%>
 	</div>
