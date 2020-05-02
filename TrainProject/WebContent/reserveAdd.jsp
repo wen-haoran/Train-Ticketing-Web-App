@@ -30,7 +30,7 @@
 					Departure Time: <input id = "input" type="time" name="departTime" id="departTime" onblur="validate()" required>
 				</div>
 				<div class="add">
-					Travel Date: <input id = "input" type="time" name="travelDate" id="travelDate" onblur="validate()" required>
+					Travel Date: <input id = "input" type="date" name="travelDate" id="travelDate" onblur="validate()" required>
 				</div>
 				<div class="add">
 					Origin Station ID: <input id = "input" type="text" name="originId" id="originId" onblur="validate()" required>
