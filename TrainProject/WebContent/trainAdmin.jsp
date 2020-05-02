@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Browse Train Schedules</title>
-<link href="./zCss/trainAdmin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<%
@@ -23,7 +22,7 @@
 	<div id = "wrapper">
 		<div id = "trainASquare">
 			<div id = "trainAText">
-				<h1>pick trip</h1>
+				<h1>Pick Line and Date</h1>
 				<!--drop down select current origins/destinations in db-->
 				<%
 				    try{
