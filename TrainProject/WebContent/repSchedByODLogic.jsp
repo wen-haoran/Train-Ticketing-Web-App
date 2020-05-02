@@ -45,16 +45,20 @@
 					<%while (rs.next()) {%>
 						<tr>
 							<td>
-								<%=rs.getString("t.line_name")%>
+								<%String a = rs.getString("t.line_name");
+								out.print(a);%>
 							</td>
 							<td>
-								<%=rs.getString("t.train_id")%>
+								<%String b = rs.getString("t.train_id");
+								out.print(b);%>
 							</td>
 							<td>
-								<%=rs.getString("t.starting_time")%>
+								<%String c = rs.getString("t.starting_time");
+								out.print(c);%>
 							</td>
 							<td>
-								<%=rs.getString("t.schedule_date")%>
+								<%String d = rs.getString("t.schedule_date");
+								out.print(d);%>
 							</td>
 							<td>
 								<form method="get" action="./repEditSched.jsp">
@@ -73,6 +77,7 @@
 									<input type="hidden" type="time" name="startTime" id="startTime" value = "<%=c%>">
 									<input type="hidden" type="date" name="travelDate" id="travelDate" value = "<%=d%>">
 									<button type="submit">DELETE</button>
+									</form>
 						</tr>
 					<%}%>
 				</table>
