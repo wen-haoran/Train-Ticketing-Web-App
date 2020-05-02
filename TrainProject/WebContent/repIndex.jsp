@@ -43,7 +43,7 @@
 				out.print(reserveB);
 				String reserveC = "<form method=\"get\" action=\"./repReserveCustomer.jsp\"><button type=\"submit\" id=\"button\">View Customers by Train/Line reservation</button></form>";
 				out.print(reserveC);
-				String question = "<form method=\"get\" action=\"./repAnswerQuestion.jsp\"><button type=\"submit\" id=\"button\">View Customers by Train/Line reservation</button></form>";
+				String question = "<form method=\"get\" action=\"./repAnswerQuestion.jsp\"><button type=\"submit\" id=\"button\">Answer Customer Questions</button></form>";
 				out.print(question);
 				String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\" id=\"button\"><b>Logout</b></button></form>";
 				out.print(logoutBtn);
