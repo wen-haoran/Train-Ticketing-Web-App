@@ -5,15 +5,16 @@
 
 <html>
 <body>
-	<form method="get" action="./index.jsp">
+	<form method="get" action="./repIndex.jsp">
 		<button type="submit">Home</button>
 	</form>
 	<p id="demo"></p>
 	<h3>Results for <%=request.getParameter("lineName")%> line on <%=request.getParameter("traveldate")%>:</h3>
 
-	<br>
 	
 	<%
+	String back = "<form method=\"get\" action=\"./trainAdmin.jsp\"><button type=\"submit\" id=\"button2\">Back</button></form>";
+	out.print(back);
 		try{
 			ApplicationDB db = new ApplicationDB();
 			Connection conn = db.getConnection();
@@ -43,14 +44,17 @@
 								<%=rs.getString("t.starting_time")%>
 							</td>
 							<td>
-								<form method="get" action="./trainAdminEdit.jsp">
-									<button type="submit">Reserve</button>
+								<form method="get" >
+									<button id="reserveCol" type="submit" onclick="getInfo(this)">Reserve</button>
 								</form>
 							</td>
 						</tr>
 					<%}%>
 				</table>
 				<script>
+					function getInfo(i){
+						alert("row" + i.closest('tr').rowIndex);
+					}
 				    function sort(j) { 
 				        var table, i, x, y; 
 				        table = document.getElementById("table"); 
@@ -82,10 +86,6 @@
 		}catch(Exception e){
 			System.out.println(e);
 		}%>
-	
-	<p><small>50% off for seniors/children/persons with disabilities</small></p>
-	<p><small>Save now by purchasing a weekly or monthly pass!</small></p>
-	<br>
 	
 	<form method="get" action="./trainAdmin.jsp">
 		<button type="submit">Search another trip</button>

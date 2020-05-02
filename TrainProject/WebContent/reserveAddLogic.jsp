@@ -23,7 +23,7 @@
 		    try{
 		    	ApplicationDB db = new ApplicationDB();
 				Connection conn = db.getConnection();
-		      	PreparedStatement ps = conn.prepareStatement("INSERT INTO Reservation(line_name, train_id, departure_time, schedule_date, origin_station_id, destination_station_id, reservation_date, trip, class, discount, fee, seat_number, ssn, username) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		      	PreparedStatement ps = conn.prepareStatement("INSERT INTO Reservation(line_name, train_id, departure_time, schedule_date, origin_station_id, destination_station_id, reservation_date, trip, class, discount, fee, seat_number, ssn, username, isDelay) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)");
 				ps.setString(1, request.getParameter("line"));
 				ps.setString(2, request.getParameter("train"));
 				ps.setString(3, request.getParameter("departTime"));
@@ -40,7 +40,7 @@
 				ps.setString(14, request.getParameter("username"));
 				int result = ps.executeUpdate();
 				out.print("<div id=\"alert\">Reservation successful!</div>");
-				String s = "<form method=\"get\" action=\"./repIndex.jsp\"><button type=\"submit\" id=\"button\">Log In</button></form>";
+				String s = "<form method=\"get\" action=\"./repIndex.jsp\"><button type=\"submit\" id=\"button\">Home</button></form>";
 				out.println(s);
 		    
 			%>

@@ -17,12 +17,9 @@
 		// Convert it to java.sql.Date
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 	%>
-	<div id = "button2Wrapper">
-		<%
-		String viewAllQuestions = "<form method=\"get\" action=\"./index.jsp\"><button type=\"submit\" id=\"button2\">BACK</button></form>";
-		out.print(viewAllQuestions);
-		%>
-	</div>	
+	<form method="get" action="./repIndex.jsp">
+		<button type="submit">Home</button>
+	</form>
 	<div id = "wrapper">
 		<div id = "trainASquare">
 			<div id = "trainAText">

@@ -16,7 +16,7 @@
 		<button type="submit">Home</button>
 	</form>
 	<p id="demo"></p>
-	<h3>Results for <%=request.getParameter("pointA")%> to <%=request.getParameter("pointB")%> on <%=request.getParameter("traveldate")%>:</h3>
+	<h3>Results for <%=request.getParameter("pointA")%> to <%=request.getParameter("pointB")%>:</h3>
 	
 	
 	<%
@@ -27,19 +27,19 @@
 			ApplicationDB db = new ApplicationDB();
 			Connection conn = db.getConnection();
 			PreparedStatement ps = conn.prepareStatement(
-				"SELECT t.line_name, t.train_id, t.starting_time FROM Train_Schedule t, Departs d, Arrives a WHERE t.schedule_date = ? AND t.schedule_date = a.schedule_date AND t.starting_time = a.starting_time AND t.line_name = a.line_name AND t.train_id = a.train_id AND a.station_id = ? AND t.schedule_date = d.schedule_date AND t.starting_time = d.starting_time AND t.line_name = d.line_name AND t.train_id = d.train_id AND d.station_id = ? AND d.t_time < a.t_time"
+				"SELECT t.line_name, t.train_id, t.starting_time, t.schedule_date FROM Train_Schedule t, Schedule_Stop d, Schedule_Stop a WHERE t.schedule_date = a.schedule_date AND t.starting_time = a.starting_time AND t.line_name = a.line_name AND t.train_id = a.train_id AND a.station_id = ? AND t.schedule_date = d.schedule_date AND t.starting_time = d.starting_time AND t.line_name = d.line_name AND t.train_id = d.train_id AND d.station_id = ? AND d.t_time < a.t_time"
 			);
-			ps.setString(1, request.getParameter("traveldate"));
 			String B = request.getParameter("pointB");
-			ps.setString(2, B);
+			ps.setString(1, B);
 			String A = request.getParameter("pointA");
-			ps.setString(3, A);
+			ps.setString(2, A);
 			ResultSet rs = ps.executeQuery();%>
 				<table border='1' id="table">
 					<tr>
 						<th>Line Name/Stops</th>
 						<th>Train ID</th>
 						<th>Starting Time</th>
+						<th>Schedule Date</th>
 						<th></th>
 					</tr>
 					<%while (rs.next()) {%>
@@ -54,8 +54,16 @@
 								<%=rs.getString("t.starting_time")%>
 							</td>
 							<td>
+								<%=rs.getString("t.schedule_date")%>
+							</td>
+							<td>
+								<form method="get" action="./repEditSched.jsp">
+									<button type="submit">Edit</button>
+								</form>
+							</td>
+							<td>
 								<form method="get" action="./makeReservation.jsp">
-									<button type="submit">EDIT OR DELETE</button>
+									<button type="submit">Delete</button>
 								</form>
 							</td>
 						</tr>
