@@ -58,14 +58,21 @@
 							</td>
 							<td>
 								<form method="get" action="./repEditSched.jsp">
-									<button type="submit">Edit</button>
+									<input type="hidden" type="text" name="linep" id="linep" value = "<%=a%>">
+									<input type="hidden" type="text" name="trainp" id="trainp" value = "<%=b%>">
+									<input type="hidden" type="time" name="startTimep" id="startTimep" value = "<%=c%>">
+									<input type="hidden" type="date" name="travelDatep" id="travelDatep" value = "<%=d%>">
+									<input type="hidden" type="time" name="travelTimep" id="travelTimep" value = "<%=rs.getString("t.travel_time")%>">
+									<button type="submit">EDIT</button>
 								</form>
 							</td>
 							<td>
-								<form method="get" action="./makeReservation.jsp">
-									<button type="submit">Delete</button>
-								</form>
-							</td>
+								<form method="get" action="./repDeleteSched.jsp">
+									<input type="hidden" type="text" name="line" id="line" value = "<%=a%>">
+									<input type="hidden" type="text" name="train" id="train" value = "<%=b%>">
+									<input type="hidden" type="time" name="startTime" id="startTime" value = "<%=c%>">
+									<input type="hidden" type="date" name="travelDate" id="travelDate" value = "<%=d%>">
+									<button type="submit">DELETE</button>
 						</tr>
 					<%}%>
 				</table>
