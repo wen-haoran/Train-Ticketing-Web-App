@@ -31,21 +31,22 @@
 					if(rs.next()){
 						String dbPassword = rs.getString("password");
 						String accessLVL = rs.getString("access_level");
-						out.print(accessLVL);
 						if (pas.equals(dbPassword)) {
 							if(accessLVL.equals("admin")){
 								out.println("Logging in as Administrator");
 								session.setAttribute("user", "admin");
 								session.setAttribute("first_name", "admin");
 								response.sendRedirect("admin.jsp");
-							}else if(accessLVL.equals("customer rep")){
+							}else if(accessLVL.equals("customer_rep")){
 								out.println("Logging in as Customer Rep");
 								session.setAttribute("user", "customer rep");
 								session.setAttribute("first_name", "customer rep");
 								response.sendRedirect("repIndex.jsp");
+							}else{
+								out.println("Logging in as Employee");
 							}
-							out.println("You have successfully login");
-							conn.close();
+							/* out.println("You have successfully login");
+							conn.close(); */
 						}
 					}else{
 						PreparedStatement pst = conn.prepareStatement("SELECT username, password, first_name from Customer where username=? and password=?");
