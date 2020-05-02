@@ -43,10 +43,16 @@
 								session.setAttribute("first_name", "customer rep");
 								response.sendRedirect("repIndex.jsp");
 							}else{
-								out.println("Logging in as Employee");
+								out.println("Logged in as Employee");
+								String logoutBtn = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\" id=\"buttonLast\"><b>Logout</b></button></form>";
+								out.print(logoutBtn);
 							}
 							/* out.println("You have successfully login");
 							conn.close(); */
+						}else{
+							out.println("<div id=\"alert\">Username or password is invalid.</div>");
+							String s = "<form method=\"get\" action=\"./loginPage.jsp\"><button type=\"submit\"  id=\"button\">Try Again</button></form>";
+							out.print(s);
 						}
 					}else{
 						PreparedStatement pst = conn.prepareStatement("SELECT username, password, first_name from Customer where username=? and password=?");
