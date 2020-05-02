@@ -13,8 +13,6 @@
 
 	
 	<%
-	String back = "<form method=\"get\" action=\"./repReserveCustomer.jsp\"><button type=\"submit\" id=\"button2\">Back</button></form>";
-	out.print(back);
 		try{
 			ApplicationDB db = new ApplicationDB();
 			Connection conn = db.getConnection();
