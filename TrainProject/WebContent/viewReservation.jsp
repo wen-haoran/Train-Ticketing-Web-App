@@ -273,7 +273,7 @@
 					out.print(rs.getString("destination_station_id"));
 					out.print("</td>");
 					
-					out.print("<td id=\"D\">");
+					out.print("<td id=\"Q\">");
 					out.print(rs.getString("line_name"));
 					out.print("</td>");
 					
